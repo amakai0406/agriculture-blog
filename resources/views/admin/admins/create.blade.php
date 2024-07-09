@@ -23,7 +23,7 @@
             </div>
         @endif
 
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="{{route('admin/admins/store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="name">名前</label>
@@ -45,5 +45,22 @@
         </form>
     </div>
 </body>
+<script>
+    document.getElementById('image').addEventListener('change', function (event) {
+        const input = event.target;
+        const preview = document.getElementById('previewImage');
+        const noImageSrc = preview.getAttribute('data-noimage');
+
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            preview.src = noImageSrc;
+        }
+    });
+</script>
 
 </html>
