@@ -20,4 +20,10 @@ class StoreAdminRequest extends FormRequest
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
+    public function messages()
+    {
+        return [
+            'image.mimes' => '画像の形式は jpeg, png, jpg, gif のいずれかである必要があります。',
+        ];
+    }
 }
