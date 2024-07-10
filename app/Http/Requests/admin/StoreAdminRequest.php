@@ -8,7 +8,6 @@ class StoreAdminRequest extends FormRequest
 {
     public function authorize()
     {
-        //全てのリクエストを許可する
         return true;
     }
 
