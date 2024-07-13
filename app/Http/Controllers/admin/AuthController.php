@@ -23,14 +23,24 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($validate)) {
+        if (Auth::guard('admin')->attempt($validate)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard');
+            return redirect()->route('admin.dashboard');
         }
 
         return back()->withErrors([
             'error' => '入力内容に誤りがあります。ご確認のうえ、もう一度入力してください。',
         ])->onlyInput('name');
+    }
+    public function logout(Request $request)
+    {
+        Auth::guard('admin')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/admin/admins/login');
     }
 }
