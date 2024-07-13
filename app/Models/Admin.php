@@ -10,6 +10,7 @@ use Illuminate\Auth\Authenticatable;
 
 class Admin extends Model implements AuthenticatableContract
 {
+    //Authenticatable(承認システム機能)追加
     use HasFactory, Authenticatable;
 
     public $timestamps = false;
