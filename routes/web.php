@@ -4,7 +4,7 @@
 use App\Http\Controllers\admin\AuthController;
 
 use App\Http\Controllers\Admin\AdminController;
-
+use App\Http\Controllers\admin\BlogController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Middleware\Authenticate;
@@ -26,5 +26,8 @@ Route::middleware([Authenticate::class])->group(function () {
 
     //ログアウト
     Route::post('admin/logout', [AuthController::class, 'logout'])->name('admin.admins.logout');
+
+    //ブログ一覧の表示
+    Route::get('/admin/blogs', [BlogController::class, 'index'])->name('admin.blogs.index');
 
 });
