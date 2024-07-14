@@ -17,13 +17,12 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        //HTTPリクエスト設定を'name'.'password'を入力必須としているし、
+        //HTTPリクエスト設定を'name'.'password'を入力必須とし、
         //条件を通ったリクエストを$validateに格納している
         $validate = $request->validate([
             'name' => ['required'],
             'password' => ['required'],
         ]);
-
         //adminガードを使用して、adminsテーブルのデータを
         //attemptメソッドで$validateで格納したデータと一致するデータをデータベースに探しにいく
         //一致した場合はsession()->regenerate()でセッションIDの再生成を行い、

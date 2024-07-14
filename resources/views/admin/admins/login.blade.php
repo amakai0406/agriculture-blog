@@ -14,7 +14,7 @@
             <div class="col-md-6">
                 <div class="card mt-5">
                     <div class="card-header text-center">
-                        <h3>管理車ログイン</h3>
+                        <h3>管理者ログイン</h3>
                     </div>
                     <div class="card-body">
                         @if ($errors->has('error'))
