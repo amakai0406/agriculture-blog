@@ -18,11 +18,12 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="" onclick="event.preventDefault();
+                    <a class="nav-link" href="{{ route('admin.admins.logout') }}" onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
-                        Logout
+                        ログアウト
                     </a>
-                    <form id="logout-form" action="" method="POST" style="display: none;">
+                    <form id="logout-form" action="{{ route('admin.admins.logout') }}" method="POST"
+                        style="display: none;">
                         @csrf
                     </form>
                 </li>

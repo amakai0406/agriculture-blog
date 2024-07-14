@@ -4,10 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Auth\Authenticatable;
 
-class Admin extends Model
+
+class Admin extends Model implements AuthenticatableContract
 {
-    use HasFactory;
+    //Authenticatable(承認システム機能)追加
+    use HasFactory, Authenticatable;
 
     public $timestamps = false;
 
