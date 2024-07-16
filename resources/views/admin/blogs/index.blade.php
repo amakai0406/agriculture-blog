@@ -9,29 +9,46 @@
 
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4">Blog List</h1>
-        <div class="row">
-            @foreach ($blogs as $blog)
-                <div class="col-md-6 col-lg-4">
-                    <div class="card blog-card">
-                        <img src="{{ $blog->image }}" class="card-img-top" alt="{{ $blog->title }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $blog->title }}</h5>
-                            <p class="card-text">{{ \Illuminate\Support\Str::limit($blog->content, 100) }}</p>
-                            <p class="card-text"><small class="text-muted"></small></p>
+        <h1 class="mb-4">ブログ一覧</h1>
+        <table class="table table-striped" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th style="width: 10%; text-align: left">画像</th>
+                    <th style="width: 20%; text-align: left;">タイトル</th>
+                    <th style="width: 40%; text-align: left;">内容</th>
+                    <th style="width: 10%; text-align: left">作成日</th>
+                    <th style="width: 10%; text-align: left">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($blogs as $blog)
+                    <tr class="blog-row">
+                        <td>
+                            <img src="{{ $blog->image }}" alt="{{ $blog->title }}" style="width: 100%; height: auto;">
+                        </td>
+                        <td>{{ $blog->title }}</td>
+                        <td>{{ \Illuminate\Support\Str::limit($blog->content, 100) }}</td>
+                        <td>{{ $blog->created_at->format('Y-m-d') }}</td>
+                        <td>
                             <form action="" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">削除</button>
                             </form>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
         {{ $blogs->links() }}
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .blog-row td {
+            padding: 15px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 
 </html>
