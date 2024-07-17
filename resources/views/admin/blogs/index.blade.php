@@ -16,8 +16,12 @@
                     <th style="width: 10%; text-align: left">画像</th>
                     <th style="width: 20%; text-align: left;">タイトル</th>
                     <th style="width: 40%; text-align: left;">内容</th>
-                    <th style="width: 10%; text-align: left">作成日</th>
-                    <th style="width: 10%; text-align: left">操作</th>
+                    <th style="width: 10%; text-align: left">投稿者</th>
+                    <th style="width: 15%; text-align: center">
+                        <div>作成日</div>
+                        <div>更新日</div>
+                    </th>
+                    <th style="width: 10%; text-align: center">操作</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,7 +32,11 @@
                         </td>
                         <td>{{ $blog->title }}</td>
                         <td>{{ \Illuminate\Support\Str::limit($blog->content, 100) }}</td>
-                        <td>{{ $blog->created_at->format('Y-m-d') }}</td>
+                        <td>{{ $blog->admin->name }}</td>
+                        <td>
+                            <div>{{ $blog->created_at->format('Y-m-d H:i') }}</div>
+                            <div>{{ $blog->updated_at->format('Y-m-d H:i') }}</div>
+                        </td>
                         <td>
                             <form action="" method="POST" style="display:inline;">
                                 @csrf

@@ -15,4 +15,10 @@ class Blog extends Model
     //'title', 'content', 'image', 'created_at',は、フォームからのデータを直接Blogモデルに振り当てるように設定
     protected $fillable = ['title', 'content', 'image', 'created_at'];
 
+    public function admin()
+    {
+        //belongsToメソッド(多対1)
+        return $this->belongsTo(Admin::class);
+    }
+
 }
