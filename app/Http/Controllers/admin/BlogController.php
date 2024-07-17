@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Http\Requests\admin\StoreBlogRequest;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -43,6 +44,9 @@ class BlogController extends Controller
 
             //パスのファイル名を検証されたimageファイル$validated['image']に格納する
             $validated['image'] = $imageName;
+
+            //ログイン中のユーザIDを$validatedのadmin_idに追加する
+            $validated['admin_id'] = Auth::user()->id;
 
             //Blogモデルを使い、検証済みデータの$validatedを基にインスタンスを作成する
             Blog::create($validated);
