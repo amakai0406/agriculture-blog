@@ -42,8 +42,8 @@ class BlogController extends Controller
             //$pathをbasenameメソッドを使い、パスのファイル名だけを$imageNameに格納する
             $imageName = basename($path);
 
-            //パスのファイル名を検証されたimageファイル$validated['image']に格納する
-            $validated['image'] = $imageName;
+            //パスのファイル名を検証されたimageファイル$validated['image_name']に格納する
+            $validated['image_name'] = $imageName;
 
             //ログイン中のユーザIDを$validatedのadmin_idに追加する
             $validated['admin_id'] = Auth::user()->id;

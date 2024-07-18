@@ -1,47 +1,6 @@
-<style>
-    .container {
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-
-    .container h1 {
-        font-size: 2em;
-        margin-bottom: 20px;
-        text-align: center;
-    }
-
-    .form-group label {
-        font-size: 1.5em;
-        display: block;
-        text-align: center;
-    }
-
-    .form-control,
-    .form-control-file,
-    .form-control textarea {
-        font-size: 1.5em;
-        height: auto;
-        padding: 10px;
-        margin: 0 auto;
-        display: block;
-        text-align: center;
-    }
-
-    .btn-primary {
-        font-size: 1.5em;
-        padding: 10px 20px;
-        display: block;
-        width: 100%;
-    }
-
-    .form-group {
-        margin-bottom: 20px;
-    }
-</style>
-
+@section('content')
 <div class="container">
-    <h1>新しいブログを作成</h1>
+    <h1>ブログ記事作成</h1>
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -53,38 +12,117 @@
         </div>
     @endif
 
-    <form action="{{ route('admin.blogs.store') }}" method="POST" enctype="multipart/form-data">
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <form action="" method="POST" enctype="multipart/form-data">
         @csrf
-
         <div class="form-group">
-            <div>
-                <label for="title">タイトル</label>
-            </div>
-            <div>
-                <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" required>
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <div>
-                <label for="content">内容</label>
-            </div>
-            <div>
-                <textarea class="form-control" id="content" name="content" rows="5"
-                    required>{{ old('content') }}</textarea>
-            </div>
+            <label for="title">タイトル</label>
+            <input type="text" name="title" id="title" class="form-control" value="{{ old('title') }}"
+                style="font-size: 1.25rem; width: 80%;" required>
         </div>
 
         <div class="form-group">
-            <div>
-                <label for="image">画像</label>
-            </div>
-            <div>
-                <input type="file" class="form-control-file" id="image" name="image">
-            </div>
+            <label for="eyecatch_image">アイキャッチ画像</label>
+            <input type="file" name="eyecatch_image" id="eyecatch_image" class="form-control-file">
+            <div id="eyecatch_image_preview" class="mt-2"></div>
         </div>
 
-        <button type="submit" class="btn btn-primary">投稿</button>
+        <div class="form-group">
+            <label for="content">内容</label>
+            <div id="content" contenteditable="true"
+                class="form-control cke_editable cke_editable_themed cke_contents_ltr" spellcheck="false"
+                aria-label="本文を入力してください" aria-required="true"
+                style="height: 450px; overflow: auto; border: 1px solid #ccc; padding: 10px;">
+
+            </div>
+            <input type="hidden" name="content_hidden" id="content_hidden">
+        </div>
+
+        <div class="form-group">
+            <label for="content_images">本文画像</label>
+            <input type="file" name="content_images[]" id="content_images" class="form-control-file" multiple>
+        </div>
+
+        <div id="image-preview-container" class="mb-3"></div>
+
+        <button type="submit" class="btn btn-primary">作成</button>
     </form>
 </div>
+
+<script>
+    document.getElementById('eyecatch_image').addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        const previewContainer = document.getElementById('eyecatch_image_preview');
+        previewContainer.innerHTML = '';
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const imgElement = document.createElement('img');
+                imgElement.src = e.target.result;
+                imgElement.classList.add('img-thumbnail');
+                imgElement.style.maxWidth = '200px';
+                previewContainer.appendChild(imgElement);
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+
+    document.getElementById('content_images').addEventListener('change', function (event) {
+        const files = event.target.files;
+        const previewContainer = document.getElementById('image-preview-container');
+        previewContainer.innerHTML = '';
+
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const imgElement = document.createElement('img');
+                imgElement.src = e.target.result;
+                imgElement.classList.add('img-thumbnail', 'mr-2');
+                imgElement.style.maxWidth = '150px';
+
+                const insertButton = document.createElement('button');
+                insertButton.type = 'button';
+                insertButton.classList.add('btn', 'btn-secondary', 'ml-2');
+                insertButton.textContent = `Insert Image ${i + 1}`;
+                insertButton.addEventListener('click', function () {
+                    const imgHTML = `<img src="${e.target.result}" alt="Content Image" class="img-fluid">`;
+                    const selection = window.getSelection();
+                    if (!selection.rangeCount) return false;
+                    const range = selection.getRangeAt(0);
+                    range.deleteContents();
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = imgHTML;
+                    const frag = document.createDocumentFragment();
+                    let child;
+                    while ((child = tempDiv.firstChild)) {
+                        frag.appendChild(child);
+                    }
+                    range.insertNode(frag);
+                });
+
+                const div = document.createElement('div');
+                div.classList.add('mb-2');
+                div.appendChild(imgElement);
+                div.appendChild(insertButton);
+
+                previewContainer.appendChild(div);
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+
+    document.querySelector('form').addEventListener('submit', function () {
+        document.getElementById('content_hidden').value = document.getElementById('content').innerHTML;
+    });
+</script>
