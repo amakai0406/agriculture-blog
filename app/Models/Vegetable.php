@@ -10,5 +10,6 @@ class Vegetable extends Model
 
     use HasFactory;
 
+    //フォームからのデータを直接Vegetableモデルに割り当てるように設定
     protected $fillable = ['name', 'description', 'image', 'nutrients'];
 }

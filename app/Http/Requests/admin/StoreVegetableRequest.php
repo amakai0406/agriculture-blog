@@ -14,6 +14,7 @@ class StoreVegetableRequest extends FormRequest
     public function rules()
     {
 
+        //検証する際のルールを設定する
         return [
             'name' => 'required|string|max:50',
             'description' => 'required|string|max:5000',
@@ -21,10 +22,5 @@ class StoreVegetableRequest extends FormRequest
             'nutrients' => 'required|string|max:50',
         ];
     }
-    public function messages()
-    {
-        return [
-            'image.mimes' => '画像の形式は jpeg, png, jpg, gif のいずれかである必要があります。',
-        ];
-    }
+
 }
