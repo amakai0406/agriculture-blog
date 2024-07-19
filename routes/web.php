@@ -4,6 +4,7 @@
 use App\Http\Controllers\admin\AuthController;
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\VegetableController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\DashboardController;
@@ -26,5 +27,12 @@ Route::middleware([Authenticate::class])->group(function () {
 
     //ログアウト
     Route::post('admin/logout', [AuthController::class, 'logout'])->name('admin.admins.logout');
+
+    //野菜一覧ページの表示
+    Route::get('/admin/vegetables', [VegetableController::class, 'index'])->name('admin.vegetables.index');
+
+    //野菜の追加ページの表示
+    Route::get('/admin/vegetables/create', [VegetableController::class, 'create'])->name('admin.vegetables.create');
+    Route::post('/admin/vegetables', [VegetableController::class, 'store'])->name('admin.vegetables.store');
 
 });
