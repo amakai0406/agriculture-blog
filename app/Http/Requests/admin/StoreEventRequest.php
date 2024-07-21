@@ -17,7 +17,10 @@ class StoreEventController extends FormRequest
     {
 
         return [
-
+            'title' => 'required|string|max:255',
+            'description' => 'required|string|max:1000',
+            'event_date' => 'date',
+            'participants_count' => 'integer',
         ];
     }
 }
