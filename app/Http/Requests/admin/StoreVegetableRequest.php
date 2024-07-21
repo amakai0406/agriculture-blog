@@ -18,8 +18,8 @@ class StoreVegetableRequest extends FormRequest
         return [
             'name' => 'required|string|max:50',
             'description' => 'required|string|max:5000',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'nutrients' => 'required|string|max:50',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,heic|max:2048',
+            'nutrients' => 'required|string|max:100',
         ];
     }
 
