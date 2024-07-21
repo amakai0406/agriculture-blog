@@ -11,7 +11,7 @@ class VegetableController extends Controller
 
     public function index()
     {
-        //vegetableテーブルのデータをすべて取得し、$vegetables格納する
+        //vegetableテーブルの全レコードを取得し、$vegetables格納する
         $vegetables = Vegetable::all();
 
         //vegetablesをcompactメソッドでadmin.vegetables.indexビューに渡し、返す
