@@ -23,7 +23,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($vegetables as $vegetable)
+                @foreach($events as $event)
                     <tr>
                         <td>{{ $event->title }}</td>
                         <td>{{ $event->description }}</td>
