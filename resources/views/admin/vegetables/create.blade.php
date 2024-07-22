@@ -41,11 +41,6 @@
             </div>
 
             <div class="form-group">
-                <label for="nutrients">栄養素</label>
-                <textarea class="form-control" id="nutrients" name="nutrients" rows="3" required></textarea>
-            </div>
-
-            <div class="form-group">
                 <label for="image">画像</label>
                 <input type="file" class="form-control-file" id="image" name="image" accept="image/*" required
                     onchange="previewImage(event)">

@@ -16,7 +16,6 @@
                 <tr>
                     <th>名前</th>
                     <th>説明</th>
-                    <th>栄養素</th>
                     <th>画像</th>
                     <th>作成日</th>
                     <th>更新日</th>
@@ -27,7 +26,6 @@
                     <tr>
                         <td>{{ $vegetable->name }}</td>
                         <td>{{ $vegetable->description }}</td>
-                        <td>{{ $vegetable->nutrients }}</td>
                         <td><img src="{{ asset('storage/images/' . $vegetable->image) }}" alt="{{ $vegetable->name }}"
                                 style="width: 100px; height: auto; display: block;"></td>
                         <td>{{ $vegetable->created_at }}</td>
