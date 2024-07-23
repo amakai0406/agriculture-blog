@@ -1,0 +1,42 @@
+.blog-list {
+    /*要素をフレックスとし、その子要素がフレックスアイテムとなる*/
+    display: flex;
+    /*フレックスアイテムを縦方向に配置し、項目が縦に並ぶ*/
+    flex-direction: column;
+    /*各フレックスアイテムの間を設定*/
+    gap: 20px;
+}
+
+.blog-item {
+    /*色の設定*/
+    border: 1px solid #ddd;
+    /*要素の内側の余白設定*/
+    padding: 20px;
+    /*要素の角を半径で丸くする*/
+    border-radius: 5px;
+}
+
+.blog-item h2 {
+    /*下に余白を追加*/
+    margin-bottom: 10px;
+    /*文字のサイズ*/
+    font-size: 24px;
+}
+
+.blog-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.blog-images img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.blog-item p {
+    font-size: 16px;
+    color: #333;
+}
