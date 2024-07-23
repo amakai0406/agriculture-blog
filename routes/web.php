@@ -23,6 +23,9 @@ Route::post('/admin/admins/login', [AuthController::class, 'login']);
 //ブログ一覧ページの表示
 Route::get('/user/blogs', [BlogController::class, 'index'])->name('user.blogs.index');
 
+//ブログの詳細ページの表示
+Route::get('/user/blogs/{id}', [BlogController::class, 'show'])->name('user.blogs.show');
+
 //ログイン承認後ルート
 Route::middleware([Authenticate::class])->group(function () {
 

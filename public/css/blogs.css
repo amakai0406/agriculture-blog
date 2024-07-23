@@ -31,12 +31,22 @@
 }
 
 .blog-images img {
-    max-width: 100%;
+    max-width: 50%;
     height: auto;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .blog-item p {
     font-size: 16px;
     color: #333;
+}
+
+.blog-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.blog-link:hover .blog-item {
+    background-color: #f0f0f0;
 }
