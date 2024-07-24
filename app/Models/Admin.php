@@ -17,4 +17,9 @@ class Admin extends Model implements AuthenticatableContract
 
     protected $fillable = ['name', 'password', 'image'];
 
+    public function blogs()
+    {
+        //hasManyメソッド1対多リレーション
+        return $this->hasMany(Blog::class);
+    }
 }

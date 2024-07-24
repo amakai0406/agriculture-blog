@@ -4,8 +4,11 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+
 use App\Http\Requests\admin\StoreBlogRequest;
 use Illuminate\Support\Facades\Auth;
+
+
 
 class BlogController extends Controller
 {
@@ -17,6 +20,7 @@ class BlogController extends Controller
         //compactメソッドで$blogsをビューに渡し、admin.blogs.indexビューを返す
         return view('admin.blogs.index', compact('blogs'));
     }
+
 
     public function create()
     {
@@ -57,4 +61,5 @@ class BlogController extends Controller
         }
 
     }
+
 }
