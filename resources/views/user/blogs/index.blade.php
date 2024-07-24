@@ -12,6 +12,9 @@
                     @endforeach
                 </div>
                 <p>{{ $blog->content }}</p>
+                <div>
+                    {{ $blog->created_at->format('Y-m-d H:i') }}
+                </div>
             </div>
         </a>
     @endforeach

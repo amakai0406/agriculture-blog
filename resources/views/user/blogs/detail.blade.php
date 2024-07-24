@@ -9,6 +9,9 @@
         @endforeach
     </div>
     <p>{{ $blog->content }}</p>
+    <div class="blog-time">
+        {{ $blog->created_at->format('Y-m-d H:i') }}
+    </div>
 </div>
 
 <div class="back-link">

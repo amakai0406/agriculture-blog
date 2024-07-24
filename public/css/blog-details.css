@@ -94,3 +94,7 @@ body {
     /*ホバーした時の背景色*/
     background-color: #0056b3;
 }
+
+.blog-time {
+    text-align: right;
+}
