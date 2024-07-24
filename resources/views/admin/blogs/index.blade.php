@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('css/admin/blog-index.css') }}">
     <title>blog list</title>
 </head>
 
@@ -28,7 +29,13 @@
                 @foreach ($blogs as $blog)
                     <tr class="blog-row">
                         <td>
-                            <img src="{{ $blog->image }}" alt="{{ $blog->title }}" style="width: 100%; height: auto;">
+                            @if($blog->images->isNotEmpty())
+                                <img src="{{ asset('storage/' . $blog->images->first()->image_path) }}"
+                                    alt="{{ $blog->title }}">
+                            @else 
+                                <div>No image</div>
+
+                            @endif
                         </td>
                         <td>{{ $blog->title }}</td>
                         <td>{{ \Illuminate\Support\Str::limit($blog->content, 100) }}</td>
@@ -50,12 +57,7 @@
         </table>
         {{ $blogs->links() }}
     </div>
-    <style>
-        .blog-row td {
-            padding: 15px;
-        }
-    </style>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 

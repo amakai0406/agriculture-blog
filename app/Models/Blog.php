@@ -21,4 +21,8 @@ class Blog extends Model
         return $this->belongsTo(Admin::class);
     }
 
+    public function images()
+    {
+        return $this->hasMany(BlogImage::class, 'blog_id');
+    }
 }
