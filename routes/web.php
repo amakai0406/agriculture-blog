@@ -4,10 +4,9 @@
 use App\Http\Controllers\admin\AuthController;
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\VegetableController;
 
 use App\Http\Controllers\admin\BlogController;
-
-use App\Http\Controllers\Admin\VegetableController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\DashboardController;
@@ -32,8 +31,10 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::post('admin/logout', [AuthController::class, 'logout'])->name('admin.admins.logout');
 
 
+
     //ブログ一覧の表示
     Route::get('/admin/blogs', [BlogController::class, 'index'])->name('admin.blogs.index');
+
 
     //やさい一覧ページの表示
     Route::get('/admin/vegetables', [VegetableController::class, 'index'])->name('admin.vegetables.index');
