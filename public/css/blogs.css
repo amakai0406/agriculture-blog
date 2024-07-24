@@ -8,7 +8,7 @@
 }
 
 .blog-item {
-    /*色の設定*/
+    /*枠線の太さ・色の設定*/
     border: 1px solid #ddd;
     /*要素の内側の余白設定*/
     padding: 20px;
@@ -24,29 +24,42 @@
 }
 
 .blog-images {
+    /*要素をフレックスとし、その子要素がフレックスアイテムとなる*/
     display: flex;
+    /*親要素の幅を超える場合次の行へ改行*/
     flex-wrap: wrap;
+    /*アイテム間の間隔*/
     gap: 10px;
+    /*下の要素要素との空白設定*/
     margin-bottom: 15px;
 }
 
 .blog-images img {
-    max-width: 50%;
+    /*最大幅を親要素に対して*/
+    max-width: 40%;
+    /*高さは自動調整*/
     height: auto;
+    /*画像の角を半径で丸める*/
     border-radius: 10px;
 }
 
 .blog-item p {
+    /*文字のサイズ*/
     font-size: 16px;
+    /*色の設定*/
     color: #333;
 }
 
 .blog-link {
+    /*リンクの下線を削除*/
     text-decoration: none;
+    /*親要素から色を継承*/
     color: inherit;
+    /*要素をブロック要素とし、要素全体がクリック可能*/
     display: block;
 }
 
 .blog-link:hover .blog-item {
+    /*ホバー時の背景色を設定*/
     background-color: #f0f0f0;
 }
