@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 
 use App\Http\Requests\admin\StoreBlogRequest;
+use App\Models\BlogImage;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -34,26 +35,33 @@ class BlogController extends Controller
         //HttpリクエストデータをStoreBlogRequestで設定したルールに基に検証し、検証が成功したデータを$validatedに格納する
         $validated = $request->validated();
 
+        $adminId = auth()->id();
+
+        //blogsテーブルに新しいレコードを作成(データの振り分け)->保存
+        $blog = new Blog();
+
+        $blog->title = $request->title;
+
+        $blog->content = $request->content;
+
+        $blog->admin_id = $adminId;
+
+        $blog->save();
+
         //Httpリクエストデータの中にhasFileメソッドでimageファイルがあるか確認し、確認できた場合
         if ($request->hasFile('image')) {
 
-            //imageファイルを$imageに格納する
-            $image = $request->file('image');
+            //リクエストの中のimageファイルをstoreメソッドでpublic/imagesディレクトリに保存し、パスを$imagePathに格納する
+            $imagePath = $request->file('image')->store('images', 'public');
 
-            //$imageをstoreメソッドでstorage/app/public/imagesに保存し、そのパスを$pathに格納する
-            $path = $image->store('public/images');
+            //BlogImageテーブルに新しいレコードの作成(データの振り分け)->保存
+            $blogImage = new BlogImage();
 
-            //$pathをbasenameメソッドを使い、パスのファイル名だけを$imageNameに格納する
-            $imageName = basename($path);
+            $blogImage->blog_id = $blog->id;
 
-            //パスのファイル名を検証されたimageファイル$validated['image_name']に格納する
-            $validated['image_name'] = $imageName;
+            $blogImage->image_path = $imagePath;
 
-            //ログイン中のユーザIDを$validatedのadmin_idに追加する
-            $validated['admin_id'] = Auth::user()->id;
-
-            //Blogモデルを使い、検証済みデータの$validatedを基にインスタンスを作成する
-            Blog::create($validated);
+            $blogImage->save();
 
             //admin.blogs.indexにリダイレクトし、登録成功後に新しいブログを投稿しましたとメッセージを表示する
             return to_route('admin.blogs.index')->with('success', '新しいブログを投稿しました');

@@ -53,6 +53,4 @@ Route::middleware([Authenticate::class])->group(function () {
     //やさいの登録処理
     Route::post('/admin/vegetables', [VegetableController::class, 'store'])->name('admin.vegetables.store');
 
-
-
 });
