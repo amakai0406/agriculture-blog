@@ -8,12 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 
 
 
+
 class Blog extends Model
 {
     use HasFactory;
 
     //'title', 'content', 'image', 'created_at',は、フォームからのデータを直接Blogモデルに振り当てるように設定
-    protected $fillable = ['title', 'content', 'image', 'created_at'];
+
+    protected $fillable = ['title', 'content', 'image', 'created_at',];
 
     public function admin()
     {
@@ -26,3 +28,4 @@ class Blog extends Model
         return $this->hasMany(BlogImage::class, 'blog_id');
     }
 }
+

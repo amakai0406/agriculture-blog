@@ -11,6 +11,7 @@
 <body>
     <div class="container mt-5">
         <h1 class="mb-4">ブログ一覧</h1>
+        <a href="/admin/blogs/create">新しいブログの投稿ページへ</a>
         <table class="table table-striped" style="width: 100%;">
             <thead>
                 <tr>
@@ -39,7 +40,7 @@
                         </td>
                         <td>{{ $blog->title }}</td>
                         <td>{{ \Illuminate\Support\Str::limit($blog->content, 100) }}</td>
-                        <td>{{ $blog->admin->name }}</td>
+                        <td>{{ $blog->admin_id }}</td>
                         <td>
                             <div>{{ $blog->created_at->format('Y-m-d H:i') }}</div>
                             <div>{{ $blog->updated_at->format('Y-m-d H:i') }}</div>
