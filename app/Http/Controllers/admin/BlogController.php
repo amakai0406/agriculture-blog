@@ -7,7 +7,7 @@ use App\Models\Blog;
 
 use App\Http\Requests\admin\StoreBlogRequest;
 use App\Models\BlogImage;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -40,9 +40,9 @@ class BlogController extends Controller
         //blogsテーブルに新しいレコードを作成(データの振り分け)->保存
         $blog = new Blog();
 
-        $blog->title = $request->title;
+        $blog->title = $validated['title'];
 
-        $blog->content = $request->content;
+        $blog->content = $validated['content'];
 
         $blog->admin_id = $adminId;
 
@@ -67,6 +67,74 @@ class BlogController extends Controller
             return to_route('admin.blogs.index')->with('success', '新しいブログを投稿しました');
 
         }
+
+    }
+
+    public function edit($id)
+    {
+        //指定された$idデータをblogsテーブルから取得し、$blogに格納する(findメソッドはデータがない場合nullを返す)
+        $blog = Blog::find($id);
+
+        //blogのデータをcompactメソッドでadmin.blogs.editビューに渡す
+        return view('admin.blogs.edit', compact('blog'));
+    }
+
+    public function update(StoreBlogRequest $request, $id)
+    {
+        //HTTPリクエストをバリデーションし、成功したデータを$validatedに格納すし、それぞれ振り分ける
+        $validated = $request->validated();
+
+        //指定された$idデータをblogsテーブルから取得し、$blogに格納する(findメソッドはデータだあるのが前提、ない場合は例外をスローする)
+        $blog = Blog::findOrFail($id);
+
+        $blog->title = $validated['title'];
+
+        $blog->content = $validated['content'];
+
+        //もし、リクエストの中にimageファイルがあった場合は
+        if ($request->hasFile('image')) {
+
+            //isNotEmptyメソッドでimageファイルが空でなければ
+            if ($blog->images->isNotEmpty()) {
+                //foreachでループしてimageファイルを一つずつ処理する
+                foreach ($blog->images as $image) {
+                    //imageファイルのパスを取得し、ストレージから削除する
+                    Storage::delete('public/' . $image->image_path);
+                    //データベースからimageファイルを削除する
+                    $image->delete();
+                }
+
+            }
+
+            //リクエストの中にあったimageファイルをstoreメソッドでstorage/app/public/image_pathに保存し、そのパスを$pathに格納する
+            $path = $request->file('image')->store('image_path', 'public');
+            //image_pathに保存された$pathをcreateメソッドを使っての子新しいレコードをデータベースに保存している
+            $blog->images()->create([
+                'image_path' => $path,
+            ]);
+
+        }
+
+        //titleとcontentをデータベースに保存する
+        $blog->save();
+
+        ///admin/blogs/{id}/edit指定されたidのページにリダイレクトし、ブログが更新されましたとメッセージを表示する
+        return redirect()->route('admin.blogs.edit', $blog->id)->with('success', 'ブログが更新されました');
+
+    }
+
+    public function destroy($id)
+    {
+
+        //指定されたidのブログを取得し、＄blogに格納する
+        $blog = Blog::findOrFail($id);
+        //blog_Imagesテーブルのimage_pathを削除する
+        $blog->images()->delete();
+        //ブログを削除する
+        $blog->delete();
+
+        //admin.blogs.indexビューへリダイレクト
+        return redirect()->route('admin.blogs.index');
 
     }
 
