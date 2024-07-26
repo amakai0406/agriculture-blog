@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\BlogController;
 
 use App\Http\Controllers\Admin\VegetableController;
 
+use App\Http\Controllers\User\UserVegetableController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Middleware\Authenticate;
@@ -21,6 +23,12 @@ Route::post('/admin/admins', [AdminController::class, 'store'])->name('admin.adm
 Route::get('/admin/admins/login', [AuthController::class, 'index'])->name('admin.admins.login');
 //ログイン処理
 Route::post('/admin/admins/login', [AuthController::class, 'login']);
+
+//野菜一覧ページの表示
+Route::get('/user/vegetables', [UserVegetableController::class, 'index'])->name('user.vegetables.index');
+
+//野菜の詳細ページの表示
+Route::get('/user/vegetables/{id}', [UserVegetableController::class, 'show'])->name('user.vegetables.show');
 
 //ログイン承認後ルート
 Route::middleware([Authenticate::class])->group(function () {

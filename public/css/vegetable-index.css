@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.vegetableLineup-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.vegetableLineup-item {
+    margin: 10px;
+    flex: 1 1 calc(50% - 20px); /* For row-cols-2 */
+}
+
+@media (min-width: 576px) {
+    .vegetableLineup-item {
+        flex: 1 1 calc(33.333% - 20px); /* For row-cols-sm-3 */
+    }
+}
+
+@media (min-width: 992px) {
+    .vegetableLineup-item {
+        flex: 1 1 calc(25% - 20px); /* For row-cols-lg-4 */
+    }
+}
+
+.vegetableLineup-item-container {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.vegetableLineup-item-container:hover {
+    transform: scale(1.05);
+}
+
+.vegetableLineup-item-img img {
+    width: 50%;
+    display: block;
+}
+
+.vegetableLineup-item-body {
+    padding: 10px;
+    text-align: center;
+}
+
+.vegetableLineup-item-name {
+    margin: 10px 0;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.vegetableLineup-item-eName {
+    font-size: 1em;
+    color: #555;
+}
