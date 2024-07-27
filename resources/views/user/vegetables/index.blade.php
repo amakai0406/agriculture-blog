@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <h2>やさいのラインナップ</h2>
     <ul class="vegetableLineup-items">
         @foreach ($vegetables as $vegetable)
             <li class="vegetableLineup-item">
