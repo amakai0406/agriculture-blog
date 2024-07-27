@@ -7,6 +7,7 @@ use App\Models\Blog;
 
 use App\Http\Requests\admin\StoreBlogRequest;
 use App\Models\BlogImage;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -70,10 +71,31 @@ class BlogController extends Controller
 
     }
 
-    public function edit($id)
+    public function edit(int $id)
     {
-        //指定された$idデータをblogsテーブルから取得し、$blogに格納する(findメソッドはデータがない場合nullを返す)
-        $blog = Blog::find($id);
+        //$idが数値形式の文字列かを確認
+        if (is_numeric($id)) {
+
+            try {
+                //指定された$idデータをblogsテーブルから取得し、$blogに格納する(findメソッドはデータがない場合nullを返す)
+                $blog = Blog::find($id);
+
+                //指定されたidが見つからなかった場合
+            } catch (ModelNotFoundException $e) {
+
+                //json形式でレスポンスを作成し、404ステータスコードとブログが見つかりませんでしたと表示
+                return response()->json(['error' => 'ブログが見つかりませんでした', 404]);
+            }
+
+
+            //その他に無効なidが指定された場合
+        } else {
+
+            //jsonへ意識でレスポンスを作成し、400ステータスコードと無効なidですと表示
+            return response()->json(['error' => '無効なidです', 400]);
+
+        }
+
 
         //blogのデータをcompactメソッドでadmin.blogs.editビューに渡す
         return view('admin.blogs.edit', compact('blog'));
