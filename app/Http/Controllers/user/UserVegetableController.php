@@ -27,8 +27,8 @@ class UserVegetableController extends Controller
                 $vegetable = Vegetable::findOrFail($id);
                 //指定されたレコードが見つからなかった場合
             } catch (ModelNotFoundException $e) {
-                //json形式でレスポンスを作成し、404ステータスコードとブログが見つかりませんというメッセージを表示
-                return response()->json(['error' => 'ブログが見つかりませんでした'], 404);
+                //json形式でレスポンスを作成し、404ステータスコードとやさいが見つかりませんというメッセージを表示
+                return response()->json(['error' => 'やさいが見つかりませんでした'], 404);
             }
         } else {
 
