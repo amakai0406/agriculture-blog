@@ -11,7 +11,7 @@ class BlogController extends Controller
     public function index()
     {
         //blogsテーブルのレコードを全取得し、Blogレコードに関する$blogも一緒に取得するし、ページネーションを1ページずつ
-        $blogs = Blog::with('images')->simplePaginate(1);
+        $blogs = Blog::with('images')->simplePaginate(10);
 
         //compactメソッドでblogsをuser.blogs.indexビューに渡す
         return view('user.blogs.index', compact('blogs'));

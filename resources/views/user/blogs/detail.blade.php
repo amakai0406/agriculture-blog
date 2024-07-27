@@ -5,7 +5,9 @@
     <h1>{{ $blog->title }}</h1>
     <div class="blog-images">
         @foreach($blog->images as $image)
-            <img src="{{ asset('storage/' . $image->image_path) }}" alt="Blog Image">
+            <img src="{{ $image->image_path ? asset('storage/' . $image->image_path) : asset('images/default.png') }}"
+                alt="ブログ画像">
+
         @endforeach
     </div>
     <p>{{ $blog->content }}</p>
