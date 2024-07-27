@@ -15,8 +15,10 @@ class UserVegetableController extends Controller
         return view('user.vegetables.index', compact('vegetables'));
     }
 
-    public function show()
+    public function show($id)
     {
-        //
+        $vegetable = Vegetable::findOrFail($id);
+
+        return view('user.vegetables.detail', compact('vegetable'));
     }
 }

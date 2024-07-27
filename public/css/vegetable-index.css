@@ -1,49 +1,52 @@
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
 }
 
 .vegetableLineup-items {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
-    margin: 0;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .vegetableLineup-item {
-    margin: 10px;
-    flex: 1 1 calc(50% - 20px); /* For row-cols-2 */
-}
-
-@media (min-width: 576px) {
-    .vegetableLineup-item {
-        flex: 1 1 calc(33.333% - 20px); /* For row-cols-sm-3 */
-    }
-}
-
-@media (min-width: 992px) {
-    .vegetableLineup-item {
-        flex: 1 1 calc(25% - 20px); /* For row-cols-lg-4 */
-    }
+    margin: 40px;
+    box-sizing: border-box;
+    width: 300px;
+    flex: 0 0 auto;
 }
 
 .vegetableLineup-item-container {
+    display: block;
     text-decoration: none;
     color: inherit;
-    display: block;
-    border: 1px solid #ddd;
+    background-color: #fff;
     border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    transition: transform 0.3s;
+    transition: transform 0.2s ease-in-out;
 }
 
 .vegetableLineup-item-container:hover {
-    transform: scale(1.05);
+    transform: translateY(-5px);
+}
+
+.vegetableLineup-item-img {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .vegetableLineup-item-img img {
-    width: 50%;
-    display: block;
+    width: 80%;
+    height: auto;
 }
 
 .vegetableLineup-item-body {
@@ -52,12 +55,65 @@ body {
 }
 
 .vegetableLineup-item-name {
-    margin: 10px 0;
     font-size: 1.2em;
-    font-weight: bold;
+    margin: 0;
+    color: #333;
 }
 
-.vegetableLineup-item-eName {
-    font-size: 1em;
-    color: #555;
+@media (max-width: 480px) {
+    .vegetableLineup-item {
+        width: calc(100% - 20px);
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .vegetableLineup-item {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (min-width: 769px) {
+    .vegetableLineup-item {
+        width: calc(33.333% - 20px);
+    }
+}
+
+.vegetableLineup-item-container {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+}
+
+.vegetableLineup-item-container:hover {
+    transform: translateY(-5px);
+}
+
+.vegetableLineup-item-img {
+    width: 80%;
+    height: 350px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vegetableLineup-item-img img {
+    width: 50%;
+    height: auto;
+}
+
+.vegetableLineup-item-body {
+    padding: 10px;
+    text-align: center;
+}
+
+.vegetableLineup-item-name {
+    font-size: 1.2em;
+    margin: 0;
+    color: #333;
 }
