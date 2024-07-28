@@ -120,12 +120,14 @@ class BlogController extends Controller
             if ($blog->images->isNotEmpty()) {
                 //foreachでループしてimageファイルを一つずつ処理する
                 foreach ($blog->images as $image) {
-                    //imageファイルのパスを取得し、ストレージから削除する
-                    Storage::delete('public/' . $image->image_path);
-                    //データベースからimageファイルを削除する
-                    $image->delete();
+                    //指定されたimage_pathが存在するか確認し、確認できた場合
+                    if (Storage::exists('public/' . $image->image_path)) {
+                        //imageファイルのパスを取得し、ストレージから削除する
+                        Storage::delete('public/' . $image->image_path);
+                        //データベースからimageファイルを削除する
+                        $image->delete();
+                    }
                 }
-
             }
 
             //リクエストの中にあったimageファイルをstoreメソッドでstorage/app/public/image_pathに保存し、そのパスを$pathに格納する
