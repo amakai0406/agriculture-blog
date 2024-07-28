@@ -86,7 +86,7 @@ class BlogController extends Controller
             } catch (ModelNotFoundException $e) {
 
                 //json形式でレスポンスを作成し、404ステータスコードとブログが見つかりませんでしたと表示
-                return response()->json(['error' => 'ブログが見つかりませんでした', 404]);
+                return response()->json(['error' => 'ブログが見つかりませんでした'], 404);
             }
 
 
@@ -94,7 +94,7 @@ class BlogController extends Controller
         } else {
 
             //jsonへ意識でレスポンスを作成し、400ステータスコードと無効なidですと表示
-            return response()->json(['error' => '無効なidです', 400]);
+            return response()->json(['error' => '無効なidです'], 400);
 
         }
 
@@ -164,7 +164,7 @@ class BlogController extends Controller
             DB::rollBack();
 
             //json形式でレスポンスを作成し、500(内部サーバエラー)ステータスコードとブログの更新中にエラーが発生しましたの表示
-            return response()->json(['error' => 'ブログの更新中にエラーが発生しました', 500]);
+            return response()->json(['error' => 'ブログの更新中にエラーが発生しました'], 500);
 
         }
     }
