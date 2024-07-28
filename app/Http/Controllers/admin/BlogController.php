@@ -130,9 +130,11 @@ class BlogController extends Controller
 
             //リクエストの中にあったimageファイルをstoreメソッドでstorage/app/public/image_pathに保存し、そのパスを$pathに格納する
             $path = $request->file('image')->store('image_path', 'public');
-            //image_pathに保存された$pathをcreateメソッドを使っての子新しいレコードをデータベースに保存している
+            //$pathをimage_pathカラムに保存し、リクエストのlocationデータをlocationカラムに保存する
+            //それらのデータを元にcreateメソッドで新しいレコードを作成する
             $blog->images()->create([
                 'image_path' => $path,
+                'location' => $request->location,
             ]);
 
         }

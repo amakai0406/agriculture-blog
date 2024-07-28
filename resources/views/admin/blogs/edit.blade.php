@@ -41,14 +41,23 @@
             <div class="form-group">
                 <label for="image">画像</label>
                 @if($blog->images->isNotEmpty())
-                    <div>
-                        <img src="{{ asset('storage/' . $blog->images->first()->image_path) }}" alt="{{ $blog->title }}">
-                    </div>
+                    @foreach($blog->images as $image)
+                        @if($image->location == 'eyecatch')
+                            <div>
+                                <img src="{{ asset('storage/' . $image->image_path) }}" alt="{{ $blog->title }} - eyecatch Image">
+                            </div>
+                        @elseif($image->location == 'content')
+                            <div>
+                                <img src="{{ asset('storage/' . $image->image_path) }}" alt="{{ $blog->title }} - Content Image">
+                            </div>
+                        @endif
+                    @endforeach
                 @else 
                     <div>No image</div>
                 @endif
                 <input type="file" class="form-control-file" id="image" name="image">
             </div>
+
             <button type="submit" class="btn btn-primary custom-spacing">更新する</button>
         </form>
         <form method="POST" action="{{ route('admin.blogs.destroy', $blog->id) }}">
