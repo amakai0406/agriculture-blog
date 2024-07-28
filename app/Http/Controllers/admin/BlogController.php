@@ -9,6 +9,8 @@ use App\Http\Requests\admin\StoreBlogRequest;
 use App\Models\BlogImage;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+
 
 
 
@@ -106,47 +108,65 @@ class BlogController extends Controller
         //HTTPリクエストをバリデーションし、成功したデータを$validatedに格納すし、それぞれ振り分ける
         $validated = $request->validated();
 
-        //指定された$idデータをblogsテーブルから取得し、$blogに格納する(findメソッドはデータだあるのが前提、ない場合は例外をスローする)
-        $blog = Blog::findOrFail($id);
+        //トランザクション開始
+        DB::beginTransaction();
 
-        $blog->title = $validated['title'];
+        try {
 
-        $blog->content = $validated['content'];
+            //指定された$idデータをblogsテーブルから取得し、$blogに格納する(findメソッドはデータだあるのが前提、ない場合は例外をスローする)
+            $blog = Blog::findOrFail($id);
 
-        //もし、リクエストの中にimageファイルがあった場合は
-        if ($request->hasFile('image')) {
+            $blog->title = $validated['title'];
 
-            //isNotEmptyメソッドでimageファイルが空でなければ
-            if ($blog->images->isNotEmpty()) {
-                //foreachでループしてimageファイルを一つずつ処理する
-                foreach ($blog->images as $image) {
-                    //指定されたimage_pathが存在するか確認し、確認できた場合
-                    if (Storage::exists('public/' . $image->image_path)) {
-                        //imageファイルのパスを取得し、ストレージから削除する
-                        Storage::delete('public/' . $image->image_path);
-                        //データベースからimageファイルを削除する
-                        $image->delete();
+            $blog->content = $validated['content'];
+
+            //もし、リクエストの中にimageファイルがあった場合は
+            if ($request->hasFile('image')) {
+
+                //isNotEmptyメソッドでimageファイルが空でなければ
+                if ($blog->images->isNotEmpty()) {
+                    //foreachでループしてimageファイルを一つずつ処理する
+                    foreach ($blog->images as $image) {
+                        //指定されたimage_pathが存在するか確認し、確認できた場合
+                        if (Storage::exists('public/' . $image->image_path)) {
+                            //imageファイルのパスを取得し、ストレージから削除する
+                            Storage::delete('public/' . $image->image_path);
+                            //データベースからimageファイルを削除する
+                            $image->delete();
+                        }
                     }
                 }
+
+                //リクエストの中にあったimageファイルをstoreメソッドでstorage/app/public/image_pathに保存し、そのパスを$pathに格納する
+                $path = $request->file('image')->store('image_path', 'public');
+                //$pathをimage_pathカラムに保存し、リクエストのlocationデータをlocationカラムに保存する
+                //それらのデータを元にcreateメソッドで新しいレコードを作成する
+                $blog->images()->create([
+                    'image_path' => $path,
+                    'location' => $request->location,
+                ]);
+
             }
 
-            //リクエストの中にあったimageファイルをstoreメソッドでstorage/app/public/image_pathに保存し、そのパスを$pathに格納する
-            $path = $request->file('image')->store('image_path', 'public');
-            //$pathをimage_pathカラムに保存し、リクエストのlocationデータをlocationカラムに保存する
-            //それらのデータを元にcreateメソッドで新しいレコードを作成する
-            $blog->images()->create([
-                'image_path' => $path,
-                'location' => $request->location,
-            ]);
+            //titleとcontentをデータベースに保存する
+            $blog->save();
+
+            //トランザクションコミット
+            DB::commit();
+
+            ///admin/blogs/{id}/edit指定されたidのページにリダイレクトし、ブログが更新されましたとメッセージを表示する
+            return redirect()->route('admin.blogs.edit', $blog->id)->with('success', 'ブログが更新されました');
+
+            //エラー(例外)が発生した場合
+        } catch (ModelNotFoundException $e) {
+
+            //トランザクションをロールバックし、元の状態に戻す(変更前)
+            DB::rollBack();
+
+            //json形式でレスポンスを作成し、500(内部サーバエラー)ステータスコードとブログの更新中にエラーが発生しましたの表示
+            return response()->json(['error' => 'ブログの更新中にエラーが発生しました', 500]);
 
         }
-
-        //titleとcontentをデータベースに保存する
-        $blog->save();
-
-        ///admin/blogs/{id}/edit指定されたidのページにリダイレクトし、ブログが更新されましたとメッセージを表示する
-        return redirect()->route('admin.blogs.edit', $blog->id)->with('success', 'ブログが更新されました');
-
     }
 
     public function destroy($id)
