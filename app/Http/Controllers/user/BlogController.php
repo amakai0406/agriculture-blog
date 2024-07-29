@@ -20,19 +20,10 @@ class BlogController extends Controller
 
     public function show($id)
     {
-        try {
-            //findOrFailを使って、プライマリーキーを使って検索し、指定慣れたidと一致するレコードを$blogに格納する
-            $blog = Blog::findOrFail($id);
+        //findOrFailを使って、プライマリーキーを使って検索し、指定慣れたidと一致するレコードを$blogに格納する
+        $blog = Blog::findOrFail($id);
 
-            //compactでblogをuser.blogs.detailビューに渡す
-            return view('user.blogs.detail', compact('blog'));
-
-            //指定されたidと一致するデータがない場合
-        } catch (ModelNotFoundException $e) {
-
-            //json形式でレスポンスを作成して、404ステータスコードと指定されたブログが見つかりませんと表示
-            return response()->json(['error' => '指定されたブログが見つかりません'], 404);
-
-        }
+        //compactでblogをuser.blogs.detailビューに渡す
+        return view('user.blogs.detail', compact('blog'));
     }
 }
