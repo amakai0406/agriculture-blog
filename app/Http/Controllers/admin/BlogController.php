@@ -75,17 +75,14 @@ class BlogController extends Controller
 
     public function edit(int $id)
     {
-        //$idが数値形式の文字列かを確認
-        if (is_numeric($id)) {
+        //指定された$idデータをblogsテーブルから取得し、$blogに格納する(findメソッドはデータがない場合nullを返す)
+        $blog = Blog::find($id);
 
-            //指定された$idデータをblogsテーブルから取得し、$blogに格納する(findメソッドはデータがない場合nullを返す)
-            $blog = Blog::find($id);
+        //blogのデータをcompactメソッドでadmin.blogs.editビューに渡す
+        return view('admin.blogs.edit', compact('blog'));
 
-            //blogのデータをcompactメソッドでadmin.blogs.editビューに渡す
-            return view('admin.blogs.edit', compact('blog'));
-        }
     }
-    public function update(StoreBlogRequest $request, $id)
+    public function update(StoreBlogRequest $request, int $id)
     {
         //HTTPリクエストをバリデーションし、成功したデータを$validatedに格納すし、それぞれ振り分ける
         $validated = $request->validated();
@@ -109,13 +106,10 @@ class BlogController extends Controller
                 if ($blog->images->isNotEmpty()) {
                     //foreachでループしてimageファイルを一つずつ処理する
                     foreach ($blog->images as $image) {
-                        //指定されたimage_pathが存在するか確認し、確認できた場合
-                        if (Storage::exists('public/' . $image->image_path)) {
-                            //imageファイルのパスを取得し、ストレージから削除する
-                            Storage::delete('public/' . $image->image_path);
-                            //データベースからimageファイルを削除する
-                            $image->delete();
-                        }
+                        //imageファイルのパスを取得し、ストレージから削除する
+                        Storage::delete('public/' . $image->image_path);
+                        //データベースからimageファイルを削除する
+                        $image->delete();
                     }
                 }
 
