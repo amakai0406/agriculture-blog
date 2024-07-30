@@ -44,7 +44,7 @@
                 <div class="card text-white bg-success mb-3">
                     <div class="card-header">野菜管理</div>
                     <div class="card-body">
-                        <a href="" class="btn btn-light">一覧を表示する</a>
+                        <a href="/admin/vegetables" class="btn btn-light">一覧を表示する</a>
                     </div>
                 </div>
             </div>
