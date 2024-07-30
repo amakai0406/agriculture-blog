@@ -18,7 +18,7 @@ class BlogController extends Controller
         return view('user.blogs.index', compact('blogs'));
     }
 
-    public function show($id)
+    public function show(int $id)
     {
         //findOrFailを使って、プライマリーキーを使って検索し、指定慣れたidと一致するレコードを$blogに格納する
         $blog = Blog::findOrFail($id);

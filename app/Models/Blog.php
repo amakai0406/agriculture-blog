@@ -22,6 +22,6 @@ class Blog extends Model
         //BlogモデルがBlogImageモデルに1対多のリレーションを定義している(親)
         //blog_idを指定することでBlogモデルと関連するBlogImageモデルインスタンスの取得
         //つまり、Blog記事に関連する画像をすべて取得している
-        return $this->hasMany(BlogImage::class, 'blog_id');
+        return $this->hasMany(BlogImage::class);
     }
 }
