@@ -84,12 +84,8 @@ class VegetableController extends Controller
 
             if ($request->hasFile('image')) {
 
-                //指定されたimageと一致するデータがデータベースに存在するか確認し、確認が取れた場合
-                if (Storage::exists('public/images/' . $vegetable->image)) {
-
-                    //指定慣れたimageをストレージから削除する
-                    Storage::delete('public/images/' . $vegetable->image);
-                }
+                //指定慣れたimageをストレージから削除する
+                Storage::delete('public/images/' . $vegetable->image);
 
                 //リクエストのあったimageを保存し、パスを格納
                 $path = $request->file('image')->store('images', 'public');
