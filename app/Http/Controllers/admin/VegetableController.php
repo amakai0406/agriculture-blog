@@ -58,17 +58,8 @@ class VegetableController extends Controller
 
     public function edit(int $id)
     {
-        //数値形式の文字列の場合
-        if (is_numeric($id)) {
-
-            //vegetablesテーブルから指定のidと一致すると一致するデータを取得し、$vegetablesに格納
-            $vegetable = Vegetable::findOrFail($id);
-
-            //無効なidの場合
-        } else {
-            //エラーメッセージの表示
-            return response()->json(['error' => '無効なidです'], 400);
-        }
+        //vegetablesテーブルから指定のidと一致すると一致するデータを取得し、$vegetablesに格納
+        $vegetable = Vegetable::findOrFail($id);
 
         //compactメソッドでvegetablesをadmin.vegetables.editビューに渡す
         return view('admin.vegetables.edit', compact('vegetable'));
