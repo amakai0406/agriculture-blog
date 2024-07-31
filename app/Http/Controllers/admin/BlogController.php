@@ -10,6 +10,7 @@ use App\Models\BlogImage;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -19,10 +20,12 @@ class BlogController extends Controller
 
     public function index()
     {
+        $admin = Auth::guard('admin')->user();
+
         //blogsテーブルから取得したデータをlatestメソッドでcreated_atの新しい順に1ページ１０件でページングし、$blogsに格納
         $blogs = Blog::latest('created_at')->simplePaginate(10);
         //compactメソッドで$blogsをビューに渡し、admin.blogs.indexビューを返す
-        return view('admin.blogs.index', compact('blogs'));
+        return view('admin.blogs.index', compact('admin', 'blogs'));
     }
 
 
@@ -38,7 +41,7 @@ class BlogController extends Controller
         //HttpリクエストデータをStoreBlogRequestで設定したルールに基に検証し、検証が成功したデータを$validatedに格納する
         $validated = $request->validated();
 
-        $adminId = auth()->id();
+        $adminId = Auth::guard('admin')->id();
 
         //blogsテーブルに新しいレコードを作成(データの振り分け)->保存
         $blog = new Blog();

@@ -50,7 +50,7 @@
                                         <td class="table-title">{{ $blog->title }}</td>
                                         <td class="table-content">{{ \Illuminate\Support\Str::limit($blog->content, 100) }}
                                         </td>
-                                        <td class="table-author">{{ $blog->admin_id }}</td>
+                                        <td class="table-author">{{ $admin->name }}</td>
                                         <td class="table-dates">
                                             <div>{{ $blog->created_at->format('Y-m-d H:i') }}</div>
                                             <div>{{ $blog->updated_at->format('Y-m-d H:i') }}</div>

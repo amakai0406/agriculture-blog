@@ -26,6 +26,7 @@
                         style="display: none;">
                         @csrf
                     </form>
+                    <div>{{ $adminName }}</div>
                 </li>
             </ul>
         </div>
