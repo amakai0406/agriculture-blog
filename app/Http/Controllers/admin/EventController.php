@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Event;
+use App\Http\Requests\admin\StoreEventRequest;
 
 class EventController extends Controller
 {
@@ -17,6 +18,15 @@ class EventController extends Controller
     public function create()
     {
         return view('admin.events.create');
+    }
+
+    public function store(StoreEventRequest $request)
+    {
+        $validated = $request->validated();
+
+        Event::create($validated);
+
+        return redirect()->route('admin.events/index')->with('success', '新しいイベントを追加しました');
     }
 }
 

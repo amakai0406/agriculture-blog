@@ -11,6 +11,7 @@
 <body>
     <div class="container">
         <h1 class="my-4">農業体験イベント一覧</h1>
+        <a href="{{ route('admin.events.create') }}">新しいイベントを追加話する</a>
         <table class="table table-bordered">
             <thead>
                 <tr>
