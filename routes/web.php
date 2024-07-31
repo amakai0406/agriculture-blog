@@ -39,9 +39,17 @@ Route::middleware([Authenticate::class])->group(function () {
     //ブログの投稿
     Route::post('admin/blogs', [BlogController::class, 'store'])->name('admin.blogs.store');
 
-
     //ブログ一覧の表示
     Route::get('/admin/blogs', [BlogController::class, 'index'])->name('admin.blogs.index');
+
+    //ブログ編集
+    Route::get('/admin/blogs/{id}/edit', [BlogController::class, 'edit'])->name('admin.blogs.edit');
+
+    //ブログの更新
+    Route::put('/admin/blogs/{id}', [BlogController::class, 'update'])->name('admin.blogs.update');
+
+    //ブログの削除
+    Route::delete('admin/blogs/{id}', [BlogController::class, 'destroy'])->name('admin.blogs.destroy');
 
 
     //やさい一覧ページの表示
