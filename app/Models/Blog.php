@@ -25,7 +25,6 @@ class Blog extends Model
 
     public function images()
     {
-        //hasManyメソッド(１対多)1つのブログに複数の画像が表示される
         return $this->hasMany(BlogImage::class, 'blog_id');
     }
 }
