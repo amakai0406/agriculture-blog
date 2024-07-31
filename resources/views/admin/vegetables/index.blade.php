@@ -20,6 +20,7 @@
                     <th>作成日</th>
                     <th>更新日</th>
                     <th>編集</th>
+                    <th>作成者</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,6 +41,7 @@
                         <td>
                             <a href="{{ route('admin.vegetables.edit', ['id' => $vegetable->id]) }}">編集</a>
                         </td>
+                        <td>{{ $admin->name }}</td>
                     </tr>
                 @endforeach
             </tbody>

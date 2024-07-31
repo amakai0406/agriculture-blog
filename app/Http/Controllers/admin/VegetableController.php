@@ -9,17 +9,20 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class VegetableController extends Controller
 {
 
     public function index()
     {
+        //ログイン中の管理者情報の取得
+        $admin = Auth::guard('admin')->user();
         //vegetableテーブルの全レコードを取得し、$vegetables格納する
         $vegetables = Vegetable::all();
 
         //vegetablesをcompactメソッドでadmin.vegetables.indexビューに渡し、返す
-        return view('admin.vegetables.index', compact('vegetables'));
+        return view('admin.vegetables.index', compact('admin', 'vegetables'));
     }
 
     public function create()
@@ -67,17 +70,17 @@ class VegetableController extends Controller
 
     public function update(StoreVegetableRequest $request, int $id)
     {
+        //リクエストのあったデータを検証し、成功したデータを格納
+        $validated = $request->validated();
+
+        //vegetablesテーブルから一致データを取得し、格納
+        $vegetable = Vegetable::findOrFail($id);
+
+
         //トランザクション開始
         DB::beginTransaction();
 
         try {
-
-            //リクエストのあったデータを検証し、成功したデータを格納
-            $validated = $request->validated();
-
-            //vegetablesテーブルから一致データを取得し、格納
-            $vegetable = Vegetable::findOrFail($id);
-
             //それぞれデータベースに保存
             $vegetable->name = $validated['name'];
             $vegetable->description = $validated['description'];

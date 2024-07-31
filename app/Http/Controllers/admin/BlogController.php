@@ -16,10 +16,12 @@ class BlogController extends Controller
 
     public function index()
     {
+        //ログイン中の管理者を商法を取得し格納
+        $admin = Auth::guard('admin')->user();
         //blogsテーブルから取得したデータをlatestメソッドでcreated_atの新しい順に1ページ１０件でページングし、$blogsに格納
         $blogs = Blog::latest('created_at')->simplePaginate(10);
         //compactメソッドで$blogsをビューに渡し、admin.blogs.indexビューを返す
-        return view('admin.blogs.index', compact('blogs'));
+        return view('admin.blogs.index', compact('admin', 'blogs'));
     }
 
 
