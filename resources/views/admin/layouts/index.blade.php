@@ -52,7 +52,7 @@
                 <div class="card text-white bg-info mb-3">
                     <div class="card-header">ブログ管理</div>
                     <div class="card-body">
-                        <a href="" class="btn btn-light">一覧を表示する</a>
+                        <a href="/admin/blogs" class="btn btn-light">一覧を表示する</a>
                     </div>
                 </div>
             </div>

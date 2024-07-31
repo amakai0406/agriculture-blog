@@ -32,9 +32,9 @@ class AdminController extends Controller
 
             $path = $image->store('public/images');
 
-            $imagehName = basename($path);
+            $imageName = basename($path);
 
-            $validated['image'] = $imagehName;
+            $validated['image'] = $imageName;
         }
 
         Admin::create($validated);
