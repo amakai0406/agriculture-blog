@@ -3,16 +3,16 @@
 
 use App\Http\Controllers\admin\AuthController;
 
-use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\admin\AdminController;
 
-use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\admin\BlogController;
 
-use App\Http\Controllers\Admin\VegetableController;
+use App\Http\Controllers\admin\VegetableController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Middleware\Authenticate;
-use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\admin\EventController;
 
 
 Route::get('/admin/admins/create', [AdminController::class, 'create'])->name('admin.admins.create');
@@ -38,8 +38,16 @@ Route::middleware([Authenticate::class])->group(function () {
     //農業体験イベント作成ページの表示
     Route::get('admin/events/create', [EventController::class, 'create'])->name('admin.events.create');
 
+    Route::post('admin.events/', [EventController::class, 'store'])->name('admin.events.store');
+
     //農業体験イベント登録処理
     Route::post('admin/events', [EventController::class, 'store'])->name('admin.events.store');
+
+    //農業体験イベント編集
+    Route::get('/admin/events/{id}/edit', [EventController::class, 'edit'])->name('admin.events.edit');
+
+    //農業体験イベント更新
+    Route::put('admin/events/{id}', [EventController::class, 'update'])->name('admin.events.update');
 
     //ブログ作成画面の表示
     Route::get('/admin/blogs/create', [BlogController::class, 'create'])->name('admin.blogs.create');

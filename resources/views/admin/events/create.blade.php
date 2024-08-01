@@ -12,8 +12,26 @@
 <body>
     <div class="container">
         <h1 class="my-4">農業体験イベント作成</h1>
-        <form action="" method="POST">
+        <form action="{{ route('admin.events.store') }}" method="POST">
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
             @csrf
+
             <div class="form-group">
                 <label for="title">タイトル</label>
                 <input type="text" class="form-control" id="title" name="title" required>
@@ -34,6 +52,10 @@
                 <label for="participants_count">参加人数</label>
                 <input type="number" class="form-control" id="participants_count" name="participants_count" min="0"
                     required>
+            </div>
+            <div class="form-group">
+                <label for="event_image">イベント画像</label>
+                <input type="file" class="form-control-file" id="event_image" name="event_image" accept="image/*">
             </div>
             <button type="submit" class="btn btn-primary">作成</button>
         </form>
