@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\VegetableController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\User\BlogController;
 use App\Http\Middleware\Authenticate;
 
 
@@ -21,6 +22,12 @@ Route::post('/admin/admins', [AdminController::class, 'store'])->name('admin.adm
 Route::get('/admin/admins/login', [AuthController::class, 'index'])->name('admin.admins.login');
 //ログイン処理
 Route::post('/admin/admins/login', [AuthController::class, 'login']);
+
+//ブログ一覧ページの表示
+Route::get('/user/blogs', [BlogController::class, 'index'])->name('user.blogs.index');
+
+//ブログの詳細ページの表示
+Route::get('/user/blogs/{id}', [BlogController::class, 'show'])->name('user.blogs.show');
 
 //ログイン承認後ルート
 Route::middleware([Authenticate::class])->group(function () {
