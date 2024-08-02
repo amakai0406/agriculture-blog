@@ -6,9 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-use Illuminate\Database\Eloquent\Factories\hasFactory;
-
-
 class BlogImage extends Model
 {
 
@@ -22,13 +19,10 @@ class BlogImage extends Model
 
     public function blog()
     {
-
-
         //BlogImageクラスがBlogクラスと多対一のリレーションを定義している(子)
         //BlogImageインスタンスからblog_idが一致するBlogインスタンスを取得する
-        return $this->belongsTo(Blog::class, 'blog_id');
+        return $this->belongsTo(Blog::class);
 
-        return $this->BelongsTo(Blog::class, 'blog_id');
 
     }
 }
