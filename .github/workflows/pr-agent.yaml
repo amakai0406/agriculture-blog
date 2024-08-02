@@ -21,3 +21,8 @@ jobs:
         env:
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_DESCRIPTION.EXTRA_INSTRUCTIONS:      'Please use Japanese.'
+          PR_REVIEWER.EXTRA_INSTRUCTIONS:         'Please use Japanese.'
+          PR_CODE_SUGGESTIONS.EXTRA_INSTRUCTIONS: 'Please use Japanese.'
+          PR_REVIEWER.INLINE_CODE_COMMENTS: true
+          CONFIG.MODEL: gpt-4o-mini-2024-07-18
