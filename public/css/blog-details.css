@@ -1,0 +1,100 @@
+body {
+    /*Arialフォントの使用*/
+    font-family: "Arial";
+    /*背景色の設定*/
+    background-color: #f0f8ff;
+    /*色の設定*/
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.blog-details {
+    /*最大幅の設定*/
+    max-width: 700px;
+    /*枠の外側上下を40xp左右を自動調整*/
+    margin: 40px auto;
+    /*内側の余白設定*/
+    padding: 70px;
+    /*背景色の設定*/
+    background-color: #fff;
+    /*角の設定*/
+    border-radius: 10px;
+    /*影の追加により立体的*/
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.blog-details h1 {
+    /*文字サイズ*/
+    font-size: 2.5em;
+    /*色*/
+    color: #2e838b;
+    /*中央ぞろえ*/
+    text-align: center;
+    /*下の余白*/
+    margin-bottom: 20px;
+}
+
+.blog-images {
+    /*flex一括してプロパティフレックスアイテムの指定*/
+    display: flex;
+    /*親要素を超える場合次の行へ*/
+    flex-wrap: wrap;
+    /*アイテム間の間隔*/
+    gap: 10px;
+    /*こ要素を中央揃え*/
+    justify-content: center;
+    /*下部余白*/
+    margin-bottom: 20px;
+}
+
+.blog-images img {
+    /*親要素に対しての最大幅*/
+    max-width: 80%;
+    /*角の丸み*/
+    border-radius: 10px;
+    /*影の追加*/
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.blog-details p {
+    /*文字サイズ*/
+    font-size: 1.2em;
+    /*行間の設定で読みやすさ*/
+    line-height: 1.6;
+    /*色*/
+    color: #555;
+    /*テキストの両端揃え*/
+    text-align: justify;
+}
+
+.back-link {
+    /*中央揃え*/
+    text-align: center;
+    /*上部に余白*/
+    margin-top: 20px;
+}
+
+.back-link a {
+    /*インラインブロック要素->インライン要素と要素幅が同じ*/
+    display: inline-block;
+    /*内部余白*/
+    padding: 10px 20px;
+    /*背景色*/
+    background-color: #007bff;
+    /*文字色*/
+    color: white;
+    /*リンクの下線部を消す*/
+    text-decoration: none;
+    /*角の丸み*/
+    border-radius: 5px;
+}
+
+.back-link a:hover {
+    /*ホバーした時の背景色*/
+    background-color: #0056b3;
+}
+
+.blog-time {
+    text-align: right;
+}

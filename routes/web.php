@@ -9,8 +9,11 @@ use App\Http\Controllers\Admin\BlogController;
 
 use App\Http\Controllers\Admin\VegetableController;
 
+use App\Http\Controllers\User\UserVegetableController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\User\BlogController;
 use App\Http\Middleware\Authenticate;
 
 
@@ -21,6 +24,18 @@ Route::post('/admin/admins', [AdminController::class, 'store'])->name('admin.adm
 Route::get('/admin/admins/login', [AuthController::class, 'index'])->name('admin.admins.login');
 //ログイン処理
 Route::post('/admin/admins/login', [AuthController::class, 'login']);
+
+//野菜一覧ページの表示
+Route::get('/user/vegetables', [UserVegetableController::class, 'index'])->name('user.vegetables.index');
+
+//野菜の詳細ページの表示
+Route::get('/user/vegetables/{id}', [UserVegetableController::class, 'show'])->name('user.vegetables.show');
+
+//ブログ一覧ページの表示
+Route::get('/user/blogs', [BlogController::class, 'index'])->name('user.blogs.index');
+
+//ブログの詳細ページの表示
+Route::get('/user/blogs/{id}', [BlogController::class, 'show'])->name('user.blogs.show');
 
 //ログイン承認後ルート
 Route::middleware([Authenticate::class])->group(function () {
@@ -39,9 +54,17 @@ Route::middleware([Authenticate::class])->group(function () {
     //ブログの投稿
     Route::post('admin/blogs', [BlogController::class, 'store'])->name('admin.blogs.store');
 
-
     //ブログ一覧の表示
     Route::get('/admin/blogs', [BlogController::class, 'index'])->name('admin.blogs.index');
+
+    //ブログ編集
+    Route::get('/admin/blogs/{id}/edit', [BlogController::class, 'edit'])->name('admin.blogs.edit');
+
+    //ブログの更新
+    Route::put('/admin/blogs/{id}', [BlogController::class, 'update'])->name('admin.blogs.update');
+
+    //ブログの削除
+    Route::delete('admin/blogs/{id}', [BlogController::class, 'destroy'])->name('admin.blogs.destroy');
 
 
     //やさい一覧ページの表示
