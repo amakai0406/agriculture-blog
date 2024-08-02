@@ -10,11 +10,12 @@ use App\Models\BlogImage;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 
 
-class BlogController extends Controller
+class AdminBlogController extends Controller
 {
 
     public function index()
