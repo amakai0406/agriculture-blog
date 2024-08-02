@@ -61,7 +61,7 @@
             }
             reader.readAsDataURL(event.target.files[0]);
         }
-    </script>s
+    </script>
 </body>
 
 </html>

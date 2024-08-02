@@ -34,7 +34,7 @@
             </thead>
             <tbody>
                 @foreach ($blogs as $blog)
-                    <tr class="blog-row">
+                    <tr class="blog-row">     
                         <td colspan="5" class="p-0">
                             <a href="{{ route('admin.blogs.edit', ['id' => $blog->id]) }}" class="blog-link">
                                 <table class="inner-table">

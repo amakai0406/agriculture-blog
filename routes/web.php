@@ -76,4 +76,12 @@ Route::middleware([Authenticate::class])->group(function () {
     //やさいの登録処理
     Route::post('/admin/vegetables', [VegetableController::class, 'store'])->name('admin.vegetables.store');
 
+    //やさいの詳細ページの表示
+    Route::get('/admin/vegetables/{id}/edit', [VegetableController::class, 'edit'])->name('admin.vegetables.edit');
+
+    //野菜の野菜の更新
+    Route::put('/admin.vegetables/{id}', [VegetableController::class, 'update'])->name('admin.vegetables.update');
+
+    Route::delete('/admin/vegetables/{id}', [VegetableController::class, 'destroy'])->name('admin.vegetables.destroy');
+
 });
