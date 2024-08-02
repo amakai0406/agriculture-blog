@@ -25,10 +25,10 @@ Route::get('/user/vegetables', [UserVegetableController::class, 'index'])->name(
 Route::get('/user/vegetables/{id}', [UserVegetableController::class, 'show'])->name('user.vegetables.show');
 
 //ブログ一覧ページの表示
-Route::get('/user/blogs', [UseBlogController::class, 'index'])->name('user.blogs.index');
+Route::get('/user/blogs', [UserBlogController::class, 'index'])->name('user.blogs.index');
 
 //ブログの詳細ページの表示
-Route::get('/user/blogs/{id}', [UseBlogController::class, 'show'])->name('user.blogs.show');
+Route::get('/user/blogs/{id}', [UserBlogController::class, 'show'])->name('user.blogs.show');
 
 //ログイン承認後ルート
 Route::middleware([Authenticate::class])->group(function () {
@@ -45,7 +45,7 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::get('/admin/blogs/create', [AdminBlogController::class, 'create'])->name('admin.blogs.create');
 
     //ブログの投稿
-    Route::post('admin/blogs', [AdminBlogController::class, 'store'])->name('admin.blogs.store');
+    Route::post('/admin/blogs', [AdminBlogController::class, 'store'])->name('admin.blogs.store');
 
     //ブログ一覧の表示
     Route::get('/admin/blogs', [AdminBlogController::class, 'index'])->name('admin.blogs.index');
