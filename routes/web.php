@@ -49,6 +49,9 @@ Route::middleware([Authenticate::class])->group(function () {
     //農業体験イベント更新
     Route::put('admin/events/{id}', [EventController::class, 'update'])->name('admin.events.update');
 
+    //農業体験イベント削除
+    Route::delete('admin/events/{id}', [EventController::class, 'destroy'])->name('admin.events.destroy');
+
     //ブログ作成画面の表示
     Route::get('/admin/blogs/create', [BlogController::class, 'create'])->name('admin.blogs.create');
 

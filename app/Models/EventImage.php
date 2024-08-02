@@ -19,6 +19,6 @@ class EventImage extends Model
     public function event()
     {
         //belongsTo　多対１のリレーションにより一つのイベントに対して複数の画像保存できる
-        return $this->belongsTo(Event::class, 'event_id');
+        return $this->belongsTo(Event::class);
     }
 }

@@ -11,6 +11,23 @@
 <body>
     <div class="container">
         <h1 class="my-4">農業体験イベント一覧</h1>
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <a href="{{ route('admin.events.create') }}">新しいイベントを追加する</a>
         <table class="table table-bordered">
             <thead>

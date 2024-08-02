@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Http\Requests\admin\StoreEventRequest;
@@ -66,6 +67,8 @@ class EventController extends Controller
             //$imagePathを＄eventImageオブジェクトのimage_pathプロパティに設定
             $eventImage->image_path = $imagePath;
 
+            $eventImage->location = $validated['location'];
+
             $eventImage->save();
         }
 
@@ -115,17 +118,17 @@ class EventController extends Controller
 
                 $path = $request->file('event_image')->store('images', 'public');
 
-                $event->eventImage->create([
+                $event->eventImages()->create([
                     'image_path' => $path,
                     'location' => $request->location,
                 ]);
-
-                $event->save();
-
-                DB::commit();
-
-                return redirect()->route('admin.events.edit', $event->id)->with('success', '農業体験イベントを更新しました');
             }
+            $event->save();
+
+            DB::commit();
+
+            return redirect()->route('admin.events.edit', $event->id)->with('success', '農業体験イベントを更新しました');
+
         } catch (ModelNotFoundException $e) {
 
             DB::rollBack();
@@ -134,6 +137,20 @@ class EventController extends Controller
         }
     }
 
+    public function destroy(int $id)
+    {
+        $event = Event::find($id);
+
+        if ($event) {
+
+            $event->eventImages()->delete();
+
+            $event->delete();
+
+            return redirect()->route('admin.events.index')->with('success', 'イベントが削除されました。');
+        }
+
+        return redirect()->route('admin.events.index')->with('error', 'イベントが見つかりませんでした。');
+    }
 
 }
-

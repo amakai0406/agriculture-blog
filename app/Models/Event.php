@@ -21,7 +21,7 @@ class Event extends Model
     public function eventImages()
     {
 
-        return $this->hasMany(EventImage::class, 'event_id');
+        return $this->hasMany(EventImage::class);
     }
 
 
