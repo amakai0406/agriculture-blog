@@ -1,14 +1,25 @@
 <?php
 
 use App\Http\Controllers\admin\AuthController;
+
+
+use App\Http\Controllers\admin\AdminController;
+
+use App\Http\Controllers\admin\BlogController;
+
+use App\Http\Controllers\admin\VegetableController;
+
+
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\admin\AdminBlogController;
 use App\Http\Controllers\User\UserBlogController;
 use App\Http\Controllers\Admin\AdminVegetableController;
 use App\Http\Controllers\User\UserVegetableController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Middleware\Authenticate;
+use App\Http\Controllers\admin\EventController;
 
 
 //ログインページ
@@ -44,11 +55,33 @@ Route::middleware([Authenticate::class])->group(function () {
     //ログアウト機能
     Route::post('admin/logout', [AuthController::class, 'logout'])->name('admin.admins.logout');
 
+
+    //農業体験イベント一覧表示
+    Route::get('admin/events', [EventController::class, 'index'])->name('admin.events.index');
+
+    //農業体験イベント作成ページの表示
+    Route::get('admin/events/create', [EventController::class, 'create'])->name('admin.events.create');
+
+    Route::post('admin.events/', [EventController::class, 'store'])->name('admin.events.store');
+
+    //農業体験イベント登録処理
+    Route::post('admin/events', [EventController::class, 'store'])->name('admin.events.store');
+
+    //農業体験イベント編集
+    Route::get('/admin/events/{id}/edit', [EventController::class, 'edit'])->name('admin.events.edit');
+
+    //農業体験イベント更新
+    Route::put('admin/events/{id}', [EventController::class, 'update'])->name('admin.events.update');
+
+    //農業体験イベント削除
+    Route::delete('admin/events/{id}', [EventController::class, 'destroy'])->name('admin.events.destroy');
+
     //ブログ作成ページ
     Route::get('/admin/blogs/create', [AdminBlogController::class, 'create'])->name('admin.blogs.create');
 
     //ブログ投稿機能
     Route::post('/admin/blogs', [AdminBlogController::class, 'store'])->name('admin.blogs.store');
+
 
     //ブログ一覧ページ
     Route::get('/admin/blogs', [AdminBlogController::class, 'index'])->name('admin.blogs.index');
@@ -79,5 +112,6 @@ Route::middleware([Authenticate::class])->group(function () {
 
     //やさい削除機能
     Route::delete('/admin/vegetables/{id}', [AdminVegetableController::class, 'destroy'])->name('admin.vegetables.destroy');
+
 
 });
