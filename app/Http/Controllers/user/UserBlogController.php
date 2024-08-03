@@ -4,9 +4,8 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class BlogController extends Controller
+class UserBlogController extends Controller
 {
 
     public function index()
