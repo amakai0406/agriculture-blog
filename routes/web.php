@@ -9,9 +9,8 @@ use App\Http\Controllers\User\UserVegetableController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Middleware\Authenticate;
-use App\Models\Admin;
 
-Route::get('/admin/admins/create', [AdminController::class, 'create'])->name('admin.admins.create');
+
 Route::post('/admin/admins', [AdminController::class, 'store'])->name('admin.admins.store');
 
 //ログインページ
@@ -37,6 +36,10 @@ Route::middleware([Authenticate::class])->group(function () {
 
     //ダッシュボード
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+    //管理者作成ページ
+    Route::get('/admin/admins/create', [AdminController::class, 'create'])->name('admin.admins.create');
+
 
     //ログアウト
     Route::post('admin/logout', [AuthController::class, 'logout'])->name('admin.admins.logout');
