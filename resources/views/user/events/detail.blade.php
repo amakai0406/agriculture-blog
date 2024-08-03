@@ -17,8 +17,7 @@
             @endforeach
         </div>
         <p class="event-description">{{ $event->description }}</p>
-        <p class="event-period">開催期間: <span>{{ \Carbon\Carbon::parse($event->start_date)->format('Y-m-d') }} ~
-                {{ \Carbon\Carbon::parse($event->end_date)->format('Y-m-d') }}</span></p>
+        <p class="event-period">開催期間: <span>{{ $event->start_date }} ~ {{ $event->end_date }}</span></p>
         <p class="event-participants">参加可能人数: <span>{{ $event->participants_count }}</span></p>
         <p class="event-created">イベント作成日: <span>{{ ($event->created_at)->format('Y-m-d') }}</span>
         </p>

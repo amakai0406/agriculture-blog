@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Event extends Model
 {
@@ -17,6 +18,18 @@ class Event extends Model
         'end_date',
         'participants_count',
     ];
+
+    public function getStartDateAttribute($value)
+    {
+
+        return Carbon::parse($value)->format('Y-m-d');
+    }
+
+    public function getEndDateAttribute($value)
+    {
+
+        return Carbon::parse($value)->format('Y-m-d');
+    }
 
     public function eventImages()
     {
