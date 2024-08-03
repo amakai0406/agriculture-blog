@@ -2,13 +2,14 @@
 
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\AdminBlogController;
-use App\Http\Controllers\Admin\VegetableController;
+use App\Http\Controllers\admin\AdminBlogController;
+use App\Http\Controllers\User\UserBlogController;
+use App\Http\Controllers\Admin\AdminVegetableController;
 use App\Http\Controllers\User\UserVegetableController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Middleware\Authenticate;
-
+use App\Models\Admin;
 
 Route::get('/admin/admins/create', [AdminController::class, 'create'])->name('admin.admins.create');
 Route::post('/admin/admins', [AdminController::class, 'store'])->name('admin.admins.store');
@@ -61,20 +62,20 @@ Route::middleware([Authenticate::class])->group(function () {
 
 
     //やさい一覧ページの表示
-    Route::get('/admin/vegetables', [VegetableController::class, 'index'])->name('admin.vegetables.index');
+    Route::get('/admin/vegetables', [AdminVegetableController::class, 'index'])->name('admin.vegetables.index');
 
     //やさいの追加ページの表示
-    Route::get('/admin/vegetables/create', [VegetableController::class, 'create'])->name('admin.vegetables.create');
+    Route::get('/admin/vegetables/create', [AdminVegetableController::class, 'create'])->name('admin.vegetables.create');
 
     //やさいの登録処理
-    Route::post('/admin/vegetables', [VegetableController::class, 'store'])->name('admin.vegetables.store');
+    Route::post('/admin/vegetables', [AdminVegetableController::class, 'store'])->name('admin.vegetables.store');
 
     //やさいの詳細ページの表示
-    Route::get('/admin/vegetables/{id}/edit', [VegetableController::class, 'edit'])->name('admin.vegetables.edit');
+    Route::get('/admin/vegetables/{id}/edit', [AdminVegetableController::class, 'edit'])->name('admin.vegetables.edit');
 
     //野菜の野菜の更新
-    Route::put('/admin.vegetables/{id}', [VegetableController::class, 'update'])->name('admin.vegetables.update');
+    Route::put('/admin.vegetables/{id}', [AdminVegetableController::class, 'update'])->name('admin.vegetables.update');
 
-    Route::delete('/admin/vegetables/{id}', [VegetableController::class, 'destroy'])->name('admin.vegetables.destroy');
+    Route::delete('/admin/vegetables/{id}', [AdminVegetableController::class, 'destroy'])->name('admin.vegetables.destroy');
 
 });
