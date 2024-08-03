@@ -6,9 +6,11 @@ use App\Http\Controllers\admin\AdminBlogController;
 use App\Http\Controllers\User\UserBlogController;
 use App\Http\Controllers\Admin\AdminVegetableController;
 use App\Http\Controllers\User\UserVegetableController;
+use App\Http\Controllers\User\UserReservationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Middleware\Authenticate;
+
 
 
 //ログインページ
@@ -28,6 +30,9 @@ Route::get('/user/blogs', [UserBlogController::class, 'index'])->name('user.blog
 
 //ブログ詳細ページ
 Route::get('/user/blogs/{id}', [UserBlogController::class, 'show'])->name('user.blogs.show');
+
+//農業体験イベント予約入力ページ
+Route::get('/user/reservations/create', [UserReservationController::class, 'create'])->name('user.reservation.create');
 
 //ログイン承認後ルート
 Route::middleware([Authenticate::class])->group(function () {
