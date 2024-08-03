@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 
 
 class UserEventController extends Controller
@@ -10,11 +11,14 @@ class UserEventController extends Controller
 
     public function index()
     {
-        return view('user.events.index');
+        $events = Event::all();
+        return view('user.events.index', compact('events'));
     }
 
-    public function show()
+    public function show(int $id)
     {
-        return view('user.events.show');
+        $event = Event::findOrFail($id);
+
+        return view('user.events.detail', compact('event'));
     }
 }
