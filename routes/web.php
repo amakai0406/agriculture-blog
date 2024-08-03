@@ -75,7 +75,7 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::get('/admin/vegetables/{id}/edit', [AdminVegetableController::class, 'edit'])->name('admin.vegetables.edit');
 
     //やさい更新機能
-    Route::put('/admin.vegetables/{id}', [AdminVegetableController::class, 'update'])->name('admin.vegetables.update');
+    Route::put('/admin/vegetables/{id}', [AdminVegetableController::class, 'update'])->name('admin.vegetables.update');
 
     //やさい削除機能
     Route::delete('/admin/vegetables/{id}', [AdminVegetableController::class, 'destroy'])->name('admin.vegetables.destroy');
