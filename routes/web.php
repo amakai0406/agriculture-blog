@@ -1,25 +1,19 @@
 <?php
 
-use App\Http\Controllers\admin\AuthController;
-
-
-use App\Http\Controllers\admin\AdminController;
-
-use App\Http\Controllers\admin\BlogController;
-
-use App\Http\Controllers\admin\VegetableController;
-
-
+use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\admin\AdminBlogController;
-use App\Http\Controllers\User\UserBlogController;
 use App\Http\Controllers\Admin\AdminVegetableController;
+use App\Http\Controllers\Admin\AdminBlogController;
+use App\Http\Controllers\User\UserBlogController;
 use App\Http\Controllers\User\UserVegetableController;
+use App\Http\Controllers\User\UserEventController;
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\admin\DashboardController;
 use App\Http\Middleware\Authenticate;
 use App\Http\Controllers\admin\EventController;
+
+
 
 
 //ログインページ
@@ -39,6 +33,12 @@ Route::get('/user/blogs', [UserBlogController::class, 'index'])->name('user.blog
 
 //ブログ詳細ページ
 Route::get('/user/blogs/{id}', [UserBlogController::class, 'show'])->name('user.blogs.show');
+
+//イベント一覧ページ
+Route::get('/user/events', [UserEventController::class, 'index'])->name('user.events.index');
+
+//イベント詳細ページ
+Route::get('/user/events/{id}', [UserEventController::class, 'show'])->name('user.events.show');
 
 //ログイン承認後ルート
 Route::middleware([Authenticate::class])->group(function () {
