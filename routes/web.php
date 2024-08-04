@@ -1,17 +1,29 @@
 <?php
 
+<<<<<<< HEAD
 use App\Http\Controllers\admin\AuthController;
 
+=======
+use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\DashboardController;
+>>>>>>> feature/agricultural-experience-user-page
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\admin\AdminBlogController;
-use App\Http\Controllers\User\UserBlogController;
 use App\Http\Controllers\Admin\AdminVegetableController;
+use App\Http\Controllers\Admin\AdminBlogController;
+
+use App\Http\Controllers\User\UserBlogController;
 use App\Http\Controllers\User\UserVegetableController;
+<<<<<<< HEAD
 use App\Http\Controllers\User\UserReservationController;
+=======
+use App\Http\Controllers\User\UserEventController;
+
+>>>>>>> feature/agricultural-experience-user-page
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\admin\DashboardController;
 use App\Http\Middleware\Authenticate;
 use App\Http\Controllers\admin\EventController;
+
+
 
 
 
@@ -33,8 +45,16 @@ Route::get('/user/blogs', [UserBlogController::class, 'index'])->name('user.blog
 //ブログ詳細ページ
 Route::get('/user/blogs/{id}', [UserBlogController::class, 'show'])->name('user.blogs.show');
 
+<<<<<<< HEAD
 //農業体験イベント予約入力ページ
 Route::get('/user/reservations/create', [UserReservationController::class, 'create'])->name('user.reservation.create');
+=======
+//イベント一覧ページ
+Route::get('/user/events', [UserEventController::class, 'index'])->name('user.events.index');
+
+//イベント詳細ページ
+Route::get('/user/events/{id}', [UserEventController::class, 'show'])->name('user.events.show');
+>>>>>>> feature/agricultural-experience-user-page
 
 //ログイン承認後ルート
 Route::middleware([Authenticate::class])->group(function () {
