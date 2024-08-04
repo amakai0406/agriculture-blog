@@ -68,7 +68,7 @@
                 <div class="card text-white bg-danger mb-3">
                     <div class="card-header">体験イベント管理</div>
                     <div class="card-body">
-                        <a href="" class="btn btn-light">一覧を表示する</a>
+                        <a href="/admin/events" class="btn btn-light">一覧を表示する</a>
                     </div>
                 </div>
             </div>
