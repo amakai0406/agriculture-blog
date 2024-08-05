@@ -16,4 +16,10 @@ class EventReservation extends Model
         'email',
         'phone_number',
     ];
+
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
+    }
+
 }
