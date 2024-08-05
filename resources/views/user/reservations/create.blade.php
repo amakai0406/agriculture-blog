@@ -40,12 +40,12 @@
                     value="{{ old('representative_name') }}" required>
             </div>
             <div class="form-group">
-                <label for="phone_number">電話番号</label>
-                <input type="tel" id="phone_number" name="phone_number" value="{{ old('phone_number') }}" required>
+                <label for="email">メールアドレス</label>
+                <input type="email" id="email" name="email" value="{{ old('email') }}" required>
             </div>
             <div class="form-group">
-                <label for="questions">質問事項</label>
-                <textarea id="questions" name="questions" required>{{ old('questions') }}</textarea>
+                <label for="phone_number">電話番号</label>
+                <input type="tel" id="phone_number" name="phone_number" value="{{ old('phone_number') }}" required>
             </div>
             <div class="form-group">
                 <label for="reservation_date">予約希望日</label>

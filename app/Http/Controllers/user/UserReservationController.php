@@ -19,6 +19,7 @@ class UserReservationController extends Controller
         $events = Event::all();
 
         //現在の時刻がイベント終了日を過ぎていないイベントをフィルタリング
+        //イベントコレクション(複数のオブジェクト)　filter()フィルタリング use()で関数外の変数を使える　>=以上
         $filteredEvents = $events->filter(function ($event) use ($currentDateTime) {
             return $event->end_date >= $currentDateTime;
         });
@@ -37,11 +38,13 @@ class UserReservationController extends Controller
 
         $reservation->representative_name = $validated['representative_name'];
 
+        $reservation->email = $validated['email'];
+
         $reservation->phone_number = $validated['phone_number'];
 
-        $reservation->questions = $validated['questions'];
-
         $reservation->reservation_date = $validated['reservation_date'];
+
+        $reservation->status = 'confirmed';
 
         $reservation->save();
 

@@ -11,8 +11,9 @@ class EventReservation extends Model
     use HasFactory;
 
     protected $fillable = [
+        'event_id',
         'representative_name',
+        'email',
         'phone_number',
-        'questions'
     ];
 }
