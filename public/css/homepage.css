@@ -8,8 +8,8 @@
 .main-nav li {
     margin-left: 36px;
 }
-.main-nax a {
-    color: #423;
+.main-nav a {
+    color: azure;
 }
 .main-nav a:hover {
     color: #0db;
