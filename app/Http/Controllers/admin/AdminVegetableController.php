@@ -8,7 +8,6 @@ use App\Http\Requests\admin\StoreVegetableRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 
 class AdminVegetableController extends Controller
@@ -112,9 +111,6 @@ class AdminVegetableController extends Controller
 
             //トランザクションのロールバック
             DB::rollBack();
-
-            // エラーメッセージをログに記録
-            Log::error('Vegetable update failed: ' . $e->getMessage());
 
             //エラーメッセージの作成と表示
             return response()->json(['error' => '指定されたやさいが見つかりませんでした']);
