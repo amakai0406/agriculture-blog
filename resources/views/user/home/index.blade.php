@@ -48,21 +48,23 @@
     <div class="centered-link">
         <a href="{{ route('user.blogs.index') }}">ブログ一覧へ</a>
     </div>
-    <ul class="vegetableLineup-items">
-        @foreach ($vegetables as $vegetable)
-            <li class="vegetableLineup-item">
-                <a href="{{ route('user.vegetables.show', ['id' => $vegetable->id])}}"
-                    class="vegetableLineup-item-container">
-                    <figure class="vegetableLineup-item-img">
-                        <img src="{{ asset('storage/images/' . $vegetable->image) }}">
-                    </figure>
-                    <div class="vegetableLineup-item-body">
-                        <h3 class="vegetableLineup-item-name">{{ $vegetable->name }}</h3>
-                    </div>
-                </a>
-            </li>
-        @endforeach
-    </ul>
+    <div class="vegetableLineup-wrapper">
+        <ul class="vegetableLineup-items">
+            @foreach ($vegetables as $vegetable)
+                <li class="vegetableLineup-item">
+                    <a href="{{ route('user.vegetables.show', ['id' => $vegetable->id])}}"
+                        class="vegetableLineup-item-container">
+                        <figure class="vegetableLineup-item-img">
+                            <img src="{{ asset('storage/images/' . $vegetable->image) }}">
+                        </figure>
+                        <div class="vegetableLineup-item-body">
+                            <h3 class="vegetableLineup-item-name">{{ $vegetable->name }}</h3>
+                        </div>
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    </div>
     <div class="centered-link">
         <a href="{{ route('user.vegetables.index') }}">やさい一覧へ</a>
     </div>

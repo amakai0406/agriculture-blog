@@ -8,8 +8,8 @@
 .main-nav li {
     margin-left: 36px;
 }
-.main-nav a {
-    color: azure;
+.main-nax a {
+    color: #423;
 }
 .main-nav a:hover {
     color: #0db;
@@ -118,20 +118,14 @@
     display: flex;
     justify-content: center;
 }
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f9fa;
-}
 
-h2 {
-    text-align: center;
-    font-size: 2em;
-    color: #4caf50;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-family: "Arial", sans-serif;
+.vegetableLineup-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .vegetableLineup-items {
@@ -139,105 +133,39 @@ h2 {
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    gap: 20px;
 }
 
 .vegetableLineup-item {
-    margin: 40px;
+    flex: 1 1 calc(25% - 20px);
     box-sizing: border-box;
-    width: 300px;
-    flex: 0 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vegetableLineup-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .vegetableLineup-item-container {
-    display: block;
     text-decoration: none;
     color: inherit;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.2s ease-in-out;
-}
-
-.vegetableLineup-item-container:hover {
-    transform: translateY(-5px);
-}
-
-.vegetableLineup-item-img {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.vegetableLineup-item-img img {
-    width: 80%;
-    height: auto;
-}
-
-.vegetableLineup-item-body {
-    padding: 10px;
-    text-align: center;
-}
-
-.vegetableLineup-item-name {
-    font-size: 1.2em;
-    margin: 0;
-    color: #333;
-}
-
-@media (max-width: 480px) {
-    .vegetableLineup-item {
-        width: calc(100% - 20px);
-    }
-}
-
-@media (min-width: 481px) and (max-width: 768px) {
-    .vegetableLineup-item {
-        width: calc(50% - 20px);
-    }
-}
-
-@media (min-width: 769px) {
-    .vegetableLineup-item {
-        width: calc(33.333% - 20px);
-    }
-}
-
-.vegetableLineup-item-container {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.2s ease-in-out;
-}
-
-.vegetableLineup-item-container:hover {
-    transform: translateY(-5px);
-}
-
-.vegetableLineup-item-img {
-    width: 80%;
-    height: 350px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .vegetableLineup-item-img img {
     width: 50%;
     height: auto;
+    display: block;
+    margin: 0 auto; /* 追加 */
+    border-bottom: 1px solid #eee;
 }
 
 .vegetableLineup-item-body {
-    padding: 10px;
+    padding: 15px;
     text-align: center;
 }
 
@@ -246,11 +174,6 @@ h2 {
     margin: 0;
     color: #333;
 }
-.event {
-    border-bottom: 1px solid #ccc;
-    padding: 10px 0;
-    margin-bottom: 10px;
-}
 .outer-container {
-    margin-left: 120px;
+    margin-left: 150px;
 }
