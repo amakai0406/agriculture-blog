@@ -41,7 +41,7 @@ class AdminBlogController extends Controller
         //HttpリクエストデータをStoreBlogRequestで設定したルールに基に検証し、検証が成功したデータを$validatedに格納する
         $validated = $request->validated();
 
-        $adminId = auth()->id();
+        $adminId = Auth::guard('admin')->id();
 
         //blogsテーブルに新しいレコードを作成(データの振り分け)->保存
         $blog = new Blog();
