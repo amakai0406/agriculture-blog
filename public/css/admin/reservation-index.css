@@ -64,3 +64,8 @@ h1 {
 .action-btn.delete:hover {
     background-color: #e60000;
 }
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}

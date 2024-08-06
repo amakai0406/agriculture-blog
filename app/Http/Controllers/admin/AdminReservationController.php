@@ -4,20 +4,24 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\EventReservation;
-use App\Http\Requests\StoreReservationRequest;
+use App\Http\Requests\StoreReservationStatusRequest;
+use Illuminate\Support\Facades\Log;
+
 
 class AdminReservationController extends Controller
 {
 
     public function index()
     {
+        Log::error("index");
         $eventReservations = EventReservation::with('event')->get();
 
         return view('admin.reservations.index', compact('eventReservations'));
     }
 
-    public function update(StoreReservationRequest $request, int $id)
+    public function update(StoreReservationStatusRequest $request, int $id)
     {
+        Log::error("update");
         $reservation = EventReservation::find($id);
 
         if (!$reservation) {
