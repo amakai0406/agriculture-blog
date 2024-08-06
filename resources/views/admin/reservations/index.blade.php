@@ -11,11 +11,16 @@
 <body>
     <div class="container">
         <h1>農業体験イベント予約一覧</h1>
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <table class="reservation-table">
             <thead>
                 <tr>
                     <th>イベント名</th>
-                    <th>代表者名</th>
+                    <th>予約者名</th>
                     <th>電話番号</th>
                     <th>メールアドレス</th>
                     <th>予約日</th>
@@ -30,12 +35,26 @@
                         <td>{{ $eventReservation->phone_number }}</td>
                         <td>{{ $eventReservation->email }}</td>
                         <td>{{ $eventReservation->reservation_date }}</td>
-                        <td>{{ $eventReservation->status }}</td>
+                        <td>
+                            <form action="{{ route('admin.reservations.update', $eventReservation->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <select name="status">
+                                    <option value="confirmed" {{ $eventReservation->status == 'confirmed' ? 'selected' : '' }}>確定</option>
+                                    <option value="cancelled" {{ $eventReservation->status == 'cancelled' ? 'selected' : '' }}>キャンセル</option>
+                                    <option value="pending" {{ $eventReservation->status == 'pending' ? 'selected' : '' }}>保留
+                                    </option>
+                                    <option value="completed" {{ $eventReservation->status == 'completed' ? 'selected' : '' }}>完了</option>
+                                </select>
+                                <button type="submit">更新</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
 </body>
+
 
 </html>

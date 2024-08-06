@@ -49,8 +49,8 @@ class StoreReservationRequest extends FormRequest
                     }
 
                 }
-            ]
-
+            ],
+            'status' => 'required|string|in:confirmed,cancelled,pending,completed'
         ];
     }
 }

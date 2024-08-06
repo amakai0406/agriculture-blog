@@ -144,4 +144,5 @@ Route::middleware([Authenticate::class])->group(function () {
     //予約一覧ページ
     Route::get('/admin/reservations', [AdminReservationController::class, 'index'])->name(('admin.reservations.index'));
 
+    Route::put('/admin/reservations/{id}', [AdminReservationController::class, 'update'])->name('admin.reservations.update');
 });
