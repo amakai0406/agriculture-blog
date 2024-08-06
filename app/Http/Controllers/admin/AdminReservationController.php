@@ -18,7 +18,6 @@ class AdminReservationController extends Controller
 
     public function update(StoreReservationRequest $request, int $id)
     {
-        logger($request->all());
         $reservation = EventReservation::find($id);
 
         if (!$reservation) {
