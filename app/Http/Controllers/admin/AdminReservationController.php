@@ -11,6 +11,7 @@ class AdminReservationController extends Controller
 
     public function index()
     {
+        //event_reservationsテーブルと関連するeventsテーブルのデータを取得
         $eventReservations = EventReservation::with('event')->get();
 
         return view('admin.reservations.index', compact('eventReservations'));

@@ -28,7 +28,7 @@ h1 {
 
 .table th,
 .table td {
-    border: 1px solid #ddd; /* 各セルに境界線を追加 */
+    border: 1px solid #ddd;
     padding: 15px;
     text-align: left;
 }

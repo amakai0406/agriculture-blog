@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Event;
-use App\Http\Requests\admin\StoreEventRequest;
 use App\Models\EventImage;
+use App\Http\Requests\admin\StoreEventRequest;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -51,12 +49,8 @@ class EventController extends Controller
         //hasFile()->リクエストの中にフェイルがあるかチェック
         if ($request->hasFile('event_image')) {
 
-            Log::info('ファイルアップロード開始');
-
             //store()->ファイルの保存->保存先のパスを返す
             $imagePath = $request->file('event_image')->store('images', 'public');
-
-            Log::info('保存されたファイルパス: ' . $imagePath);
 
             //event_imagesテーブルのモデル
             $eventImage = new EventImage;
