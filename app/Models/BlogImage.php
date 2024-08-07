@@ -8,12 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class BlogImage extends Model
 {
-
-
     use HasFactory;
-
-    use hasFactory;
-
 
     protected $fillable = ['blog_id', 'image_path'];
 
@@ -22,7 +17,5 @@ class BlogImage extends Model
         //BlogImageクラスがBlogクラスと多対一のリレーションを定義している(子)
         //BlogImageインスタンスからblog_idが一致するBlogインスタンスを取得する
         return $this->belongsTo(Blog::class);
-
-
     }
 }
