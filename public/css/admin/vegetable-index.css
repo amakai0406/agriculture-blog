@@ -60,7 +60,7 @@ h1 {
 }
 
 .desc-column {
-    width: 250px; /* 説明欄の幅を指定します。必要に応じて調整してください。 */
+    width: 250px;
     overflow: hidden;
     text-overflow: ellipsis;
 }

@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Blog;
-
 use App\Http\Requests\admin\StoreBlogRequest;
+use App\Models\Blog;
 use App\Models\BlogImage;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Storage;
@@ -148,7 +147,7 @@ class AdminBlogController extends Controller
         }
     }
 
-    public function destroy($id)
+    public function destroy(int $id)
     {
 
         //指定されたidのブログを取得し、＄blogに格納する
