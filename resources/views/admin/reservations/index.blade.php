@@ -51,9 +51,6 @@
                                 <select name="status">
                                     <option value="confirmed" {{ $eventReservation->status == 'confirmed' ? 'selected' : '' }}>確定</option>
                                     <option value="cancelled" {{ $eventReservation->status == 'cancelled' ? 'selected' : '' }}>キャンセル</option>
-                                    <option value="pending" {{ $eventReservation->status == 'pending' ? 'selected' : '' }}>保留
-                                    </option>
-                                    <option value="completed" {{ $eventReservation->status == 'completed' ? 'selected' : '' }}>完了</option>
                                 </select>
                                 <button type="submit">更新</button>
                             </form>

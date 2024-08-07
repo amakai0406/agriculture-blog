@@ -30,8 +30,6 @@ class EventReservation extends Model
         return match ($this->status) {
             'confirmed' => '確定',
             'cancelled' => 'キャンセル',
-            'pending' => '保留',
-            'completed' => '完了',
             default => '不明',
         };
     }
