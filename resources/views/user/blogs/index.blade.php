@@ -1,3 +1,7 @@
+@extends('user.layouts.app')
+
+@section('title', 'ブログ一覧')
+
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/blogs.css') }}">
 
@@ -21,3 +25,4 @@
 </div>
 <!-- ページネーション -->
 {{ $blogs->links() }}
+@endsection
