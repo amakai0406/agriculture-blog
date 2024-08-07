@@ -45,19 +45,6 @@
                     </div>
                 @endif
             </div>
-            <div class="mb-6">
-                <label class="block text-sm font-medium mb-2" for="image">画像</label>
-                <div class="flex items-end">
-                    <img id="previewImage" src="/images/admin/noimage.jpg" data-noimage="/images/admin/noimage.jpg"
-                        alt="" class="rounded shadow-md w-64">
-                    <input id="image" class="block w-full px-4 py-3 mb-2" type="file" accept='image/*' name="image">
-                    @if ($errors->has('image'))
-                        <div class="text-danger">
-                            {{ $errors->first('image') }}
-                        </div>
-                    @endif
-                </div>
-            </div>
             <button type="submit" class="btn btn-primary">登録</button>
         </form>
     </div>

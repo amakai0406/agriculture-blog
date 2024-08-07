@@ -17,7 +17,6 @@ class StoreAdminRequest extends FormRequest
         return [
             'name' => 'required|string|max:50',
             'password' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
 

@@ -15,7 +15,7 @@ class Admin extends Model implements AuthenticatableContract
 
     public $timestamps = false;
 
-    protected $fillable = ['name', 'password', 'image'];
+    protected $fillable = ['name', 'password'];
 
     public function blogs()
     {

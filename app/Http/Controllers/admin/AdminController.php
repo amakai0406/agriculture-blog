@@ -26,17 +26,6 @@ class AdminController extends Controller
         $validated = $request->validated();
         $validated['password'] = Hash::make($validated['password']);
 
-        if ($request->hasFile('image')) {
-
-            $image = $request->file('image');
-
-            $path = $image->store('public/images');
-
-            $imageName = basename($path);
-
-            $validated['image'] = $imageName;
-        }
-
         Admin::create($validated);
 
         return redirect()->route('admin.admins.create')->with('success', '新しい管理者を登録しました');
