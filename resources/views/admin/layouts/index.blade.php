@@ -33,14 +33,6 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-3 col-md-6">
-                <div class="card text-white bg-primary mb-3">
-                    <div class="card-header">管理者</div>
-                    <div class="card-body">
-                        <a href="" class="btn btn-light">一覧を表示する</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
                 <div class="card text-white bg-success mb-3">
                     <div class="card-header">野菜管理</div>
                     <div class="card-body">
@@ -57,26 +49,10 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="card text-white bg-warning mb-3">
-                    <div class="card-header">カテゴリー管理</div>
-                    <div class="card-body">
-                        <a href="" class="btn btn-light">一覧を表示する</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
                 <div class="card text-white bg-danger mb-3">
                     <div class="card-header">体験イベント管理</div>
                     <div class="card-body">
                         <a href="/admin/events" class="btn btn-light">一覧を表示する</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card text-white bg-secondary mb-3">
-                    <div class="card-header">会員登録者</div>
-                    <div class="card-body">
-                        <a href="" class="btn btn-light">一覧を表示する</a>
                     </div>
                 </div>
             </div>
