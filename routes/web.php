@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminVegetableController;
 use App\Http\Controllers\Admin\AdminBlogController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\AdminReservationController;
 
 use App\Http\Controllers\User\UserBlogController;
 use App\Http\Controllers\User\UserVegetableController;
@@ -18,7 +19,6 @@ use App\Http\Middleware\Authenticate;
 
 //ホームページ
 Route::get('/', [UserHomeController::class, 'index'])->name('user.home.index');
-
 
 //ログインページ
 Route::get('/admin/admins/login', [AuthController::class, 'index'])->name('admin.admins.login');
@@ -74,8 +74,6 @@ Route::middleware([Authenticate::class])->group(function () {
     //農業体験イベント作成ページの表示
     Route::get('admin/events/create', [EventController::class, 'create'])->name('admin.events.create');
 
-    Route::post('admin.events/', [EventController::class, 'store'])->name('admin.events.store');
-
     //農業体験イベント登録処理
     Route::post('admin/events', [EventController::class, 'store'])->name('admin.events.store');
 
@@ -99,8 +97,6 @@ Route::middleware([Authenticate::class])->group(function () {
 
     //農業体験イベント作成ページの表示
     Route::get('admin/events/create', [EventController::class, 'create'])->name('admin.events.create');
-
-    Route::post('admin.events/', [EventController::class, 'store'])->name('admin.events.store');
 
     //農業体験イベント登録処理
     Route::post('admin/events', [EventController::class, 'store'])->name('admin.events.store');
@@ -144,5 +140,8 @@ Route::middleware([Authenticate::class])->group(function () {
     //やさい削除機能
     Route::delete('/admin/vegetables/{id}', [AdminVegetableController::class, 'destroy'])->name('admin.vegetables.destroy');
 
+    //予約一覧ページ
+    Route::get('/admin/reservations', [AdminReservationController::class, 'index'])->name('admin.reservations.index');
 
+    Route::put('/admin/reservations/{id}', [AdminReservationController::class, 'update'])->name('admin.reservations.update');
 });

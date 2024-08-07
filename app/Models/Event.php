@@ -36,6 +36,9 @@ class Event extends Model
 
         return $this->hasMany(EventImage::class);
     }
+
+    public function reservation()
+    {
+        return $this->hasOne(EventReservation::class);
+    }
 }
-
-
