@@ -1,0 +1,179 @@
+.main-nav {
+    display: flex;
+    font-size: 1.23rem;
+    text-transform: uppercase;
+    margin-top: 34px;
+    list-style: none;
+}
+.main-nav li {
+    margin-left: 36px;
+}
+.main-nav a {
+    color: azure;
+}
+.main-nav a:hover {
+    color: #0db;
+}
+.page-header {
+    display: flex;
+    justify-content: space-between;
+}
+.wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+.home-content {
+    text-align: center;
+    margin-top: 10%;
+}
+
+.home-content p {
+    font-size: 1.2rem;
+    margin: 10px 0 42px;
+    color: azure;
+}
+.page-title {
+    font-size: 4rem;
+    font-family: "Philosopher", serif;
+    text-transform: uppercase;
+    font-weight: normal;
+    color: azure;
+}
+.big-bg {
+    background-size: cover;
+    background-position: center top;
+}
+#home {
+    background-image: url("/storage/images/IMG_1684.jpeg");
+    background-color: rgb(34, 155, 78);
+    background-blend-mode: hard-light;
+    min-height: 100vh;
+}
+#home .page-title {
+    text-transform: none;
+}
+/* blog-list.css */
+
+.blog-list {
+    display: block;
+}
+
+.blog-Link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+.blog-Link:hover {
+    transform: translateY(-10px);
+}
+
+.blog-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 15px; /* 全体のサイズを小さくするためにパディングを減らす */
+    max-width: 600px; /* 最大幅を設定して全体を小さくする */
+    margin: 0 auto; /* 真ん中に表示 */
+}
+
+.blog-item h2 {
+    margin: 0;
+    font-size: 1.3em; /* タイトルのサイズを少し小さく */
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.blog-images {
+    display: flex;
+    justify-content: center; /* 画像を中央に配置 */
+    margin-bottom: 10px;
+}
+
+.blog-images img {
+    width: auto; /* 幅を自動に設定 */
+    max-width: 100%;
+    max-height: 300px; /* 画像の最大高さを設定 */
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.blog-item p {
+    margin: 10px 0;
+    color: #555;
+    font-size: 0.9em; /* コンテンツのフォントサイズを少し小さく */
+    line-height: 1.5;
+}
+
+.blog-item div {
+    color: #999;
+    font-size: 0.8em; /* 日時のフォントサイズを少し小さく */
+    text-align: right;
+}
+.centered-link {
+    display: flex;
+    justify-content: center;
+}
+
+.vegetableLineup-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.vegetableLineup-items {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.vegetableLineup-item {
+    flex: 1 1 calc(25% - 20px);
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vegetableLineup-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.vegetableLineup-item-container {
+    text-decoration: none;
+    color: inherit;
+}
+
+.vegetableLineup-item-img img {
+    width: 50%;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* 追加 */
+    border-bottom: 1px solid #eee;
+}
+
+.vegetableLineup-item-body {
+    padding: 15px;
+    text-align: center;
+}
+
+.vegetableLineup-item-name {
+    font-size: 1.2em;
+    margin: 0;
+    color: #333;
+}
+.outer-container {
+    margin-left: 150px;
+}

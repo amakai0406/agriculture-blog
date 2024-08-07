@@ -12,10 +12,13 @@ use App\Http\Controllers\User\UserBlogController;
 use App\Http\Controllers\User\UserVegetableController;
 use App\Http\Controllers\User\UserReservationController;
 use App\Http\Controllers\User\UserEventController;
+use App\Http\Controllers\User\UserHomeController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Authenticate;
 
+//ホームページ
+Route::get('/', [UserHomeController::class, 'index'])->name('user.home.index');
 
 //ログインページ
 Route::get('/admin/admins/login', [AuthController::class, 'index'])->name('admin.admins.login');

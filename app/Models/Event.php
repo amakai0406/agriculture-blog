@@ -42,4 +42,3 @@ class Event extends Model
         return $this->hasOne(EventReservation::class);
     }
 }
-

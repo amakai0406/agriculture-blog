@@ -4,18 +4,25 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+}
+
+header {
+    width: 100%;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
 }
 
 .container {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     max-width: 600px;
     width: 100%;
+    margin-top: 20px;
 }
 
 h1 {
@@ -23,7 +30,9 @@ h1 {
     margin-bottom: 20px;
 }
 
-select {
+select,
+.form-group input,
+.form-group textarea {
     width: 100%;
     padding: 12px;
     font-size: 16px;
@@ -42,16 +51,6 @@ select {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    max-width: 580px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
 }
 
 .form-group textarea {
