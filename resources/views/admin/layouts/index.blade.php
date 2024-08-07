@@ -82,9 +82,9 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="card text-white bg-dark mb-3">
-                    <div class="card-header">お問合せ管理</div>
+                    <div class="card-header">予約管理</div>
                     <div class="card-body">
-                        <a href="" class="btn btn-light">一覧を表示する</a>
+                        <a href="/admin/reservations" class="btn btn-light">一覧を表示する</a>
                     </div>
                 </div>
             </div>
