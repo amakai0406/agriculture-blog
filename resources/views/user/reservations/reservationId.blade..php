@@ -19,14 +19,7 @@
         @csrf
         <div class="form-group">
             <label for="event_id">イベント</label>
-            <select id="event_id" name="event_id" required>
-                <option value="">イベントを選択してください</option>
-                @foreach ($filteredEvents as $eventOption)
-                    <option value="{{ $eventOption->id }}" {{ isset($event) && $event->id == $eventOption->id ? 'selected' : '' }}>
-                        {{ $eventOption->title }} ({{ \Carbon\Carbon::parse($eventOption->event_date)->format('Y-m-d') }})
-                    </option>
-                @endforeach
-            </select>
+            <div>{{ $event->name }}</div>
         </div>
         <div class="form-group">
             <label for="representative_name">予約者名</label>
@@ -40,6 +33,11 @@
         <div class="form-group">
             <label for="phone_number">電話番号</label>
             <input type="tel" id="phone_number" name="phone_number" value="{{ old('phone_number') }}" required>
+        </div>
+        <div class="form-group">
+            <label for="reservation_date">予約希望日</label>
+            <input type="datetime-local" id="reservation_date" name="reservation_date"
+                value="{{ old('reservation_date') }}" required>
         </div>
         <button type="submit">予約する</button>
     </form>

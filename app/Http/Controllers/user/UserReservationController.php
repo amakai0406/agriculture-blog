@@ -16,16 +16,22 @@ class UserReservationController extends Controller
         //現在の時刻の取得
         $currentDateTime = now();
 
-        $events = Event::all();
-
-        //現在の時刻がイベント終了日を過ぎていないイベントをフィルタリング
-        //イベントコレクション(複数のオブジェクト)　filter()フィルタリング use()で関数外の変数を使える　>=以上
-        $filteredEvents = $events->filter(function ($event) use ($currentDateTime) {
-            return $event->end_date >= $currentDateTime;
-        });
-
+        $filteredEvents = Event::where('event_date', '>', $currentDateTime)->get();
 
         return view('user.reservations.create', compact('filteredEvents'));
+    }
+
+    public function reservationsByEventId($event_id)
+    {
+        // 特定のイベントを取得
+        $event = Event::findOrFail($event_id);
+
+        // 選択されたイベントと、その他の全てのイベントを取得
+        $currentDateTime = now();
+        $filteredEvents = Event::where('event_date', '>', $currentDateTime)->get();
+
+        // ビューにイベントデータを渡す
+        return view('user.reservations.create', compact('event', 'filteredEvents'));
     }
 
     public function store(StoreReservationRequest $request)
