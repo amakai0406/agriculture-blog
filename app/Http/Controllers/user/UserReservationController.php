@@ -9,23 +9,27 @@ use App\Models\EventReservation;
 
 class UserReservationController extends Controller
 {
-
     public function create()
     {
-
         //現在の時刻の取得
         $currentDateTime = now();
 
-        $events = Event::all();
-
-        //現在の時刻がイベント終了日を過ぎていないイベントをフィルタリング
-        //イベントコレクション(複数のオブジェクト)　filter()フィルタリング use()で関数外の変数を使える　>=以上
-        $filteredEvents = $events->filter(function ($event) use ($currentDateTime) {
-            return $event->end_date >= $currentDateTime;
-        });
-
+        //whereメソッド条件に一致するレコードをフィルタリング
+        $filteredEvents = Event::where('event_date', '>', $currentDateTime)->orderBy('event_date')->get();
 
         return view('user.reservations.create', compact('filteredEvents'));
+    }
+
+    public function reservationsByEventId($event_id)
+    {
+        // 特定のイベントを取得
+        $event = Event::findOrFail($event_id);
+
+        //ユーザーに別のイベントを選び直すことを考えて一応全て取得
+        $currentDateTime = now();
+        $filteredEvents = Event::where('event_date', '>', $currentDateTime)->get();
+
+        return view('user.reservations.create', compact('event', 'filteredEvents'));
     }
 
     public function store(StoreReservationRequest $request)
@@ -42,9 +46,11 @@ class UserReservationController extends Controller
 
         $reservation->phone_number = $validated['phone_number'];
 
-        $reservation->reservation_date = $validated['reservation_date'];
-
         $reservation->status = 'confirmed';
+
+        //イベントの開催日を予約日として取得
+        $event = Event::findOrFail($validated['event_id']);
+        $reservation->reservation_date = $event->event_date;
 
         $reservation->save();
 
