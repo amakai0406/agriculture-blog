@@ -19,7 +19,7 @@ class StoreEventRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:1000',
-            'event_date' => 'required|date',
+            'event_date' => 'date',
             'participants_count' => 'integer',
             'location' => 'required|string|max:50',
             'event_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',

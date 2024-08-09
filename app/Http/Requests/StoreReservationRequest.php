@@ -21,10 +21,7 @@ class StoreReservationRequest extends FormRequest
             'representative_name' => 'required|string|max:255',
             'email' => 'required|string|max:255',
             'phone_number' => 'required|string|max:20',
-            'reservation_date' => [
-                'required',
-                'date',
-            ],
+            'reservation_date' => 'date',
             'status' => 'string|in:confirmed,cancelled'
         ];
     }
