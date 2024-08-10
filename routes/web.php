@@ -39,7 +39,10 @@ Route::get('/user/blogs', [UserBlogController::class, 'index'])->name('user.blog
 Route::get('/user/blogs/{id}', [UserBlogController::class, 'show'])->name('user.blogs.show');
 
 //農業体験イベント予約入力ページ
-Route::get('/user/reservations/create', [UserReservationController::class, 'create'])->name('user.reservation.create');
+Route::get('/user/reservations/create', [UserReservationController::class, 'create'])->name('user.reservations.create');
+
+//指定農業体験イベント予約入力ページ
+Route::get('/reservations/event/{event_id}', [UserReservationController::class, 'reservationsByEventId'])->name('user.reservations.byEventId');
 
 //農業体験イベント予約機能
 Route::post('/user/reservations', [UserReservationController::class, 'store'])->name('user.reservations.store');
