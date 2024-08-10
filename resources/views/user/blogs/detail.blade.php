@@ -1,3 +1,7 @@
+@extends('user.layouts.app')
+
+@section('title', '農業ブログ')
+
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/blog-details.css') }}">
 
@@ -14,8 +18,8 @@
     <div class="blog-time">
         {{ $blog->created_at->format('Y-m-d H:i') }}
     </div>
+    <div class="back-link">
+        <a href="/user/blogs">一覧画面へ戻る</a>
+    </div>
 </div>
-
-<div class="back-link">
-    <a href="/user/blogs">一覧画面へ戻る</a>
-</div>
+@endsection

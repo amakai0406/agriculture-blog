@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\StoreBlogRequest;
 use App\Models\Blog;
+use App\Models\Vegetable;
 use App\Models\BlogImage;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Storage;
@@ -30,8 +31,9 @@ class AdminBlogController extends Controller
 
     public function create()
     {
-        //ブログ作成ブログ作成ページを返す
-        return view('admin.blogs.create');
+        $vegetables = Vegetable::all();
+
+        return view('admin.blogs.create', compact('vegetables'));
     }
 
     public function store(StoreBlogRequest $request)
@@ -71,6 +73,11 @@ class AdminBlogController extends Controller
             //admin.blogs.indexにリダイレクトし、登録成功後に新しいブログを投稿しましたとメッセージを表示する
             return to_route('admin.blogs.index')->with('success', '新しいブログを投稿しました');
 
+        }
+
+        if ($request->has('vegetable_ids')) {
+            $vegetableIds = $request->input('vegetable_ids');
+            $blog->vegetables()->attach($vegetableIds);
         }
 
     }

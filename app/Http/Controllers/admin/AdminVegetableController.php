@@ -26,7 +26,6 @@ class AdminVegetableController extends Controller
 
     public function create()
     {
-        //admin.vegetables.createビューを返す
         return view('admin.vegetables.create');
     }
 

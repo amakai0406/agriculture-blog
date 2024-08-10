@@ -3,7 +3,7 @@
 @section('title', 'ブログ一覧')
 
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/blogs.css') }}">
+<link rel="stylesheet" href="{{ asset('css/blog-index.css') }}">
 
 <div class="blog-list">
     @foreach($blogs as $blog)
@@ -15,7 +15,7 @@
                         <img src="{{ asset('storage/' . $image->image_path) }}" alt="Blog Image">
                     @endforeach
                 </div>
-                <p>{{ $blog->content }}</p>
+                <p>{{ \Illuminate\Support\Str::limit($blog->content, 100, '...') }}</p>
                 <div>
                     {{ $blog->created_at->format('Y-m-d H:i') }}
                 </div>

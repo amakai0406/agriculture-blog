@@ -76,3 +76,78 @@ button:hover {
 .custom-alert li {
     margin-bottom: 5px;
 }
+.dropdown-menu {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.checkbox-group {
+    padding: 10px;
+}
+
+.form-check {
+    margin-bottom: 10px;
+}
+
+.form-check-input {
+    margin-right: 10px;
+}
+
+.form-check-label {
+    margin-bottom: 0;
+}
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.dropdown-checkbox {
+    display: none;
+}
+
+.dropdown-label {
+    display: block;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.dropdown-label:hover {
+    background-color: #0056b3;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+.dropdown-checkbox:checked ~ .dropdown-content {
+    display: block;
+}
+
+.checkbox-group {
+    padding: 10px;
+}
+
+.form-check {
+    margin-bottom: 10px;
+}
+
+.form-check-input {
+    margin-right: 10px;
+}
+
+.form-check-label {
+    margin-bottom: 0;
+}

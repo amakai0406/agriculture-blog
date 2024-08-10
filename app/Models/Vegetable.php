@@ -12,4 +12,9 @@ class Vegetable extends Model
 
     //フォームからのデータを直接Vegetableモデルに割り当てるように設定
     protected $fillable = ['name', 'description', 'image'];
+
+    public function blogs()
+    {
+        return $this->belongsToMany(Blog::class, 'vegetable_blog');
+    }
 }

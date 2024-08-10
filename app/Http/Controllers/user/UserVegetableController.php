@@ -19,18 +19,8 @@ class UserVegetableController extends Controller
 
     public function show(int $id)
     {
-        try {
+        $vegetable = Vegetable::with('blogs')->findOrFail($id);
 
-            //findOrFailで指定されたidと一致するレコードをvegetablesテーブルから取得
-            $vegetable = Vegetable::findOrFail($id);
-            //指定されたレコードが見つからなかった場合
-        } catch (ModelNotFoundException $e) {
-            //json形式でレスポンスを作成し、404ステータスコードとやさいが見つかりませんというメッセージを表示
-            return response()->json(['error' => 'やさいが見つかりませんでした'], 404);
-        }
-
-
-        //compactメソッドでvegetablesをuser.vegetables.detailビューに渡す
-        return view('user.vegetables.detail', compact('vegetable'));
+        return view('user.vegetables.show', compact('vegetable'));
     }
 }
