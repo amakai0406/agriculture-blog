@@ -38,10 +38,11 @@ input[type="text"],
 textarea,
 input[type="file"] {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ddd;
+    max-width: 700px;
+    padding: 8px;
     border-radius: 5px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
 }
 
 button {
@@ -141,13 +142,35 @@ button:hover {
 }
 
 .form-check {
+    display: flex;
+    align-items: center;
     margin-bottom: 10px;
 }
 
 .form-check-input {
     margin-right: 10px;
+    margin-top: 0;
 }
 
 .form-check-label {
     margin-bottom: 0;
+    margin-top: 0;
+}
+
+.selected-vegetables {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.selected-vegetables span {
+    display: inline-block;
+    background-color: #96c296;
+    color: white;
+    padding: 5px 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
 }

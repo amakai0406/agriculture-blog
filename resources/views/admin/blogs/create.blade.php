@@ -42,7 +42,8 @@
                             @foreach($vegetables as $vegetable)
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" id="vegetable{{ $vegetable->id }}"
-                                        name="vegetable_ids[]" value="{{ $vegetable->id }}">
+                                        name="vegetable_ids[]" value="{{ $vegetable->id }}"
+                                        onchange="updateSelectedVegetables()">
                                     <label class="form-check-label"
                                         for="vegetable{{ $vegetable->id }}">{{ $vegetable->name }}</label>
                                 </div>
@@ -52,13 +53,39 @@
                 </div>
             </div>
 
+            <div id="selected-vegetables" class="selected-vegetables"></div>
+
             <div class="form-group">
                 <label for="image">画像</label>
-                <input type="file" id="image" name="image" accept="image/*" required>
+                <input type="file" id="image" name="image" accept="image/*" onchange="previewImage(event)" required>
+                <img id="image-preview" style="display:none;">
             </div>
             <button type="submit">ブログを投稿する</button>
         </form>
     </div>
+
+    <script>
+        function updateSelectedVegetables() {
+            const selectedContainer = document.getElementById('selected-vegetables');
+            selectedContainer.innerHTML = '';
+
+            document.querySelectorAll('.form-check-input:checked').forEach(function (checkedBox) {
+                const vegetableSpan = document.createElement('span');
+                vegetableSpan.textContent = checkedBox.nextElementSibling.textContent;
+                selectedContainer.appendChild(vegetableSpan);
+            });
+        }
+
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var output = document.getElementById('image-preview');
+                output.src = reader.result;
+                output.style.display = 'block';
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
 </body>
 
 </html>

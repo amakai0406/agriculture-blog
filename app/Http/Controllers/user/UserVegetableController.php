@@ -21,6 +21,6 @@ class UserVegetableController extends Controller
     {
         $vegetable = Vegetable::with('blogs')->findOrFail($id);
 
-        return view('user.vegetables.show', compact('vegetable'));
+        return view('user.vegetables.detail', compact('vegetable'));
     }
 }

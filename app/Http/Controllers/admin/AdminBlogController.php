@@ -69,16 +69,16 @@ class AdminBlogController extends Controller
             $blogImage->image_path = $imagePath;
 
             $blogImage->save();
-
-            //admin.blogs.indexにリダイレクトし、登録成功後に新しいブログを投稿しましたとメッセージを表示する
-            return to_route('admin.blogs.index')->with('success', '新しいブログを投稿しました');
-
         }
 
+        //attachメソッドで指定されたIDの野菜をブログ記事に新たに関連付け
         if ($request->has('vegetable_ids')) {
             $vegetableIds = $request->input('vegetable_ids');
             $blog->vegetables()->attach($vegetableIds);
         }
+
+        //admin.blogs.indexにリダイレクトし、登録成功後に新しいブログを投稿しましたとメッセージを表示する
+        return to_route('admin.blogs.index')->with('success', '新しいブログを投稿しました');
 
     }
 
@@ -87,8 +87,14 @@ class AdminBlogController extends Controller
         //指定された$idデータをblogsテーブルから取得し、$blogに格納する(findメソッドはデータがない場合nullを返す)
         $blog = Blog::find($id);
 
+        $vegetables = Vegetable::all();
+
+        //pluck()特定のカラムの値を抽出する　toArray()コレクションオブジェクトを標準的なPHPの配列に変換
+        //関連するvegetablesモデルのidを取り出し、idを配列として格納
+        $selectedVegetableIds = $blog->vegetables->pluck('id')->toArray();
+
         //blogのデータをcompactメソッドでadmin.blogs.editビューに渡す
-        return view('admin.blogs.edit', compact('blog'));
+        return view('admin.blogs.edit', compact('blog', 'vegetables', 'selectedVegetableIds'));
 
     }
     public function update(StoreBlogRequest $request, int $id)
@@ -138,6 +144,10 @@ class AdminBlogController extends Controller
 
             //トランザクションコミット
             DB::commit();
+
+            if ($request->has('vegetable_ids')) {
+                $blog->vegetables()->sync($request->input('vegetable_ids'));
+            }
 
             ///admin/blogs/{id}/edit指定されたidのページにリダイレクトし、ブログが更新されましたとメッセージを表示する
             return redirect()->route('admin.blogs.edit', $blog->id)->with('success', 'ブログが更新されました');

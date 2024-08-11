@@ -39,6 +39,24 @@
                     required>{{ $blog->content }}</textarea>
             </div>
             <div class="form-group">
+                <label for="vegetables">関連する野菜</label>
+                <div class="custom-dropdown">
+                    <input type="checkbox" id="dropdown-checkbox" class="dropdown-checkbox">
+                    <label for="dropdown-checkbox" class="dropdown-label">野菜を選択</label>
+                    <div class="dropdown-content">
+                        <div id="vegetable-selection" class="vegetable-selection">
+                            @foreach($vegetables as $vegetable)
+                                <label>
+                                    <input type="checkbox" name="vegetable_ids[]" value="{{ $vegetable->id }}"
+                                        @if(in_array($vegetable->id, $selectedVegetableIds)) checked @endif>
+                                    {{ $vegetable->name }}
+                                </label>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group spacing-between-vegetables-and-image">
                 <label for="image">画像</label>
                 @if($blog->images->isNotEmpty())
                     @foreach($blog->images as $image)
@@ -53,12 +71,14 @@
                         @endif
                     @endforeach
                 @else 
+
                     <div>No image</div>
                 @endif
                 <input type="file" class="form-control-file" id="image" name="image">
             </div>
 
-            <button type="submit" class="btn btn-primary custom-spacing">更新する</button>
+
+            <button type="submit" class="update-button">更新する</button>
         </form>
         <form method="POST" action="{{ route('admin.blogs.destroy', $blog->id) }}">
             @csrf
