@@ -146,10 +146,12 @@ class AdminBlogController extends Controller
             DB::commit();
 
             if ($request->has('vegetable_ids')) {
+                //vegetables()ブログ記事と野菜の間のリレーションシップ（多対多の関係）
+                //syncメソッド現在関連付けられているレコードを新しいIDリストに置き換える
                 $blog->vegetables()->sync($request->input('vegetable_ids'));
             }
 
-            ///admin/blogs/{id}/edit指定されたidのページにリダイレクトし、ブログが更新されましたとメッセージを表示する
+            //admin/blogs/{id}/edit指定されたidのページにリダイレクトし、ブログが更新されましたとメッセージを表示する
             return redirect()->route('admin.blogs.edit', $blog->id)->with('success', 'ブログが更新されました');
 
             //エラー(例外)が発生した場合
