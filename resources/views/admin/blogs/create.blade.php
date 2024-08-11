@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Blog</title>
+    <title>ブログ作成</title>
     <link rel="stylesheet" href="{{ asset('css/admin/blog-create.css') }}">
 </head>
 
