@@ -1,9 +1,10 @@
 body {
-    /*Arialフォントの使用*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 上下のスペースを広げる */
+    min-height: 100vh; /* ビューポート全体の高さに合わせる */
     font-family: "Arial";
-    /*背景色の設定*/
     background-color: #f0f8ff;
-    /*色の設定*/
     color: #333;
     margin: 0;
     padding: 0;
@@ -11,17 +12,18 @@ body {
 
 .blog-details {
     /*最大幅の設定*/
-    max-width: 700px;
+    max-width: 900px;
     /*枠の外側上下を40xp左右を自動調整*/
-    margin: 40px auto;
+    margin: 20px auto;
     /*内側の余白設定*/
-    padding: 70px;
+    padding: 70px 60px;
     /*背景色の設定*/
     background-color: #fff;
     /*角の設定*/
     border-radius: 10px;
     /*影の追加により立体的*/
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    min-height: 500px;
 }
 
 .blog-details h1 {
@@ -36,25 +38,19 @@ body {
 }
 
 .blog-images {
-    /*flex一括してプロパティフレックスアイテムの指定*/
     display: flex;
-    /*親要素を超える場合次の行へ*/
-    flex-wrap: wrap;
-    /*アイテム間の間隔*/
-    gap: 10px;
-    /*こ要素を中央揃え*/
-    justify-content: center;
-    /*下部余白*/
-    margin-bottom: 20px;
+    justify-content: center; /* 横方向の中央揃え */
+    width: 100%; /* コンテナ幅を100%に */
+    overflow: hidden;
 }
 
 .blog-images img {
-    /*親要素に対しての最大幅*/
-    max-width: 80%;
-    /*角の丸み*/
+    width: 80%; /* 画像の横幅を広げる */
+    height: auto; /* 高さを自動調整 */
+    max-height: 550px; /* 画像の縦幅を広げる */
     border-radius: 10px;
-    /*影の追加*/
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
 }
 
 .blog-details p {
@@ -69,30 +65,18 @@ body {
 }
 
 .back-link {
-    /*中央揃え*/
     text-align: center;
-    /*上部に余白*/
     margin-top: 20px;
 }
 
 .back-link a {
-    /*インラインブロック要素->インライン要素と要素幅が同じ*/
-    display: inline-block;
-    /*内部余白*/
-    padding: 10px 20px;
-    /*背景色*/
-    background-color: #007bff;
-    /*文字色*/
-    color: white;
-    /*リンクの下線部を消す*/
+    color: #007bff;
     text-decoration: none;
-    /*角の丸み*/
-    border-radius: 5px;
+    font-weight: bold;
 }
 
 .back-link a:hover {
-    /*ホバーした時の背景色*/
-    background-color: #0056b3;
+    text-decoration: underline;
 }
 
 .blog-time {

@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #d2f8d8;
+    background-color: #f6f6f6;
     color: #333;
 }
 
@@ -11,7 +11,7 @@ body {
     max-width: 600px;
     margin: 50px auto;
     padding: 70px;
-    background-color: #efefdf;
+    background-color: #f3f3f3;
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -37,26 +37,103 @@ body {
     color: #555;
     text-align: justify;
 }
-
-.return-link {
-    display: block;
-    margin: 20px auto 20px;
+.back-link {
     text-align: center;
-    font-size: 18px;
-    color: #fff;
-    text-decoration: none;
-    background-color: #498b5e;
-    padding: 10px 20px;
-    border-radius: 5px;
+    margin-top: 20px;
 }
 
-.return-link:hover {
+.back-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-link a:hover {
     text-decoration: underline;
 }
 
-@media (max-width: 600px) {
-    .vegetable-container {
-        width: 90%;
-        padding: 50px;
-    }
+.centered-heading {
+    text-align: center;
+    margin-top: 1000spx;
+}
+
+.centered-heading {
+    text-align: center;
+}
+.blog-details {
+    width: 70%;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.related-blogs {
+    margin-top: 30px;
+}
+
+.related-blogs h2 {
+    color: #333;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.blog-detail {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+.blog-detail h3 {
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.blog-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.blog-images img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.blog-content {
+    font-size: 1.2em;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.blog-time {
+    color: #999;
+    font-size: 0.9em;
+    text-align: right;
+}
+
+.alert {
+    padding: 20px;
+    margin-bottom: 30px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    position: relative;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
 }

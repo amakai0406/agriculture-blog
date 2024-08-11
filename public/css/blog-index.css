@@ -1,0 +1,45 @@
+.blog-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* 各ブログ項目の間隔を設定 */
+    padding: 20px;
+}
+
+.blog-Link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.blog-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    transition: box-shadow 0.3s ease;
+}
+
+.blog-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blog-images img {
+    max-width: 30%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.blog-item h2 {
+    font-size: 1.5em;
+    margin-bottom: 12px;
+}
+
+.blog-item p {
+    color: #555;
+    margin-bottom: 16px;
+}
+
+.blog-item div {
+    font-size: 0.9em;
+    color: #999;
+}

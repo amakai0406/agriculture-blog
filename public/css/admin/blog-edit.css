@@ -1,52 +1,196 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
 .container {
-    width: 80%;
-    margin: auto;
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
 }
 
 .blog-detail {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
 }
 
 .blog-detail img {
-    max-width: 50%;
+    max-width: 100%;
     height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .blog-content {
-    margin-top: 20px;
+    margin-top: 30px;
     font-size: 1.2em;
-    padding: 10px;
+    padding: 15px;
 }
 
-.form-group #title {
-    width: 100%;
-    font-size: 1.2em;
-    padding: 10px;
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
-.form-group #content {
-    width: 100%;
-    font-size: 1.2em;
-    padding: 10px;
-}
-
-.blog-author {
-    margin-top: 10px;
-}
-
-.blog-dates {
-    margin-top: 10px;
-}
-
-.blog-dates div {
+.form-group label {
+    font-weight: bold;
     margin-bottom: 5px;
 }
 
-.alert {
+input[type="text"],
+textarea,
+input[type="file"] {
+    width: 100%;
+    max-width: 700px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    font-size: 1.2em;
+}
+.custom-alert {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
     padding: 15px;
+    border-radius: 5px;
     margin-bottom: 20px;
+}
+
+.custom-alert ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.custom-alert li {
+    margin-bottom: 5px;
+}
+
+.spacing-between-vegetables-and-image {
+    margin-top: 30px;
+}
+
+.update-button,
+.delete-button {
+    display: block;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+    border: none;
+    margin-top: 20px;
+    width: 100%;
+    font-size: 16px;
+}
+
+.update-button:hover {
+    background-color: #0056b3;
+}
+
+.delete-button {
+    background-color: #e3342f;
+}
+
+.delete-button:hover {
+    background-color: #cc1f1a;
+}
+
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.dropdown-checkbox {
+    display: none;
+}
+
+.dropdown-label {
+    display: block;
+    padding: 10px;
+    background-color: #a5d193;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.dropdown-label:hover {
+    background-color: #0056b3;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+.dropdown-checkbox:checked ~ .dropdown-content {
+    display: block;
+}
+
+.checkbox-group {
+    padding: 10px;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.form-check-input {
+    margin-right: 10px;
+    margin-top: 0;
+}
+
+.form-check-label {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.selected-vegetables {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.selected-vegetables span {
+    display: inline-block;
+    background-color: #96c296;
+    color: white;
+    padding: 5px 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+}
+
+.alert {
+    padding: 20px;
+    margin-bottom: 30px;
     border: 1px solid transparent;
     border-radius: 4px;
     position: relative;
@@ -63,16 +207,4 @@
     color: #721c24;
     background-color: #f8d7da;
     border-color: #f5c6cb;
-}
-
-.delete-button {
-    color: #e3342f;
-}
-
-.delete-button:hover {
-    color: #cc1f1a;
-}
-
-.custom-spacing {
-    margin-top: 20px;
 }
