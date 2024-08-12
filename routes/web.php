@@ -128,6 +128,9 @@ Route::middleware([Authenticate::class])->group(function () {
     //予約一覧ページ
     Route::get('/admin/reservations', [AdminReservationController::class, 'index'])->name('admin.reservations.index');
 
+    //特定の予約一覧ページ
+    Route::get('/admin/reservations/{eventId}', [AdminReservationController::class, 'show'])->name('admin.reservations.show');
+
     //予約状況の更新
     Route::put('/admin/reservations/{id}', [AdminReservationController::class, 'update'])->name('admin.reservations.update');
 

@@ -42,24 +42,18 @@
                     required>{{ old('description') }}</textarea>
             </div>
             <div class="form-group">
-                <label for="start_date">開始日</label>
-                <input type="date" class="form-control" id="start_date" name="start_date"
-                    value="{{ old('start_date') }}" required>
-            </div>
-            <div class="form-group">
-                <label for="end_date">終了日</label>
-                <input type="date" class="form-control" id="end_date" name="end_date" value="{{ old('end_date') }}"
-                    required>
-            </div>
-            <div class="form-group">
-                <label for="participants_count">参加人数</label>
-                <input type="number" class="form-control" id="participants_count" name="participants_count"
-                    value="{{ old('participants_count') }}" min="0" required>
+                <label for="event_date">開始日</label>
+                <input type="date" class="form-control" id="event_date" name="event_date"
+                    value="{{ old('event_date') }}" required>
             </div>
             <div class="form-group">
                 <label for="location">画像の表示場所</label>
-                <input type="text" class="form-control" id="location" name="location" value="{{ old('location') }}"
-                    required>
+                <select class="form-control" id="location" name="location" required>
+                    <option value="" disabled selected>画像の表示場所を選択してください</option>
+                    <option value="アイキャッチ画像" {{ old('location') == 'アイキャッチ画像' ? 'selected' : '' }}>アイキャッチ画像</option>
+                    <option value="イベント内容の中で表示する画像" {{ old('location') == 'イベント内容の中で表示する画像' ? 'selected' : '' }}>
+                        イベント内容の中で表示する画像</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="event_image">イベント画像</label>

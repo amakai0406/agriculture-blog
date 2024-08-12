@@ -33,6 +33,7 @@
                     <th>電話番号</th>
                     <th>メールアドレス</th>
                     <th>予約日</th>
+                    <th>申込日</th>
                     <th>予約状況</th>
                 </tr>
             </thead>
@@ -43,7 +44,8 @@
                         <td>{{ $eventReservation->representative_name }}</td>
                         <td>{{ $eventReservation->phone_number }}</td>
                         <td>{{ $eventReservation->email }}</td>
-                        <td>{{ $eventReservation->reservation_date }}</td>
+                        <td>{{ \Carbon\Carbon::parse($eventReservation->reservation_date)->format('Y-m-d') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($eventReservation->created_at)->format('Y-m-d') }}</td>
                         <td>
                             <form action="{{ route('admin.reservations.update', $eventReservation->id) }}" method="POST">
                                 @csrf

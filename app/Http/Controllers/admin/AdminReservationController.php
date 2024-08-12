@@ -17,6 +17,14 @@ class AdminReservationController extends Controller
         return view('admin.reservations.index', compact('eventReservations'));
     }
 
+    public function show(int $eventId)
+    {
+        //その$eventIdに対して、一致するevent_idを格納
+        $eventReservations = EventReservation::where('event_id', $eventId)->get();
+
+        return view('admin.reservations.show', compact('eventReservations'));
+    }
+
     public function update(StoreReservationStatusRequest $request, int $id)
     {
         $reservation = EventReservation::find($id);

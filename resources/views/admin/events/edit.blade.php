@@ -41,39 +41,37 @@
             </div>
 
             <div class="form-group">
-                <label for="start_date">開始日</label>
-                <input type="date" id="start_date" name="start_date" value="{{ $event->start_date }}" required>
-            </div>
-
-            <div class="form-group">
-                <label for="end_date">終了日</label>
-                <input type="date" id="end_date" name="end_date" value="{{ $event->end_date }}" required>
-            </div>
-
-            <div class="form-group">
-                <label for="participants_count">参加者数</label>
-                <input type="number" id="participants_count" name="participants_count"
-                    value="{{ $event->participants_count }}" required>
+                <label for="event_date">開催日</label>
+                <input type="date" id="start_date" name="event_date" value="{{ $event->event_date }}" required>
             </div>
 
             @foreach($event->eventImages as $eventImage)
                 <div class="form-group">
-                    <label for="location">ロケーション</label>
-                    <input type="text" id="location" name="location" value="{{ $eventImage->location }}" required>
+                    <label for="location">画像の表示場所</label>
+                    <select class="form-control" id="location" name="location" required>
+                        <option value="" disabled>画像の表示場所を選択してください</option>
+                        <option value="eyecatch" {{ $eventImage->location == 'eyecatch' ? 'selected' : '' }}>アイキャッチ画像</option>
+                        <option value="content" {{ $eventImage->location == 'content' ? 'selected' : '' }}>イベント内容の中で表示する画像
+                        </option>
+                    </select>
                 </div>
             @endforeach
 
-            <div class="form-group">
+
+            <div class="form-group spacing-between-vegetables-and-image">
                 <label for="event_image">イベント画像</label>
                 @if ($event->eventImages->isNotEmpty())
                     @foreach($event->eventImages as $eventImage)
-                        @if($eventImage->location == 'eyecatch')
+                        @if($eventImage->location == 'アイキャッチ画像')
+                            <img src="{{ asset('storage/' . $eventImage->image_path) }}" alt="{{ $event->title }} - eyecatch Image"
+                                class="event-image">
+                        @elseif($eventImage->location == 'イベント内容の中で表示する画像')
                             <div>
                                 <img src="{{ asset('storage/' . $eventImage->image_path) }}" alt="" class="event-image">
                             </div>
                         @endif
                     @endforeach
-                @else
+                @else 
                     <div>No image</div>
                 @endif
             </div>

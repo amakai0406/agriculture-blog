@@ -25,7 +25,6 @@ class AdminEventController extends Controller
                 'events.title',
                 'events.description',
                 'events.event_date',
-                'events.participants_count',
                 'events.created_at',
                 'events.updated_at',
                 //DB::raw()は生SQL文を使用するための方法
@@ -39,7 +38,7 @@ class AdminEventController extends Controller
                     ) as reserved_participants
             ')
             )
-            ->groupBy('events.id', 'events.title', 'events.participants_count')
+            ->groupBy('events.id', 'events.title')
             ->get();
 
         //compactで$eventsに格納されたデータをビューで使えるようにする
@@ -63,11 +62,7 @@ class AdminEventController extends Controller
 
         $event->description = $validated['description'];
 
-        $event->start_date = $validated['start_date'];
-
-        $event->end_date = $validated['end_date'];
-
-        $event->participants_count = $validated['participants_count'];
+        $event->event_date = $validated['event_date'];
 
         $event->save();
 
@@ -116,12 +111,7 @@ class AdminEventController extends Controller
 
             $event->description = $validated['description'];
 
-            $event->start_date = $validated['start_date'];
-
-            $event->end_date = $validated['end_date'];
-
-            $event->participants_count = $validated['participants_count'];
-
+            $event->start_date = $validated['event_date'];
 
             if ($request->hasFile('event_image')) {
 
