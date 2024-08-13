@@ -42,32 +42,36 @@
                     required>{{ old('description') }}</textarea>
             </div>
             <div class="form-group">
-                <label for="start_date">開始日</label>
-                <input type="date" class="form-control" id="start_date" name="start_date"
-                    value="{{ old('start_date') }}" required>
-            </div>
-            <div class="form-group">
-                <label for="end_date">終了日</label>
-                <input type="date" class="form-control" id="end_date" name="end_date" value="{{ old('end_date') }}"
-                    required>
-            </div>
-            <div class="form-group">
-                <label for="participants_count">参加人数</label>
-                <input type="number" class="form-control" id="participants_count" name="participants_count"
-                    value="{{ old('participants_count') }}" min="0" required>
-            </div>
-            <div class="form-group">
-                <label for="location">画像の表示場所</label>
-                <input type="text" class="form-control" id="location" name="location" value="{{ old('location') }}"
-                    required>
+                <label for="event_date">イベント開催日</label>
+                <input type="date" class="form-control" id="event_date" name="event_date"
+                    value="{{ old('event_date') }}" required>
             </div>
             <div class="form-group">
                 <label for="event_image">イベント画像</label>
                 <input type="file" class="form-control-file" id="event_image" name="event_image" accept="image/*">
+                <img id="image_preview" src="#" alt="画像プレビュー"
+                    style="max-width: 30%; display: none; margin-top: 10px;" />
             </div>
+            <select name="location" class="form-control">
+                <option value="" disabled selected>選択してください</option>
+                <option value="main">メイン画像</option>
+                <option value="content">イベント内容で表示する画像</option>
+            </select>
+
             <button type="submit" class="btn btn-primary">作成</button>
         </form>
     </div>
 </body>
+<script>
+    document.getElementById('event_image').addEventListener('change', function (event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = document.getElementById('image_preview');
+            output.src = reader.result;
+            output.style.display = 'block';
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    });
+</script>
 
 </html>

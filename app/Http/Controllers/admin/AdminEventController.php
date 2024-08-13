@@ -10,12 +10,36 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class EventController extends Controller
+class AdminEventController extends Controller
 {
 
     public function index()
     {
-        $events = Event::all();
+        //eventsターブルに対してクエリの実行　
+        $events = DB::table('events')
+            //eventsテーブルのidとevent_reservationsテーブルのevents_idを結合
+            ->leftJoin('event_reservations', 'events.id', '=', 'event_reservations.event_id')
+            //取得するカラム
+            ->select(
+                'events.id',
+                'events.title',
+                'events.description',
+                'events.event_date',
+                'events.created_at',
+                'events.updated_at',
+                //DB::raw()は生SQL文を使用するための方法
+                DB::raw('
+            SUM(
+                        CASE 
+                            WHEN event_reservations.status = "confirmed" THEN 1 
+                            WHEN event_reservations.status = "cancelled" THEN -1 
+                            ELSE 0 
+                        END
+                    ) as reserved_participants
+            ')
+            )
+            ->groupBy('events.id', 'events.title')
+            ->get();
 
         //compactで$eventsに格納されたデータをビューで使えるようにする
         return view('admin.events.index', compact('events'));
@@ -38,11 +62,7 @@ class EventController extends Controller
 
         $event->description = $validated['description'];
 
-        $event->start_date = $validated['start_date'];
-
-        $event->end_date = $validated['end_date'];
-
-        $event->participants_count = $validated['participants_count'];
+        $event->event_date = $validated['event_date'];
 
         $event->save();
 
@@ -71,7 +91,7 @@ class EventController extends Controller
 
     public function edit(int $id)
     {
-        $event = Event::findOrFail($id);
+        $event = Event::with('eventImages')->find($id);
 
         return view('admin.events.edit', compact('event'));
     }
@@ -91,12 +111,7 @@ class EventController extends Controller
 
             $event->description = $validated['description'];
 
-            $event->start_date = $validated['start_date'];
-
-            $event->end_date = $validated['end_date'];
-
-            $event->participants_count = $validated['participants_count'];
-
+            $event->event_date = $validated['event_date'];
 
             if ($request->hasFile('event_image')) {
 
@@ -114,7 +129,7 @@ class EventController extends Controller
 
                 $event->eventImages()->create([
                     'image_path' => $path,
-                    'location' => $request->location,
+                    'location' => $validated['location'],
                 ]);
             }
             $event->save();

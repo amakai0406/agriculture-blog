@@ -5,7 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminVegetableController;
 use App\Http\Controllers\Admin\AdminBlogController;
-use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\AdminEventController;
 use App\Http\Controllers\Admin\AdminReservationController;
 
 use App\Http\Controllers\User\UserBlogController;
@@ -72,46 +72,28 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::post('admin/logout', [AuthController::class, 'logout'])->name('admin.admins.logout');
 
     //農業体験イベント一覧表示
-    Route::get('admin/events', [EventController::class, 'index'])->name('admin.events.index');
+    Route::get('admin/events', [AdminEventController::class, 'index'])->name('admin.events.index');
 
     //農業体験イベント作成ページの表示
-    Route::get('admin/events/create', [EventController::class, 'create'])->name('admin.events.create');
+    Route::get('admin/events/create', [AdminEventController::class, 'create'])->name('admin.events.create');
 
     //農業体験イベント登録処理
-    Route::post('admin/events', [EventController::class, 'store'])->name('admin.events.store');
+    Route::post('admin/events', [AdminEventController::class, 'store'])->name('admin.events.store');
 
     //農業体験イベント編集
-    Route::get('/admin/events/{id}/edit', [EventController::class, 'edit'])->name('admin.events.edit');
+    Route::get('/admin/events/{id}/edit', [AdminEventController::class, 'edit'])->name('admin.events.edit');
 
     //農業体験イベント更新
-    Route::put('admin/events/{id}', [EventController::class, 'update'])->name('admin.events.update');
+    Route::put('admin/events/{id}', [AdminEventController::class, 'update'])->name('admin.events.update');
 
     //農業体験イベント削除
-    Route::delete('admin/events/{id}', [EventController::class, 'destroy'])->name('admin.events.destroy');
+    Route::delete('admin/events/{id}', [AdminEventController::class, 'destroy'])->name('admin.events.destroy');
 
     //ブログ作成ページ
     Route::get('/admin/blogs/create', [AdminBlogController::class, 'create'])->name('admin.blogs.create');
 
     //ブログ投稿機能
     Route::post('/admin/blogs', [AdminBlogController::class, 'store'])->name('admin.blogs.store');
-
-    //農業体験イベント一覧表示
-    Route::get('admin/events', [EventController::class, 'index'])->name('admin.events.index');
-
-    //農業体験イベント作成ページの表示
-    Route::get('admin/events/create', [EventController::class, 'create'])->name('admin.events.create');
-
-    //農業体験イベント登録処理
-    Route::post('admin/events', [EventController::class, 'store'])->name('admin.events.store');
-
-    //農業体験イベント編集
-    Route::get('/admin/events/{id}/edit', [EventController::class, 'edit'])->name('admin.events.edit');
-
-    //農業体験イベント更新
-    Route::put('admin/events/{id}', [EventController::class, 'update'])->name('admin.events.update');
-
-    //農業体験イベント削除
-    Route::delete('admin/events/{id}', [EventController::class, 'destroy'])->name('admin.events.destroy');
 
     //ブログ一覧ページ
     Route::get('/admin/blogs', [AdminBlogController::class, 'index'])->name('admin.blogs.index');
@@ -145,6 +127,9 @@ Route::middleware([Authenticate::class])->group(function () {
 
     //予約一覧ページ
     Route::get('/admin/reservations', [AdminReservationController::class, 'index'])->name('admin.reservations.index');
+
+    //特定の予約一覧ページ
+    Route::get('/admin/reservations/{eventId}', [AdminReservationController::class, 'show'])->name('admin.reservations.show');
 
     //予約状況の更新
     Route::put('/admin/reservations/{id}', [AdminReservationController::class, 'update'])->name('admin.reservations.update');

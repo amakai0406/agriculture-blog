@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>イベント一覧</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/admin/event-index.css') }}">
 </head>
 
 <body>
@@ -34,8 +34,8 @@
                 <tr>
                     <th>タイトル</th>
                     <th>イベント内容</th>
-                    <th>開催期間</th>
-                    <th>参加人数</th>
+                    <th>開催日</th>
+                    <th>参加可能人数</th>
                     <th>作成日</th>
                     <th>更新日</th>
                     <th>編集</th>
@@ -45,14 +45,17 @@
                 @foreach($events as $event)
                     <tr>
                         <td>{{ $event->title }}</td>
-                        <td>{{ $event->description }}</td>
+                        <td>{{ \Illuminate\Support\Str::limit($event->description, 100) }}</td>
 
                         <td>
-                            {{ \Carbon\Carbon::parse($event->start_date)->format('Y-m-d') . ' 〜 ' . \Carbon\Carbon::parse($event->end_date)->format('Y-m-d') }}
+                            {{ \Carbon\Carbon::parse($event->event_date)->format('Y-m-d') }}
                         </td>
 
                         </td>
-                        <td>{{ $event->participants_count }}</td>
+                        <td>
+                            <a
+                                href="{{ route('admin.reservations.show', ['eventId' => $event->id]) }}">{{ $event->reserved_participants }}</a>
+                        </td>
                         <td>{{ $event->created_at }}</td>
                         <td>{{ $event->updated_at }}</td>
                         <td>
