@@ -76,7 +76,7 @@
             </select>
 
             <div class="form-group">
-                <button type="submit" class="update-button">更新</button>
+                <button class="update-btn">更新</button>
             </div>
 
         </form>
@@ -85,7 +85,7 @@
             @csrf
             @method('DELETE')
             <div class="form-group">
-                <button type="submit" class="delete-button" onclick="return confirm('本当に削除しますか？')">削除</button>
+                <button type="submit" class="delete-btn" onclick="return confirm('本当に削除しますか？')">削除</button>
             </div>
         </form>
 
