@@ -91,7 +91,7 @@ class AdminEventController extends Controller
 
     public function edit(int $id)
     {
-        $event = Event::findOrFail($id);
+        $event = Event::with('eventImages')->find($id);
 
         return view('admin.events.edit', compact('event'));
     }
@@ -111,7 +111,7 @@ class AdminEventController extends Controller
 
             $event->description = $validated['description'];
 
-            $event->start_date = $validated['event_date'];
+            $event->event_date = $validated['event_date'];
 
             if ($request->hasFile('event_image')) {
 
@@ -129,7 +129,7 @@ class AdminEventController extends Controller
 
                 $event->eventImages()->create([
                     'image_path' => $path,
-                    'location' => $request->location,
+                    'location' => $validated['location'],
                 ]);
             }
             $event->save();

@@ -83,8 +83,9 @@ textarea {
 }
 
 .event-image {
-    width: 150px;
+    max-width: 30%;
     height: auto;
+    margin-bottom: 10px;
 }
 
 .alert-success {
@@ -97,4 +98,7 @@ textarea {
     color: #721c24;
     background-color: #f8d7da;
     border-color: #f5c6cb;
+}
+select[name="location"] {
+    margin-bottom: 20px;
 }
