@@ -58,25 +58,27 @@
             </div>
             <div class="form-group spacing-between-vegetables-and-image">
                 <label for="image">画像</label>
-                @if($blog->images->isNotEmpty())
-                    @foreach($blog->images as $image)
-                        @if($image->location == 'eyecatch')
-                            <div>
-                                <img src="{{ asset('storage/' . $image->image_path) }}" alt="{{ $blog->title }} - eyecatch Image">
-                            </div>
-                        @elseif($image->location == 'content')
-                            <div>
-                                <img src="{{ asset('storage/' . $image->image_path) }}" alt="{{ $blog->title }} - Content Image">
-                            </div>
-                        @endif
-                    @endforeach
-                @else 
-
-                    <div>No image</div>
-                @endif
-                <input type="file" class="form-control-file" id="image" name="image">
+                <div id="current-images">
+                    @if($blog->images->isNotEmpty())
+                        @foreach($blog->images as $image)
+                            @if($image->location == 'eyecatch')
+                                <div>
+                                    <img src="{{ asset('storage/' . $image->image_path) }}"
+                                        alt="{{ $blog->title }} - eyecatch Image" id="eyecatch-image" class="img-preview">
+                                </div>
+                            @elseif($image->location == 'content')
+                                <div>
+                                    <img src="{{ asset('storage/' . $image->image_path) }}" alt="{{ $blog->title }} - Content Image"
+                                        id="content-image" class="img-preview">
+                                </div>
+                            @endif
+                        @endforeach
+                    @else 
+                        <div>No image</div>
+                    @endif
+                </div>
+                <input type="file" class="form-control-file" id="image" name="image" onchange="previewImage(event)">
             </div>
-
 
             <button type="submit" class="update-button">更新する</button>
         </form>
@@ -86,6 +88,21 @@
             <button type="submit" class="delete-button" onclick="return confirm('本当に削除しますか？')">削除</button>
         </form>
     </div>
+
+    <script>
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    // 現在表示されている画像をプレビューに置き換える
+                    const currentImages = document.getElementById('current-images');
+                    currentImages.innerHTML = `<img src="${e.target.result}" class="img-preview" alt="New Image">`;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
 </body>
 
 </html>

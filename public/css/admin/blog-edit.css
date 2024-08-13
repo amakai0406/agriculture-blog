@@ -131,7 +131,7 @@ input[type="file"] {
 }
 
 .dropdown-label:hover {
-    background-color: #0056b3;
+    background-color: #a7c288;
 }
 
 .dropdown-content {
@@ -207,4 +207,10 @@ input[type="file"] {
     color: #721c24;
     background-color: #f8d7da;
     border-color: #f5c6cb;
+}
+.img-preview {
+    max-width: 150px;
+    max-height: 150px;
+    object-fit: cover;
+    margin-bottom: 10px;
 }
