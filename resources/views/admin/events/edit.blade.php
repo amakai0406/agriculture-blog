@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('admin.layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>イベント編集</title>
-    <link rel="stylesheet" href="{{ asset('css/admin/event-edit.css') }}">
-</head>
+@section('title', 'イベント編集')
+
+@section('content')
+<link rel="stylesheet" href="{{ asset('css/admin/event-edit.css') }}">
 
 <body>
     <div class="container">
@@ -126,5 +123,4 @@
         }
     });
 </script>
-
-</html>
+@endsection

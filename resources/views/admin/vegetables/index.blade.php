@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('admin.layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>やさい一覧</title>
-    <link rel="stylesheet" href="{{ asset('css/admin/vegetable-index.css') }}">
-</head>
+@section('title', 'やさい一覧')
+
+@section('content')
+<link rel="stylesheet" href="{{ asset('css/admin/vegetable-index.css') }}">
 
 <body>
     <div class="container">
@@ -55,5 +52,4 @@
         </div>
     </div>
 </body>
-
-</html>
+@endsection
