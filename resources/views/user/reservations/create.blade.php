@@ -1,4 +1,4 @@
-@extends('user.layouts.app')
+@extends('user.layouts.header')
 
 @section('title', '予約入力フォーム')
 
@@ -44,4 +44,5 @@
         <button type="submit">予約する</button>
     </form>
 </div>
+@include('user.layouts.footer') 
 @endsection

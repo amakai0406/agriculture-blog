@@ -1,10 +1,10 @@
-@extends('user.layouts.app')
+@extends('user.layouts.header')
 
-@section('title', 'やさいのラインナップ')
+@section('title', 'やさい一覧')
 
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/vegetable-index.css') }}">
-<h2>やさいのラインナップ</h2>
+<h2>やさい一覧</h2>
 <ul class="vegetableLineup-items">
     @foreach ($vegetables as $vegetable)
         <li class="vegetableLineup-item">
@@ -19,4 +19,5 @@
         </li>
     @endforeach
 </ul>
+@include('user.layouts.footer') 
 @endsection

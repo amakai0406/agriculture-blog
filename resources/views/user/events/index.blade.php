@@ -1,4 +1,4 @@
-@extends('user.layouts.app')
+@extends('user.layouts.header')
 
 @section('title', '農業体験イベント一覧')
 
@@ -31,4 +31,5 @@
         </div>
     @endif
 </div>
+@include('user.layouts.footer') 
 @endsection
