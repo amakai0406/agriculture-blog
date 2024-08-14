@@ -13,9 +13,9 @@
         <nav>
             <ul class="main-nav">
                 <li><a href="{{ route('user.home.index') }}">トップページ</a></li>
-                <li><a href="{{ route('user.vegetables.index') }}">やさい一覧</a></li>
-                <li><a href="{{ route('user.blogs.index') }}">ブログ一覧</a></li>
                 <li><a href="{{ route('user.events.index') }}">イベント一覧</a></li>
+                <li><a href="{{ route('user.blogs.index') }}">ブログ一覧</a></li>
+                <li><a href="{{ route('user.vegetables.index') }}">やさい一覧</a></li>
                 <li><a href="{{ route('user.reservations.create') }}">農業体験予約</a></li>
             </ul>
         </nav>
