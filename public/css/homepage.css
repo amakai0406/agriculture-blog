@@ -9,10 +9,10 @@
     margin-left: 36px;
 }
 .main-nav a {
-    color: azure;
+    color: rgb(3, 0, 0);
 }
 .main-nav a:hover {
-    color: #0db;
+    color: rgb(33, 0, 221);
 }
 .page-header {
     display: flex;
@@ -27,19 +27,26 @@
     text-align: center;
     margin-top: 10%;
 }
-
 .home-content p {
     font-size: 1.2rem;
-    margin: 10px 0 42px;
+    margin: 50px 0 42px;
     color: azure;
+    text-shadow: 1px 1px 2px black, -1px -1px 2px black, 1px -1px 2px black,
+        -1px 1px 2px black;
+    line-height: 0.5;
 }
+
 .page-title {
     font-size: 4rem;
     font-family: "Philosopher", serif;
     text-transform: uppercase;
     font-weight: normal;
     color: azure;
+    text-shadow: 1px 1px 2px black, -1px -1px 2px black, 1px -1px 2px black,
+        -1px 1px 2px black;
+    line-height: 0.8;
 }
+
 .big-bg {
     background-size: cover;
     background-position: center top;
@@ -53,77 +60,120 @@
 #home .page-title {
     text-transform: none;
 }
-.blog-list {
+.event-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.event {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    transition: box-shadow 0.3s ease;
+    flex: 1 1 calc(33.333% - 30px);
+    box-sizing: border-box;
+}
+
+.event-images {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.event-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.event-title {
+    font-size: 1.5em;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.event-description,
+.event-period,
+.event-participants {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.event a {
     display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #4caf50;
+    text-decoration: none;
+}
+
+.event a:hover {
+    text-decoration: underline;
+}
+
+.blog-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
 }
 
 .blog-Link {
     text-decoration: none;
-    color: inherit;
-    display: block;
-    margin-bottom: 20px;
-    transition: transform 0.3s;
+    color: #4caf50;
 }
 
 .blog-Link:hover {
-    transform: translateY(-10px);
+    text-decoration: underline;
 }
 
 .blog-item {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-    padding: 15px;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.blog-item h2 {
-    margin: 0;
-    font-size: 1.3em;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.blog-images {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
+    border-radius: 8px;
+    padding: 16px;
 }
 
 .blog-images img {
-    width: auto;
-    max-width: 100%;
-    max-height: 300px;
-    border-radius: 5px;
-    object-fit: cover;
+    max-width: 30%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.blog-item h2 {
+    font-size: 1.5em;
+    margin-bottom: 12px;
 }
 
 .blog-item p {
-    margin: 10px 0;
     color: #555;
-    font-size: 0.9em;
-    line-height: 1.5;
+    margin-bottom: 16px;
 }
 
 .blog-item div {
+    font-size: 0.9em;
     color: #999;
-    font-size: 0.8em;
-    text-align: right;
 }
-.centered-link {
-    display: flex;
-    justify-content: center;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
 }
 
-.vegetableLineup-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+h2 {
+    text-align: center;
+    font-size: 2em;
+    color: #4caf50;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: "Arial", sans-serif;
 }
 
 .vegetableLineup-items {
@@ -131,39 +181,44 @@
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    justify-content: center;
 }
 
 .vegetableLineup-item {
-    flex: 1 1 calc(25% - 20px);
+    margin: 40px;
     box-sizing: border-box;
-    background-color: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.vegetableLineup-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    width: calc(33.333% - 80px); /* 横に3個表示するために幅を調整 */
+    flex: 0 0 auto;
 }
 
 .vegetableLineup-item-container {
+    display: block;
     text-decoration: none;
     color: inherit;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+}
+
+.vegetableLineup-item-img {
+    width: 80%;
+    height: 350px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .vegetableLineup-item-img img {
     width: 50%;
     height: auto;
-    display: block;
-    margin: 0 auto;
-    border-bottom: 1px solid #eee;
 }
 
 .vegetableLineup-item-body {
-    padding: 15px;
+    padding: 5px;
+    margin-top: -30px;
     text-align: center;
 }
 
@@ -172,6 +227,24 @@
     margin: 0;
     color: #333;
 }
-.outer-container {
-    margin-left: 150px;
+
+.vegetable-Link {
+    text-decoration: none;
+    color: #4caf50;
+}
+
+.vegetable-Link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .vegetableLineup-item {
+        width: calc(50% - 40px); /* タブレットや中小デバイス向けに2列表示 */
+    }
+}
+
+@media (max-width: 480px) {
+    .vegetableLineup-item {
+        width: calc(100% - 40px); /* スマートフォン向けに1列表示 */
+    }
 }

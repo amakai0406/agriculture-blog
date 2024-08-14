@@ -5,6 +5,7 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/blog-index.css') }}">
 
+<h1>ブログ一覧</h1>
 <div class="blog-list">
     @foreach($blogs as $blog)
         <a href="{{ route('user.blogs.show', ['id' => $blog->id])}}" class="blog-Link">
