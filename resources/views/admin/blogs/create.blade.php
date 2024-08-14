@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('admin.layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ブログ作成</title>
-    <link rel="stylesheet" href="{{ asset('css/admin/blog-create.css') }}">
-</head>
+@section('title', 'ブログの作成')
+
+@section('content')
+<link rel="stylesheet" href="{{ asset('css/admin/blog-create.css') }}">
 
 <body>
     <div class="container">
@@ -87,5 +84,4 @@
         }
     </script>
 </body>
-
-</html>
+@endsection
