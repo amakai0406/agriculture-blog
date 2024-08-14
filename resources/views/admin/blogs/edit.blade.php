@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('admin.layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/admin/blog-edit.css') }}">
-    <title>ブログ編集</title>
-</head>
+@section('title', 'ブログの編集')
+
+@section('content')
+<link rel="stylesheet" href="{{ asset('css/admin/blog-edit.css') }}">
 
 <body>
     <div class="container mt-5 blog-detail">
@@ -104,5 +101,4 @@
         }
     </script>
 </body>
-
-</html>
+@endsection

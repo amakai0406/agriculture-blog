@@ -21,10 +21,10 @@ use App\Http\Middleware\Authenticate;
 Route::get('/', [UserHomeController::class, 'index'])->name('user.home.index');
 
 //ログインページ
-Route::get('/admin/admins/login', [AuthController::class, 'index'])->name('admin.admins.login');
+Route::get('/admin/login', [AuthController::class, 'index'])->name('admin.admins.login');
 
 //ログイン機能
-Route::post('/admin/admins/login', [AuthController::class, 'login']);
+Route::post('/admin/login', [AuthController::class, 'login']);
 
 //やさい一覧ページ
 Route::get('/user/vegetables', [UserVegetableController::class, 'index'])->name('user.vegetables.index');
@@ -63,7 +63,7 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     //管理者作成ページ
-    Route::get('/admin/admins/create', [AdminController::class, 'create'])->name('admin.admins.create');
+    Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
 
     //管理者登録機能
     Route::post('/admin/admins', [AdminController::class, 'store'])->name('admin.admins.store');
