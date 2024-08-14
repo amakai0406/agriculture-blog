@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('user.layouts.header')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservation Complete</title>
-    <link rel="stylesheet" href="/css/reservation-complete.css">
-</head>
+@section('title', '予約完了')
+
+@section('content')
+<link rel="stylesheet" href="/css/reservation-complete.css">
 
 <body>
     <div class="container">
@@ -17,3 +14,5 @@
 </body>
 
 </html>
+@include('user.layouts.footer') 
+@endsection

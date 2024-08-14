@@ -1,4 +1,4 @@
-@extends('user.layouts.app')
+@extends('user.layouts.header')
 
 @section('title', 'やさい詳細')
 
@@ -36,6 +36,6 @@
         @endif
 
     </div>
-
 </body>
+@include('user.layouts.footer') 
 @endsection

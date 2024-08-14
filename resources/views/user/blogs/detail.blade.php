@@ -1,4 +1,4 @@
-@extends('user.layouts.app')
+@extends('user.layouts.header')
 
 @section('title', '農業ブログ')
 
@@ -22,4 +22,5 @@
         <a href="/user/blogs">一覧画面へ戻る</a>
     </div>
 </div>
+@include('user.layouts.footer') 
 @endsection

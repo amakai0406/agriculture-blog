@@ -1,5 +1,6 @@
 .main-nav {
     display: flex;
+    justify-content: center;
     font-size: 1.23rem;
     text-transform: uppercase;
     margin-top: 34px;
@@ -15,17 +16,21 @@
     color: rgb(33, 0, 221);
 }
 .page-header {
-    display: flex;
-    justify-content: space-between;
+    width: 100%;
+    background-color: #cfd7be;
+    margin: 0;
+    padding: 20px 0;
+    box-sizing: border-box;
 }
+
 .wrapper {
-    max-width: 1100px;
+    max-width: 1500px;
     margin: 0 auto;
-    padding: 0 4%;
+    padding: 1%;
 }
+
 .home-content {
     text-align: center;
-    margin-top: 10%;
 }
 .home-content p {
     font-size: 1.2rem;
@@ -38,6 +43,7 @@
 
 .page-title {
     font-size: 4rem;
+    padding-top: 200px;
     font-family: "Philosopher", serif;
     text-transform: uppercase;
     font-weight: normal;
@@ -55,6 +61,7 @@
     background-image: url("/storage/images/IMG_1684.jpeg");
     background-color: rgb(34, 155, 78);
     background-blend-mode: hard-light;
+    background-position: center top;
     min-height: 100vh;
 }
 #home .page-title {
@@ -187,7 +194,7 @@ h2 {
 .vegetableLineup-item {
     margin: 40px;
     box-sizing: border-box;
-    width: calc(33.333% - 80px); /* 横に3個表示するために幅を調整 */
+    width: calc(33.333% - 80px);
     flex: 0 0 auto;
 }
 
@@ -239,12 +246,43 @@ h2 {
 
 @media (max-width: 768px) {
     .vegetableLineup-item {
-        width: calc(50% - 40px); /* タブレットや中小デバイス向けに2列表示 */
+        width: calc(50% - 40px);
     }
 }
 
 @media (max-width: 480px) {
     .vegetableLineup-item {
-        width: calc(100% - 40px); /* スマートフォン向けに1列表示 */
+        width: calc(100% - 40px);
     }
+}
+.site-footer {
+    background-color: #cfd7be;
+    color: black;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.footer-links li {
+    display: inline;
+    margin-right: 15px;
+}
+
+.footer-links a {
+    color: black;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
 }

@@ -1,4 +1,4 @@
-@extends('user.layouts.app')
+@extends('user.layouts.header')
 
 @section('title', '予約入力フォーム')
 
@@ -7,13 +7,13 @@
 <div class="container">
     <h1>予約入力フォーム</h1>
     @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
     @endif
     <form action="{{ route('user.reservations.store') }}" method="post">
         @csrf
@@ -42,4 +42,5 @@
         <button type="submit">予約する</button>
     </form>
 </div>
+@include('user.layouts.footer')
 @endsection

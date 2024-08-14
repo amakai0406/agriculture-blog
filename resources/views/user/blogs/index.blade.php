@@ -1,4 +1,4 @@
-@extends('user.layouts.app')
+@extends('user.layouts.header')
 
 @section('title', 'ブログ一覧')
 
@@ -26,4 +26,5 @@
 </div>
 <!-- ページネーション -->
 {{ $blogs->links() }}
+@include('user.layouts.footer') 
 @endsection

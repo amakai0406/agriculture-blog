@@ -1,4 +1,4 @@
-@extends('user.layouts.app')
+@extends('user.layouts.header')
 
 @section('title', '農業体験イベントの詳細')
 
@@ -22,4 +22,5 @@
         <a href="/user/events">農業体験イベント一覧へ戻る</a>
     </div>
 </div>
+@include('user.layouts.footer') 
 @endsection
