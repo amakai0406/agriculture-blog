@@ -1,0 +1,94 @@
+.header {
+    background-color: #343a40;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.header-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.header-links a:hover {
+    text-decoration: underline;
+}
+
+/* コンテナ全体のレイアウト */
+.wrapper {
+    padding-top: 60px; /* ヘッダーの高さ分だけ下にスペースを作る */
+}
+
+/* コンテンツ全体のスタイル */
+.container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+/* ブログ画像のスタイル */
+.blog-image {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* ブログテーブルのスタイル */
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f8f9fa;
+}
+
+/* タイトルのスタイル */
+.desc-column {
+    max-width: 300px;
+}
+
+/* ページネーションのスタイル */
+.pagination-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* リンクコンテナのスタイル */
+.link-container {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.link-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.link-container a:hover {
+    text-decoration: underline;
+}
