@@ -1,6 +1,6 @@
 .header {
-    background-color: #343a40;
-    color: #fff;
+    background-color: #cfd7be;
+    color: black;
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -8,9 +8,14 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
+    right: 0;
+    width: 86%;
     z-index: 1000;
+}
+.nav-item {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .header h1 {
@@ -28,12 +33,10 @@
     text-decoration: underline;
 }
 
-/* コンテナ全体のレイアウト */
 .wrapper {
-    padding-top: 60px; /* ヘッダーの高さ分だけ下にスペースを作る */
+    padding-top: 60px;
 }
 
-/* コンテンツ全体のスタイル */
 .container {
     margin-top: 20px;
     padding: 20px;
@@ -42,14 +45,12 @@
     border-radius: 5px;
 }
 
-/* ブログ画像のスタイル */
 .blog-image {
     width: 100px;
     height: auto;
     border-radius: 5px;
 }
 
-/* ブログテーブルのスタイル */
 .table {
     width: 100%;
     margin-bottom: 20px;
@@ -67,18 +68,15 @@
     background-color: #f8f9fa;
 }
 
-/* タイトルのスタイル */
 .desc-column {
     max-width: 300px;
 }
 
-/* ページネーションのスタイル */
 .pagination-container {
     margin-top: 20px;
     text-align: center;
 }
 
-/* リンクコンテナのスタイル */
 .link-container {
     margin-top: 20px;
     text-align: right;

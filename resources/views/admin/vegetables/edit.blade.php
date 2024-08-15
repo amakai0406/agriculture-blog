@@ -6,9 +6,11 @@
 
 <link rel="stylesheet" href="{{ asset('css/admin/vegetable-edit.css') }}">
 
+@include('admin.layouts.header')
+
 <body>
     <div class="container">
-        <h1>やさいの編集</h1>
+        <h1>やさい編集</h1>
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -79,4 +81,5 @@
         }
     </script>
 </body>
+@include('admin.layouts.footer') 
 @endsection

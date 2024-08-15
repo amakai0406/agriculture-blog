@@ -5,6 +5,9 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/admin/event-index.css') }}">
 
+@include('admin.layouts.header')
+
+
 <body>
     <div class="container">
         <h1 class="my-4">農業体験イベント一覧</h1>
@@ -25,7 +28,10 @@
             </div>
         @endif
 
-        <a href="{{ route('admin.events.create') }}">新しいイベントを追加する</a>
+        <div class="link-container">
+            <a href="/admin/events/create">農業体験イベント作成</a>
+        </div>
+
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -64,4 +70,5 @@
         </table>
     </div>
 </body>
+@include('admin.layouts.footer') 
 @endsection

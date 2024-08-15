@@ -5,9 +5,11 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/admin/blog-edit.css') }}">
 
+@include('admin.layouts.header')
+
 <body>
     <div class="container mt-5 blog-detail">
-        <h1 class="mb-4">ブログの編集</h1>
+        <h1 class="mb-4">ブログ編集</h1>
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -101,4 +103,5 @@
         }
     </script>
 </body>
+@include('admin.layouts.footer') 
 @endsection

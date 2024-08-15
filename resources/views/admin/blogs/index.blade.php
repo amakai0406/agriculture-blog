@@ -11,7 +11,7 @@
         <div class="container">
             <h1 class="my-4">ブログ一覧</h1>
             <div class="link-container">
-                <a href="/admin/blogs/create">新しいブログの投稿ページへ</a>
+                <a href="/admin/blogs/create">ブログ作成</a>
             </div>
             @if (session('success'))
                 <div class="alert-container">
@@ -58,9 +58,7 @@
             <div class="pagination-container">
                 {{ $blogs->links() }}
             </div>
-            <div class="link-container">
-                <a href="/admin/dashboard">トップページへ</a>
-            </div>
         </div>
     </div>
+    @include('admin.layouts.footer') 
 @endsection

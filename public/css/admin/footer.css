@@ -1,0 +1,44 @@
+/* footer.css */
+
+/* フッター全体のスタイル */
+.site-footer {
+    background-color: #cfd7be;
+    color: black;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+}
+
+/* フッター内のコンテナスタイル */
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* フッターテキストのスタイル */
+.footer-container p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .footer-container {
+        padding: 0 10px;
+    }
+
+    .footer-container p {
+        font-size: 12px;
+    }
+}
+
+/* コンテンツがフッターの下に表示されないようにするための余白を追加 */
+.content {
+    padding-bottom: 100px; /* フッターの高さに合わせて調整 */
+}

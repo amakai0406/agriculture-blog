@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
-    padding: 0;
+    padding: 100px 0 0 0;
 }
 
 .container {
@@ -38,7 +38,7 @@ input[type="text"],
 textarea,
 input[type="file"] {
     width: 100%;
-    max-width: 700px;
+    max-width: 800px;
     padding: 8px;
     border-radius: 5px;
     margin-top: 10px;
@@ -85,13 +85,6 @@ button:hover {
 
 .alert li {
     margin-bottom: 5px;
-}
-
-a {
-    color: #007bff;
-    text-decoration: none;
-    margin-top: 10px;
-    display: inline-block;
 }
 
 a:hover {

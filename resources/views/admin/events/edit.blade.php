@@ -5,9 +5,12 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/admin/event-edit.css') }}">
 
+@include('admin.layouts.header')
+
+
 <body>
     <div class="container">
-        <h1>イベント編集</h1>
+        <h1>農業体験イベント編集</h1>
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -123,4 +126,5 @@
         }
     });
 </script>
+@include('admin.layouts.footer') 
 @endsection
