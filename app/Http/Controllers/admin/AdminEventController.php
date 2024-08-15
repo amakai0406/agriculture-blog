@@ -86,7 +86,7 @@ class AdminEventController extends Controller
             $eventImage->save();
         }
 
-        return redirect()->route('admin.events.index')->with('success', '新しいイベントを追加しました');
+        return to_route('admin.events.edit', ['id' => $event->id])->with('success', '新しいイベントを追加しました');
     }
 
     public function edit(int $id)

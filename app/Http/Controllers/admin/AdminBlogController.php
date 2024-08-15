@@ -78,7 +78,7 @@ class AdminBlogController extends Controller
         }
 
         //admin.blogs.indexにリダイレクトし、登録成功後に新しいブログを投稿しましたとメッセージを表示する
-        return to_route('admin.blogs.index')->with('success', '新しいブログを投稿しました');
+        return to_route('admin.blogs.edit', ['id' => $blog->id])->with('success', '新しいブログを投稿しました');
 
     }
 
@@ -171,6 +171,10 @@ class AdminBlogController extends Controller
 
         //指定されたidのブログを取得し、＄blogに格納する
         $blog = Blog::findOrFail($id);
+
+        //関連データ削除
+        $blog->vegetables()->detach();
+
         //blog_Imagesテーブルのimage_pathを削除する
         $blog->images()->delete();
         //ブログを削除する
