@@ -6,9 +6,11 @@
 
 <link rel="stylesheet" href="{{ asset('css/admin/vegetable-create.css')}}">
 
+@include('admin.layouts.header')
+
 <body>
     <div class="container">
-        <h1 class="my-4">やさいを追加する</h1>
+        <h1 class="my-4">やさい作成</h1>
 
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -60,5 +62,5 @@
         }
     </script>
 </body>
-
-</html>
+@include('admin.layouts.footer') 
+@endsection

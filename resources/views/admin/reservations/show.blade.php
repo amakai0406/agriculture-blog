@@ -3,8 +3,11 @@
 @section('title', '各イベント予約一覧')
 
 @section('content')
+
 <link rel="stylesheet" href="{{ asset('css/admin/reservation-index.css') }}">
-</head>
+
+@include('admin.layouts.header')
+
 
 <body>
     <div class="container">
@@ -42,4 +45,5 @@
         <a href="{{ route('admin.events.index') }}">イベント一覧に戻る</a>
     </div>
 </body>
+@include('admin.layouts.footer') 
 @endsection

@@ -4,10 +4,12 @@
 
 @section('content')
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{ asset('css/admin/event-create.css') }}">
 
+@include('admin.layouts.header')
+
 <body>
+
     <div class="container">
         <h1 class="my-4">農業体験イベント作成</h1>
         <form action="{{ route('admin.events.store') }}" method="POST" enctype="multipart/form-data">
@@ -71,4 +73,5 @@
         reader.readAsDataURL(event.target.files[0]);
     });
 </script>
+@include('admin.layouts.footer') 
 @endsection

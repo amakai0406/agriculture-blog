@@ -5,6 +5,8 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/admin/reservation-index.css') }}">
 
+@include('admin.layouts.header')
+
 <body>
     <div class="container">
         <h1>農業体験イベント予約一覧</h1>
@@ -60,4 +62,5 @@
         </table>
     </div>
 </body>
+@include('admin.layouts.footer') 
 @endsection

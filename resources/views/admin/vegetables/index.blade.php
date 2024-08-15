@@ -5,11 +5,13 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/admin/vegetable-index.css') }}">
 
+@include('admin.layouts.header')
+
 <body>
     <div class="container">
         <h1 class="my-4">やさい一覧</h1>
         <div class="link-container">
-            <a href="/admin/vegetables/create">やさいを追加する</a>
+            <a href="/admin/vegetables/create">やさい作成</a>
         </div>
         <table class="table table-bordered">
             <thead>
@@ -47,9 +49,7 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="link-container">
-            <a href="/admin/dashboard">トップページへ</a>
-        </div>
     </div>
 </body>
+@include('admin.layouts.footer') 
 @endsection

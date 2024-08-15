@@ -3,7 +3,10 @@
 @section('title', '管理者登録')
 
 @section('content')
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ asset('css/admin/admin-create.css') }}">
+
+@include('admin.layouts.header')
 
 <body>
     <div class="container mt-5">
@@ -64,4 +67,5 @@
         }
     });
 </script>
+@include('admin.layouts.footer') 
 @endsection

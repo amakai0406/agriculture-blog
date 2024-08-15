@@ -5,9 +5,12 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/admin/blog-create.css') }}">
 
+@include('admin.layouts.header')
+
+
 <body>
     <div class="container">
-        <h1>新しいブログを投稿する</h1>
+        <h1>ブログ作成</h1>
 
         @if ($errors->any())
             <div class="alert alert-danger custom-alert">
@@ -84,4 +87,5 @@
         }
     </script>
 </body>
+@include('admin.layouts.footer') 
 @endsection
