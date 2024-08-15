@@ -25,6 +25,7 @@ class AdminEventController extends Controller
                 'events.title',
                 'events.description',
                 'events.event_date',
+                'participants_count',
                 'events.created_at',
                 'events.updated_at',
                 //DB::raw()は生SQL文を使用するための方法
@@ -63,6 +64,8 @@ class AdminEventController extends Controller
         $event->description = $validated['description'];
 
         $event->event_date = $validated['event_date'];
+
+        $event->participants_count = $validated['participants_count'];
 
         $event->save();
 
@@ -112,6 +115,8 @@ class AdminEventController extends Controller
             $event->description = $validated['description'];
 
             $event->event_date = $validated['event_date'];
+
+            $event->participants_count = $validated['participants_count'];
 
             if ($request->hasFile('event_image')) {
 

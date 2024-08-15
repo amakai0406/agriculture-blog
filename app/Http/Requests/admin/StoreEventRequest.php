@@ -22,6 +22,7 @@ class StoreEventRequest extends FormRequest
             'event_date' => 'date',
             'event_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'location' => 'required|string|in:main,content',
+            'participants_count' => 'required|integer|min:0',
         ];
     }
 }
