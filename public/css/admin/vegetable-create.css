@@ -37,7 +37,7 @@ label {
 input[type="text"],
 textarea,
 input[type="file"] {
-    width: 100%;
+    width: 97%;
     max-width: 800px;
     padding: 8px;
     border-radius: 5px;
