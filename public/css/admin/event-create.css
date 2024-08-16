@@ -96,3 +96,7 @@ select.form-control {
     box-sizing: border-box;
     margin-bottom: 20px;
 }
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}

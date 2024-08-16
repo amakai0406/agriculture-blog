@@ -91,7 +91,7 @@ return [
     ],
     'max_digits' => ':attributeは、:max桁以下で指定してください。',
     'mimes' => ':attributeには:valuesタイプのファイルを指定してください。',
-    'mimetypes' => ':attributeには:valuesタイプのファイルを指定してください。',
+    'mimetypes' => ':attributeには:valuesmessages。',
     'min' => [
         'numeric' => ':attributeには、:min以上の数字を指定してください。',
         'file' => ':attributeには、:min kb以上のファイルを指定してください。',

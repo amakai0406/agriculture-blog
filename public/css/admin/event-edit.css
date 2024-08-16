@@ -101,3 +101,7 @@ textarea {
 select[name="location"] {
     margin-bottom: 20px;
 }
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
