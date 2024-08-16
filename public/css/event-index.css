@@ -15,7 +15,8 @@ h1 {
     text-align: center;
     font-size: 2.5em;
     color: #4caf50;
-    margin-bottom: 20px;
+    margin-top: 25px;
+    margin-bottom: 15px;
 }
 
 .event-list {
@@ -35,10 +36,6 @@ h1 {
     padding: 25px;
     width: calc(50% - 20px);
     box-sizing: border-box;
-}
-
-.event:hover {
-    transform: translateY(-5px);
 }
 
 .event-title {
