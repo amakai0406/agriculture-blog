@@ -41,20 +41,19 @@
                 <textarea id="description" name="description" rows="4" required>{{ $vegetable->description }}</textarea>
             </div>
             <div class="form-group">
-                <label for="image">現在の画像</label>
                 @if ($vegetable->image)
                     <img src="{{ asset('storage/images/' . $vegetable->image) }}" alt="" class="vegetable-image"
-                        id="current-image">
-
+                        id="image-preview">
                 @else
                     <p>画像がありません</p>
+                    <img id="image-preview" class="vegetable-image" style="display:none;">
                 @endif
             </div>
             <div class="form-group">
                 <label for="new_image">新しい画像を選択</label>
                 <input type="file" class="form-control" id="new_image" name="image" onchange="previewImage(event)">
-                <img id="image-preview" class="vegetable-image" style="display:none;">
             </div>
+
             <div class="form-group">
                 <button type="submit" class="update-btn">更新する</button>
             </div>
@@ -75,7 +74,6 @@
                 var output = document.getElementById('image-preview');
                 output.src = reader.result;
                 output.style.display = 'block';
-                document.getElementById('current-image').style.display = 'none';
             };
             reader.readAsDataURL(event.target.files[0]);
         }
