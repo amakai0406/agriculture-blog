@@ -51,10 +51,11 @@ class AdminVegetableController extends Controller
         }
 
         //検証済みデータを基にcreateメソッドでVegetableインスタンスを作成する
-        Vegetable::create($validated);
+        $vegetable = Vegetable::create($validated);
 
         //admin.vegetables.createビューへリダイレクトし、新しいやさいを追加しましたとメッセージを表示する
-        return redirect()->route('admin.vegetables.create')->with('success', '新しいやさいを追加しました');
+        return to_route('admin.vegetables.edit', ['id' => $vegetable->id])->with('success', '新しいやさいを追加しました');
+
     }
 
     public function edit(int $id)
