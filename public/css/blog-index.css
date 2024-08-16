@@ -5,9 +5,10 @@
     padding: 20px;
 }
 
-.blog-Link {
-    text-decoration: none;
-    color: inherit;
+.centered-title {
+    text-align: center;
+    font-size: 2.5em;
+    color: #4caf50;
 }
 
 .blog-item {
@@ -26,7 +27,8 @@
     max-width: 30%;
     height: auto;
     border-radius: 4px;
-    margin-bottom: 8px;
+    margin: 0 auto 8px auto;
+    display: block;
 }
 
 .blog-item h2 {
@@ -42,4 +44,13 @@
 .blog-item div {
     font-size: 0.9em;
     color: #999;
+}
+
+.blog-link {
+    color: #4caf50;
+    text-decoration: none;
+}
+.blog-link:hover {
+    text-decoration: underline;
+    color: #4caf50;
 }
