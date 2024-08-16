@@ -47,16 +47,24 @@
                     value="{{ old('event_date') }}" required>
             </div>
             <div class="form-group">
+                <label for="participants_count">参加人数</label>
+                <input type="number" class="form-control" id="participants_count" name="participants_count"
+                    value="{{ old('participants_count') }}" required min="0">
+            </div>
+            <div class="form-group">
                 <label for="event_image">イベント画像</label>
                 <input type="file" class="form-control-file" id="event_image" name="event_image" accept="image/*">
                 <img id="image_preview" src="#" alt="画像プレビュー"
                     style="max-width: 30%; display: none; margin-top: 10px;" />
             </div>
-            <select name="location" class="form-control">
-                <option value="" disabled selected>選択してください</option>
-                <option value="main">メイン画像</option>
-                <option value="content">イベント内容で表示する画像</option>
-            </select>
+            <div class="form-group">
+                <label for="location">表示場所</label>
+                <select name="location" id="location" class="form-control">
+                    <option value="" disabled selected>選択してください</option>
+                    <option value="main">メイン画像</option>
+                    <option value="content">イベント内容で表示する画像</option>
+                </select>
+            </div>
 
             <button type="submit" class="btn btn-primary">作成</button>
         </form>

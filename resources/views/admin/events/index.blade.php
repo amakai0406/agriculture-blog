@@ -39,6 +39,7 @@
                     <th>イベント内容</th>
                     <th>開催日</th>
                     <th>参加可能人数</th>
+                    <th>参加人数</th>
                     <th>作成日</th>
                     <th>更新日</th>
                     <th>編集</th>
@@ -55,6 +56,7 @@
                         </td>
 
                         </td>
+                        <th>{{ $event->participants_count }}</th>
                         <td>
                             <a
                                 href="{{ route('admin.reservations.show', ['eventId' => $event->id]) }}">{{ $event->reserved_participants }}</a>

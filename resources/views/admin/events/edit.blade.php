@@ -45,6 +45,12 @@
                 <input type="date" id="start_date" name="event_date" value="{{ $event->event_date }}" required>
             </div>
 
+            <div class="form-group">
+                <label for="participants_count">参加人数</label>
+                <input type="number" id="participants_count" name="participants_count"
+                    value="{{ $event->participants_count }}" required min="1">
+            </div>
+
             <div class="form-group spacing-between-vegetables-and-image">
                 <label for="event_image">イベント画像</label>
                 @if ($event->eventImages->isNotEmpty())
@@ -89,9 +95,6 @@
             </div>
         </form>
 
-        <div>
-            <a href="/admin/events">農業体験イベントへ戻る</a>
-        </div>
     </div>
 </body>
 <script>
