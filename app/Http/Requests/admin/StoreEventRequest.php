@@ -25,4 +25,10 @@ class StoreEventRequest extends FormRequest
             'participants_count' => 'required|integer|min:0',
         ];
     }
+    public function messages()
+    {
+        return [
+            'event_image.mimes' => '画像の形式はjpeg, png, jpg, gifでなければなりません。',
+        ];
+    }
 }
