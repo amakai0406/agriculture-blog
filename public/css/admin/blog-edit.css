@@ -52,7 +52,7 @@ h1 {
 input[type="text"],
 textarea,
 input[type="file"] {
-    width: 100%;
+    width: 95%;
     max-width: 700px;
     padding: 10px;
     border-radius: 5px;
