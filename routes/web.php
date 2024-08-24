@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Authenticate;
 
 //ホームページ
-Route::get('/', 'App\Http\Controllers\User\UserHomeController@index')->name('user.home.index');
+//Route::get('/', 'App\Http\Controllers\User\UserHomeController@index')->name('user.home.index');
 
 //ログインページ
 Route::get('/admin/login', 'App\Http\Controllers\User\AuthController@index')->name('admin.admins.login');
