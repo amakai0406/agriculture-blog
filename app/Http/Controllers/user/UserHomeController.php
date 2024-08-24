@@ -10,12 +10,12 @@ use App\Models\Event;
 class UserHomeController extends Controller
 {
 
-    public function index()
-    {
+    // public function index()
+    // {
 
-        $blogs = Blog::orderBy('created_at', 'desc')->take(2)->get();
-        $vegetables = Vegetable::orderBy('created_at', 'desc')->take(3)->get();
-        $events = Event::orderBy('created_at', 'desc')->take(2)->get();
-        return view('user.home.index', compact('blogs', 'vegetables', 'events'));
-    }
+    //     $blogs = Blog::orderBy('created_at', 'desc')->take(2)->get();
+    //     $vegetables = Vegetable::orderBy('created_at', 'desc')->take(3)->get();
+    //     $events = Event::orderBy('created_at', 'desc')->take(2)->get();
+    //     return view('user.home.index', compact('blogs', 'vegetables', 'events'));
+    // }
 }
