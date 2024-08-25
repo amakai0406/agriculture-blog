@@ -21,10 +21,10 @@ use App\Http\Middleware\Authenticate;
 Route::get('/', 'App\Http\Controllers\User\UserHomeController@index')->name('user.home.index');
 
 //ログインページ
-Route::get('/admin/login', 'App\Http\Controllers\User\AuthController@index')->name('admin.admins.login');
+Route::get('/admin/login', 'App\Http\Controllers\Admin\AuthController@index')->name('admin.admins.login');
 
 //ログイン機能
-Route::post('/admin/login', 'App\Http\Controllers\User\AuthController@login');
+Route::post('/admin/login', 'App\Http\Controllers\Admin\AuthController@login');
 
 //やさい一覧ページ
 Route::get('/user/vegetables', 'App\Http\Controllers\User\UserVegetableController@index')->name('user.vegetables.index');
