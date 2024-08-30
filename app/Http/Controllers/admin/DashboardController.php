@@ -14,30 +14,13 @@ class DashboardController extends Controller
     {
         $admin = Auth::guard('admin')->user();
 
-        $events = DB::table('events')
-            //eventsテーブルのidとevent_reservationsテーブルのevents_idを結合
-            ->leftJoin('event_reservations', 'events.id', '=', 'event_reservations.event_id')
-            //取得するカラム
-            ->select(
-                'events.id',
-                'events.title',
-                'events.description',
-                'events.event_date',
-                'participants_count',
-                'events.created_at',
-                'events.updated_at',
-                //DB::raw()は生SQL文を使用するための方法
-                DB::raw('
-            SUM(
-                        CASE 
-                            WHEN event_reservations.status = "confirmed" THEN 1 
-                            WHEN event_reservations.status = "cancelled" THEN -1 
-                            ELSE 0 
-                        END
-                    ) as reserved_participants
-            ')
-            )
-            ->groupBy('events.id', 'events.title')
+        $events = DB::table('events as e')
+            ->leftJoin('event_reservations as er', function ($join) {
+                $join->on('e.id', '=', 'er.event_id')
+                    ->where('er.status', '=', 'confirmed');
+            })
+            ->select('e.title', 'e.event_date as event_date', DB::raw('COUNT(er.id) as participants_count'))
+            ->groupBy('e.id', 'e.title', 'e.event_date')
             ->get();
 
         $blogCounts = DB::table('blogs')
