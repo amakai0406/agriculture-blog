@@ -16,7 +16,7 @@ class Authenticate
         if (!Auth::guard('admin')->check()) {
 
             //admin.admins.loginへリダイレクト
-            return redirect()->route('admin.admins.login');
+            return redirect()->route('admin.login');
         }
 
         //確認できた場合は次のミドルウェやコントローラーへ
