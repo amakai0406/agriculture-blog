@@ -79,6 +79,12 @@
                 <input type="file" class="form-control-file" id="image" name="image" onchange="previewImage(event)">
             </div>
 
+            <select name="location" class="form-control">
+                <option value="eyecatch" {{ $blog->location == 'eyecatch' ? 'selected' : '' }}>アイキャッチ画像</option>
+                <option value="content" {{ $blog->location == 'content' ? 'selected' : '' }}>イベント内容で表示する画像
+                </option>
+            </select>
+
             <button type="submit" class="update-button">更新する</button>
         </form>
         <form method="POST" action="{{ route('admin.blogs.destroy', $blog->id) }}">

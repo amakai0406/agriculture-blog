@@ -214,3 +214,12 @@ input[type="file"] {
     object-fit: cover;
     margin-bottom: 10px;
 }
+
+select[name="location"],
+select.form-control {
+    width: 99%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
