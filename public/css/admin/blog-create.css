@@ -184,3 +184,16 @@ button:hover {
     border-radius: 5px;
     object-fit: contain;
 }
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-control-file {
+    display: block;
+    margin-top: 10px;
+}

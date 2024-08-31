@@ -60,6 +60,16 @@
                 <input type="file" id="image" name="image" accept="image/*" onchange="previewImage(event)" required>
                 <img id="image-preview" style="display:none;">
             </div>
+
+            <div class="form-group">
+                <label for="location">表示場所</label>
+                <select name="location" id="location" class="form-control">
+                    <option value="" disabled selected>選択してください</option>
+                    <option value="eyecatch">アイキャッチ画像</option>
+                    <option value="content">イベント内容で表示する画像</option>
+                </select>
+            </div>
+
             <button type="submit">ブログを投稿する</button>
         </form>
     </div>

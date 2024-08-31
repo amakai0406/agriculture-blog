@@ -68,6 +68,8 @@ class AdminBlogController extends Controller
 
             $blogImage->image_path = $imagePath;
 
+            $blogImage->location = $validated['location'];
+
             $blogImage->save();
         }
 
