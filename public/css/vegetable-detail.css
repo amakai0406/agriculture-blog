@@ -139,3 +139,18 @@ body {
     background-color: #f8d7da;
     border-color: #f5c6cb;
 }
+
+.back-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-link a:hover {
+    text-decoration: underline;
+}

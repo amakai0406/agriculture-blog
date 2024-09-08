@@ -28,6 +28,9 @@
                         <div class="blog-time">
                             {{ $blog->created_at->format('Y-m-d H:i') }}
                         </div>
+                        <div class="back-link">
+                            <a href="/user/vegetables">やさい一覧へ戻る</a>
+                        </div>
                     </div>
                 @endforeach
             </div>
