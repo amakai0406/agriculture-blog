@@ -8,14 +8,15 @@
 <ul class="vegetableLineup-items">
     @foreach ($vegetables as $vegetable)
         <li class="vegetableLineup-item">
-            <a href="{{ route('user.vegetables.show', ['id' => $vegetable->id])}}" class="vegetableLineup-item-container">
-                <figure class="vegetableLineup-item-img">
-                    <img src="{{ asset('storage/images/' . $vegetable->image) }}">
-                </figure>
-                <div class="vegetableLineup-item-body">
-                    <h3 class="vegetableLineup-item-name">{{ $vegetable->name }}</h3>
-                </div>
-            </a>
+            <figure class="vegetableLineup-item-img">
+                <img src="{{ asset('storage/images/' . $vegetable->image) }}">
+            </figure>
+            <div class="vegetableLineup-item-body">
+                <h3 class="vegetableLineup-item-name">{{ $vegetable->name }}</h3>
+            </div>
+            <div class="link-container">
+                <a href="{{ route('user.vegetables.show', ['id' => $vegetable->id]) }}" class="center-link">この野菜の詳細へ</a>
+            </div>
         </li>
     @endforeach
 </ul>

@@ -1,8 +1,9 @@
 .blog-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px; /* 各ブログ項目の間隔を設定 */
+    gap: 20px;
     padding: 20px;
+    text-align: center;
 }
 
 .centered-title {
