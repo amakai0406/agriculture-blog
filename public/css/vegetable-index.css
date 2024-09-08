@@ -1,16 +1,16 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
+    margin: 40px;
     padding: 0;
     background-color: #f8f9fa;
 }
 
 h2 {
     text-align: center;
-    font-size: 2.5em;
+    font-size: 2em;
     color: #4caf50;
-    margin-top: 25px;
-    margin-bottom: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     font-family: "Arial", sans-serif;
 }
 
@@ -20,6 +20,7 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 60px;
 }
 
 .vegetableLineup-item {
@@ -29,20 +30,28 @@ h2 {
     padding: 50px;
     margin: 10px;
     box-sizing: border-box;
-    transition: box-shadow 0.3s ease, transform 0.2s ease-in-out;
     width: 300px;
     flex: 0 0 auto;
 }
 
-.vegetableLineup-item:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.vegetableLineup-item-container {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+}
+
+.vegetableLineup-item-container:hover {
     transform: translateY(-5px);
 }
 
 .vegetableLineup-item-img {
-    width: 80%; /* 画像の幅を調整して左右に余白を作る */
-    height: 200px;
-    margin: 0 auto; /* 画像を中央に配置 */
+    width: 80%;
+    height: 350px;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -50,13 +59,12 @@ h2 {
 }
 
 .vegetableLineup-item-img img {
-    width: 100%;
+    width: 50%;
     height: auto;
-    border-radius: 8px;
 }
 
 .vegetableLineup-item-body {
-    padding: 70px 0 0 0;
+    padding: 10px;
     text-align: center;
 }
 
@@ -64,24 +72,6 @@ h2 {
     font-size: 1.2em;
     margin: 0;
     color: #333;
-    font-weight: bold;
-}
-
-.link-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-}
-
-.center-link {
-    color: #4caf50;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.center-link:hover {
-    text-decoration: underline;
 }
 
 @media (max-width: 480px) {
