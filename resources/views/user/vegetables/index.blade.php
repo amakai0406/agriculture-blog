@@ -14,6 +14,7 @@
             <div class="vegetableLineup-item-body">
                 <h3 class="vegetableLineup-item-name">{{ $vegetable->name }}</h3>
             </div>
+
         </a>
     @endforeach
 </ul>
