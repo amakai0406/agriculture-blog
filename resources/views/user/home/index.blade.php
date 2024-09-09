@@ -9,7 +9,7 @@
 <body>
     <div id="home" class="big-bg">
         <div class="home-content wrapper">
-            <h2 class="page-title">農業を楽しく体験する</h2>
+            <h2 class="page-title">農業体験が予約できるサービス</h2>
             <p>農業に興味のある方に</p>
             <p>農業を始めるきっかけとなるイベントを開催したり、農業に関する情報をブログで発信</p>
         </div>
