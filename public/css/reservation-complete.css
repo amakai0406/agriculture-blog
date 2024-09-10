@@ -1,18 +1,12 @@
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
 .container {
+    width: 40%; /* 背景色の幅を画面の80%に制限 */
+    margin: 0 auto; /* 左右中央寄せ */
     text-align: center;
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 170px; /* ヘッダーの下に余白を開ける */
 }
 
 h1 {
